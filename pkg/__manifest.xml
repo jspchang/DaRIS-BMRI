@@ -1,0 +1,16 @@
+<manifest>
+	<package>bmri-pssd</package>
+	<version>@version@</version>
+	<build-time>@build-time@</build-time>
+	<dependencies>
+		<version>@server-version@</version>
+	</dependencies>
+	<vendor>Brain and Mind Research Institute, The University of Sydney</vendor>
+	<description>BMRI-PSSD plugins and configuration scripts for DaRIS/Mediaflux</description>
+	<!--
+		<dependencies>
+			<package>nig-essentials</package>
+			<package>PSSD</package>
+		</dependencies>
+	-->
+</manifest>
