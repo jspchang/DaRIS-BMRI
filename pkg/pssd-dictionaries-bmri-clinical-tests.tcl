@@ -154,7 +154,9 @@ proc createUpdatePSSDDicts { ns } {
 	
 	createDict_pssd_ap_staging_model $ns
 	createDict_pssd_ap_ham_d_sections $ns
-	createDict_pssd_ap_ham_d_scores $ns
+	createDict_pssd_ap_ham_d_scores_2 $ns
+	createDict_pssd_ap_ham_d_scores_3 $ns
+	createDict_pssd_ap_ham_d_scores_4 $ns
 	createDict_pssd_ap_bprs_sections $ns
 	createDict_pssd_ap_bprs_scores $ns
 	createDict_pssd_ap_sds_scores $ns
@@ -164,7 +166,8 @@ proc createUpdatePSSDDicts { ns } {
 proc destroyPSSDDicts { ns } {
 
 	set dicts [list $ns.ap-pssd.ap-staging-model $ns.pssd.ap-ham-d-sections \
-					$ns.pssd.ap-ham-d-scores $ns:pssd.ap-bprs-sections \
+					$ns.pssd.ap-ham-d-scores-2 $ns.pssd.ap-ham-d-scores-3 \
+					$ns.pssd.ap-ham-d-scores-4 $ns:pssd.ap-bprs-sections \
 					$ns:pssd.ap-bprs-scores $ns:pssd.ap-sds-scores]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {

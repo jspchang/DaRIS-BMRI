@@ -132,7 +132,7 @@ proc createDocType_pssd_ap_ham_d { ns } {
 			> \
 			:element -name "loss-of-weight" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.ap-ham-d-scores-4 \
+					:dictionary $ns.pssd.ap-ham-d-scores-3 \
 				> \
 			> \
 			:element -name "insight" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
