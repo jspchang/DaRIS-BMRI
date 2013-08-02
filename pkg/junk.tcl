@@ -1,6 +1,4 @@
 # This file isn't currently used by the package
-# Please ignore
-# Adding this line as a test
 
 proc createDocType_pssd_project { ns } {
         asset.doc.type.update \
