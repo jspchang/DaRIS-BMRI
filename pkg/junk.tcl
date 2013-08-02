@@ -1,3 +1,6 @@
+# This file isn't currently used by the package
+# Please ignore
+
 proc createDocType_pssd_project { ns } {
         asset.doc.type.update \
 	    :create true :type ${ns}:pssd.project \
