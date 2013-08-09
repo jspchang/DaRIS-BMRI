@@ -3,7 +3,7 @@ package bmri.mf.plugin.pssd;
 import arc.xml.*;
 import nig.iio.metadata.DomainMetaData;
 import nig.mf.Executor;
-import nig.mf.plugin.util.DateUtil;
+import nig.util.DateUtil;
 
 import java.util.Collection;
 import java.util.Date;
