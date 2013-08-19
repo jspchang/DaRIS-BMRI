@@ -313,6 +313,48 @@ proc createDocType_pssd_animal_genetics { ns } {
 		>
 	}
 
+proc createDocType_pssd_general_practitioner { ns } {
+
+	asset.doc.type.update \
+		:create true :type ${ns}:pssd.general-practitioner \
+		:description "Document to capture general practitioner details" \
+		:label "general-practitioner" \
+		:definition < \
+			:element -name prefix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Prefix" \
+            :element -name first  -type string -min-occurs 1 -max-occurs 1 -length 40 -label "First" \
+            :element -name middle -type string -min-occurs 0 -max-occurs 1 -length 100 -label "Middle" < \
+             	:description "If there are several 'middle' names then put them in this field" \
+             > \
+			:element -name last   -type string -min-occurs 1 -max-occurs 1 -length 40 -label "Last" \
+			:element -name suffix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Suffix" \
+			:element -name referral-notes -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
+			:element -name phone -type integer -min-occurs 0 -max-occurs 1 -label "Phone" \
+			:element -name address -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
+			:element -name time-seeing-general-practioner -type integer -min-occurs 0 -max-occurs 1 \
+		> \
+	}
+
+proc createDocType_pssd_clinician { ns } {
+
+	asset.doc.type.update \
+		:create true :type ${ns}:pssd.clinician \
+		:description "Document to capture clinician details" \
+		:label "clinician" \
+		:definition < \
+			:element -name prefix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Prefix" \
+            :element -name first  -type string -min-occurs 1 -max-occurs 1 -length 40 -label "First" \
+            :element -name middle -type string -min-occurs 0 -max-occurs 1 -length 100 -label "Middle" < \
+             	:description "If there are several 'middle' names then put them in this field" \
+             > \
+			:element -name last   -type string -min-occurs 1 -max-occurs 1 -length 40 -label "Last" \
+			:element -name suffix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Suffix" \
+			:element -name referral-notes -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
+			:element -name phone -type integer -min-occurs 0 -max-occurs 1 -label "Phone" \
+			:element -name address -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
+			:element -name specialty -type string -min-occurs 0 -max-occurs 1 -case-sensitive true\
+		> \
+	}
+
 #============================================================================#
 proc createPSSDCoreDocTypes { ns } {
 
@@ -334,6 +376,8 @@ proc createPSSDCoreDocTypes { ns } {
 	createDocType_pssd_identity $ns
 	createDocType_pssd_subject_gender $ns
 	createDocType_pssd_subject_handedness $ns
+	createDocType_pssd_subject_general_practioner $ns
+	createDocType_pssd_subject_clinician $ns
 }
 
 #============================================================================#
@@ -344,7 +388,8 @@ set doctypes [list $ns:pssd.project $ns:pssd.subject.identifiers $ns:pssd.subjec
 				$ns:pssd.referral-date $ns:pssd.patient-data-summary \
 				$ns:pssd.human.identity $ns:pssd.animal.disease \
 				$ns:pssd.animal.genetics $ns:pssd.psychiatrist $ns:pssd.research-psychologist \
-				$ns:pssd.subject.gender $ns:pssd.subject.handedness $ns:pssd.subject.height]
+				$ns:pssd.subject.gender $ns:pssd.subject.handedness $ns:pssd.subject.height \
+				$ns:pssd.general-practitioner $ns:pssd.clinician]
 	foreach doctype $doctypes {
       	 destroyDocType $doctype "true"
 	}

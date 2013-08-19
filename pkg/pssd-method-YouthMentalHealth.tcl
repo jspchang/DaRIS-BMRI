@@ -124,7 +124,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			> \
 		> \
 		:step < \
-			:name ${name3} \
+			:name ${name2} \
 			:description ${desc2} \
 			:study < \
 				:type ${type2} \
