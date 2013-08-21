@@ -971,6 +971,7 @@ proc createDocType_pssd_sr_substance_use_baseline_audit { ns } {
 					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
 				> \
 			> \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -983,6 +984,76 @@ proc destroyDocType_pssd_sr_substance_use_baseline_audit { ns force } {
     }
 }
 
+# Scale 6 - Substance Use Alcohol
+#============================================================================#
+proc createDocType_pssd_sr_substance_use_alcohol { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-substance-use-alcohol \
+		:description "scale 6 - substance use alcohol" \
+		:label "scale-6-substance-use-alcohol" \
+		:definition < \
+			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-a \
+				> \
+			> \
+			:element -name "question-2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-b \
+				> \
+			> \
+			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-4" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-5" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-6" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-7" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-9" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
+				> \
+			> \
+			:element -name "question-10" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
+				> \
+			> \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_sr_substance_use_alcohol { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-substance-use-alcohol]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-substance-use-alcohol :force $force
+    }
+}
 
 
 #============================================================================#
@@ -1000,6 +1071,7 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocTYpe_pssd_sr_substance_use_scale_4_ever $ns
 	createDocTYpe_pssd_sr_substance_use_scale_4_ever_last_3_months $ns
 	createDocTYpe_pssd_sr_substance_use_baseline_audit $ns
+	createDocTYpe_pssd_sr_substance_use_alcohol $ns
 
 }
 
@@ -1011,7 +1083,8 @@ set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
 				$ns:pssd.sr-kessler-10 $ns:pssd.sr-dass $ns:pssd.sr-who-qol \
 				$ns:pssd.sr-substance-use-scale-4-ever \
 				$ns:pssd.sr-substance-use-scale-4-last-3-months \
-				$ns:pssd.sr-substance-use-baseline-audit]
+				$ns:pssd.sr-substance-use-baseline-audit \
+				$ns:pssd.sr-substance-use-alcohol]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
