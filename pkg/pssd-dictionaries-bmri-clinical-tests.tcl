@@ -183,12 +183,25 @@ proc createDict_pssd_sr_who_qol { ns } {
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-who-qol]] == "false" } {
 		dictionary.create :name ${ns}.pssd.sr-who-qol :description "self report scale 1" :case-sensitive false \
 	}
-	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "1"
-	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "2"
-	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "2"
-	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "4"
-	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "5"
-	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "missing-not-available"
+	addDictionaryEntry  ${ns}.pssd.sr-who-qol "1"
+	addDictionaryEntry  ${ns}.pssd.sr-who-qol "2"
+	addDictionaryEntry  ${ns}.pssd.sr-who-qol "2"
+	addDictionaryEntry  ${ns}.pssd.sr-who-qol "4"
+	addDictionaryEntry  ${ns}.pssd.sr-who-qol "5"
+	addDictionaryEntry  ${ns}.pssd.sr-who-qol "missing-not-available"
+}
+
+proc createDict_pssd_sr_substance_use_scale_4_last_3_months { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-last-3-months]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-last-3-months :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "never"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "once-or-twice"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "monthly"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "weekly"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "daily-or-almost-daily"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "missing-not-available"
 }
 
 #============================================================================#
@@ -205,6 +218,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_ap_sds_scores $ns
 	createDict_pssd_sr_kessler_10 $ns
 	createDict_pssd_sr_dass $ns
+	createDict_pssd_sr_who_qol $ns
 }
 
 #============================================================================#
@@ -214,7 +228,7 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.ap-ham-d-scores-2 $ns.pssd.ap-ham-d-scores-3 \
 					$ns.pssd.ap-ham-d-scores-4 $ns.pssd.ap-bprs-sections \
 					$ns.pssd.ap-bprs-scores $ns.pssd.ap-sds-scores $ns.pssd.sr-kessler-10 \
-					$ns.pssd.sr-dass]
+					$ns.pssd.sr-dass $ns.pssd.sr-who-qol]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict
