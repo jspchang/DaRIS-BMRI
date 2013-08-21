@@ -168,7 +168,7 @@ proc createDict_pssd_sr_kessler_10 { ns } {
 proc createDict_pssd_sr_dass { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-dass]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-dass :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-dass :description "self report scale 2" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-dass "0"
 	addDictionaryEntry  ${ns}.pssd.sr-dass "1"
@@ -181,7 +181,7 @@ proc createDict_pssd_sr_dass { ns } {
 proc createDict_pssd_sr_who_qol { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-who-qol]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-who-qol :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-who-qol :description "self report scale 3" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-who-qol "1"
 	addDictionaryEntry  ${ns}.pssd.sr-who-qol "2"
@@ -194,7 +194,7 @@ proc createDict_pssd_sr_who_qol { ns } {
 proc createDict_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-last-3-months]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-last-3-months :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-last-3-months :description "self report scale 4" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "never"
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "once-or-twice"
@@ -202,6 +202,58 @@ proc createDict_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "weekly"
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "daily-or-almost-daily"
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-last-3-months "missing-not-available"
+}
+
+proc createDict_pssd_sr_substance_use_scale_5_a { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-a]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-a :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "never"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "monthly-or-less"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "2-4-times-month" 
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "2-3-times-a-week" 
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "4-or-more-times-a-week"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "missing-not-available"
+}
+
+proc createDict_pssd_sr_substance_use_scale_5_b { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-b]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-b :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "1-or-2"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "3-or-4"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "5-or-6" 
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "7-to-9" 
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "10-or-more"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "missing-not-available"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "not-applicable"
+}
+
+proc createDict_pssd_sr_substance_use_scale_5_c { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-c]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-c :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "never"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "less-than-monthly"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "monthly" 
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "daily-or-almost-daily"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "missing-not-available"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "not-applicable"
+}
+
+proc createDict_pssd_sr_substance_use_scale_5_d { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-d]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-d :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "no"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "yes-not-in-last-year"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "yes-in-last-year"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "missing-not-available"
+	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "not-applicable"
 }
 
 #============================================================================#
@@ -219,6 +271,11 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_kessler_10 $ns
 	createDict_pssd_sr_dass $ns
 	createDict_pssd_sr_who_qol $ns
+	createDict_pssd_sr_substance_use_scale_4_last_3_months $ns
+	createDict_pssd_sr_substance_use_scale_5_a $ns
+	createDict_pssd_sr_substance_use_scale_5_b $ns
+	createDict_pssd_sr_substance_use_scale_5_c $ns
+	createDict_pssd_sr_substance_use_scale_5_d $ns
 }
 
 #============================================================================#
@@ -228,7 +285,10 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.ap-ham-d-scores-2 $ns.pssd.ap-ham-d-scores-3 \
 					$ns.pssd.ap-ham-d-scores-4 $ns.pssd.ap-bprs-sections \
 					$ns.pssd.ap-bprs-scores $ns.pssd.ap-sds-scores $ns.pssd.sr-kessler-10 \
-					$ns.pssd.sr-dass $ns.pssd.sr-who-qol]
+					$ns.pssd.sr-dass $ns.pssd.sr-who-qol \
+					$ns.pssd.sr-substance-use-scale-last-3-months \
+					$ns.pssd.sr-substance-use-scale-5-a $ns.pssd.sr-substance-use-scale-5-b \
+					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

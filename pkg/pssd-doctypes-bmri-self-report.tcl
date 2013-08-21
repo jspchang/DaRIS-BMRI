@@ -830,6 +830,9 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 				:element -name "specify" -type string -min-occurs -max-occurs 1 -index true -case-sensitive true \ 
 			> \
+			:element -name "alcohol-use-in-last-week" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "cannabis-use-in-last-week" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "amphetamine-use-in-last-week" -type integer -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -905,6 +908,83 @@ proc destroyDocType_pssd_sr_substance_use_scale_4_last_3_months { ns force } {
     }
 }
 
+# Scale 5 - Substance Use Baseline Audit
+#============================================================================#
+proc createDocType_pssd_sr_substance_use_baseline_audit { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-substance-use-baseline-audit \
+		:description "scale 5 - substance use baseline, audit" \
+		:label "scale-5-substance-use-baseline-audit" \
+		:definition < \
+			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-a \
+				> \
+			> \
+			:element -name "question-2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-a \
+				> \
+			> \
+			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-b \
+				> \
+			> \
+			:element -name "question-4" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-5" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-6" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-7" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-9" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+				> \
+			> \
+			:element -name "question-10" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
+				> \
+			> \
+			:element -name "question-11" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_substance_use_baseline_audit { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-substance-use-baseline-audit]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-substance-use-baseline-audit :force $force
+    }
+}
+
+
+
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {
 
@@ -917,8 +997,9 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocType_pssd_sr_kessler_10 $ns
 	createDocType_pssd_sr_dass $ns
 	createDocType_pssd_sr_who_qol $ns
-	createDocTYpe_pssd_sr_substance_use_scale_4_ever
-	createDocTYpe_pssd_sr_substance_use_scale_4_ever_last_3_months
+	createDocTYpe_pssd_sr_substance_use_scale_4_ever $ns
+	createDocTYpe_pssd_sr_substance_use_scale_4_ever_last_3_months $ns
+	createDocTYpe_pssd_sr_substance_use_baseline_audit $ns
 
 }
 
@@ -928,7 +1009,9 @@ set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
 				$ns:pssd.sr-vocation $ns:pssd.sr-personal-medical-history \
 				$ns:pssd.sr-current-medication $ns:pssd.sr-family-medical-history \
 				$ns:pssd.sr-kessler-10 $ns:pssd.sr-dass $ns:pssd.sr-who-qol \
-				$ns:pssd.sr-substance-use-scale-4-ever $ns:pssd.sr-substance-use-scale-4-last-3-months]
+				$ns:pssd.sr-substance-use-scale-4-ever \
+				$ns:pssd.sr-substance-use-scale-4-last-3-months \
+				$ns:pssd.sr-substance-use-baseline-audit]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
