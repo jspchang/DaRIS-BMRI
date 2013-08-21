@@ -1255,6 +1255,8 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocTYpe_pssd_sr_substance_use_scale_4_ever_last_3_months $ns
 	createDocTYpe_pssd_sr_substance_use_baseline_audit $ns
 	createDocTYpe_pssd_sr_substance_use_alcohol $ns
+	createDocTYpe_pssd_sr_apsd $ns
+
 
 }
 
@@ -1267,7 +1269,7 @@ set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
 				$ns:pssd.sr-substance-use-scale-4-ever \
 				$ns:pssd.sr-substance-use-scale-4-last-3-months \
 				$ns:pssd.sr-substance-use-baseline-audit \
-				$ns:pssd.sr-substance-use-alcohol]
+				$ns:pssd.sr-substance-use-alcohol $ns:pssd.sr-apsd]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
