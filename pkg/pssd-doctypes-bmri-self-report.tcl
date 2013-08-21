@@ -1055,6 +1055,67 @@ proc destroyDocType_pssd_sr_substance_use_alcohol { ns force } {
     }
 }
 
+# Scale 7 - Work and Social Life Scale
+#============================================================================#
+proc createDocType_pssd_sr_wsls { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-wsls \
+		:description "scale 6 - work and social life scale" \
+		:label "scale-6-work-social-life-scale" \
+		:definition < \
+			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-wsls \
+				> \
+			> \
+			:element -name "question-2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-wsls \
+				> \
+			> \
+			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-wsls \
+				> \
+			> \
+			:element -name "question-4" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-wsls \
+				> \
+			> \
+			:element -name "question-5" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-wsls \
+				> \
+			> \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "question-6" -min-ocurrs 0 -max-occurs 1 -type integer -index true < \
+				:description "number of days in the last month where the subject was unable to carry out your usual daily activities" \ 
+				:element -name "unit" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:restriction -base "enumeration" < \
+						:value "days" \
+					> \
+				> \
+			> \
+			:element -name "question-7" -min-ocurrs 0 -max-occurs 1 -type integer -index true < \
+				:element -name "unit" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:description "number of days in the last month where the subject stayed in bed all or most of the day because of illness or injury" \ 
+					:restriction -base "enumeration" < \
+						:value "days" \
+					> \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_substance_use_alcohol { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-substance-use-alcohol]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-substance-use-alcohol :force $force
+    }
+}
 
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {

@@ -256,6 +256,24 @@ proc createDict_pssd_sr_substance_use_scale_5_d { ns } {
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "not-applicable"
 }
 
+proc createDict_pssd_sr_wsls { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-wsls]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-wsls :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "not"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "minimally"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "slightly"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "mildy"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "moderately"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "severely"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "extremely"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "can-not"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "missing-not-available"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "not-applicable"
+}
+
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 	
@@ -276,6 +294,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_substance_use_scale_5_b $ns
 	createDict_pssd_sr_substance_use_scale_5_c $ns
 	createDict_pssd_sr_substance_use_scale_5_d $ns
+	createDict_pssd_sr_wsls $ns
 }
 
 #============================================================================#
@@ -288,7 +307,8 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.sr-dass $ns.pssd.sr-who-qol \
 					$ns.pssd.sr-substance-use-scale-last-3-months \
 					$ns.pssd.sr-substance-use-scale-5-a $ns.pssd.sr-substance-use-scale-5-b \
-					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d]
+					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d \
+					$ns.pssd.sr-wsls]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict
