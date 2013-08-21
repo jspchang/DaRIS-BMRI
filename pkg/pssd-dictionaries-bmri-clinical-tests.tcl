@@ -280,8 +280,21 @@ proc createDict_pssd_sr_apsd { ns } {
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-apsd "not-at-all"
 	addDictionaryEntry  ${ns}.pssd.sr-apsd "sometimes true"
-	addDictionaryEntry  ${ns}.pssd.sr-apsd "definitely true""
+	addDictionaryEntry  ${ns}.pssd.sr-apsd "definitely true"
 	addDictionaryEntry  ${ns}.pssd.sr-apsd "missing-not-available"
+}
+
+proc createDict_pssd_sr_sias { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-sias]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-sias :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-sias "not-at-all"
+	addDictionaryEntry  ${ns}.pssd.sr-sias "slightly-characteristic-or-true"
+	addDictionaryEntry  ${ns}.pssd.sr-sias "moderately-characteristic-or-true"
+	addDictionaryEntry  ${ns}.pssd.sr-sias "very-characteristic-or-true"
+	addDictionaryEntry  ${ns}.pssd.sr-sias "extremely-characteristic-or-true"
+	addDictionaryEntry  ${ns}.pssd.sr-sias "missing-not-available"
 }
 
 #============================================================================#
@@ -305,6 +318,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_substance_use_scale_5_c $ns
 	createDict_pssd_sr_substance_use_scale_5_d $ns
 	createDict_pssd_sr_wsls $ns
+	createDict_pssd_sr_sias $ns
 }
 
 #============================================================================#
@@ -318,7 +332,7 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.sr-substance-use-scale-last-3-months \
 					$ns.pssd.sr-substance-use-scale-5-a $ns.pssd.sr-substance-use-scale-5-b \
 					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d \
-					$ns.pssd.sr-wsls]
+					$ns.pssd.sr-wsls $ns.pssd.sr-sias]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict
