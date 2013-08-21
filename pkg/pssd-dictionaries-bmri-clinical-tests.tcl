@@ -268,7 +268,7 @@ proc createDict_pssd_sr_wsls { ns } {
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "moderately"
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "severely"
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "extremely"
-	addDictionaryEntry  ${ns}.pssd.sr-wsls "can-not"
+	addDictionaryEntry  ${ns}.pssd.sr-wsls "cannot"
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "missing-not-available"
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "not-applicable"
 }
@@ -297,6 +297,19 @@ proc createDict_pssd_sr_sias { ns } {
 	addDictionaryEntry  ${ns}.pssd.sr-sias "missing-not-available"
 }
 
+proc createDict_pssd_sr_scale_10 { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-scale-10]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-scale-10 :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "none"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "mild"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "moderate"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "severe"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "extreme-cannot"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "missing-not-available"
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 	
@@ -319,6 +332,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_substance_use_scale_5_d $ns
 	createDict_pssd_sr_wsls $ns
 	createDict_pssd_sr_sias $ns
+	createDict_pssd_sr_scale_10 $ns
 }
 
 #============================================================================#
@@ -332,7 +346,7 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.sr-substance-use-scale-last-3-months \
 					$ns.pssd.sr-substance-use-scale-5-a $ns.pssd.sr-substance-use-scale-5-b \
 					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d \
-					$ns.pssd.sr-wsls $ns.pssd.sr-sias]
+					$ns.pssd.sr-wsls $ns.pssd.sr-sias $ns.pssd.sr-scale-10]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict
