@@ -1060,7 +1060,7 @@ proc destroyDocType_pssd_sr_substance_use_alcohol { ns force } {
 proc createDocType_pssd_sr_wsls { ns } {
 
 	asset.doc.type.update :create true :type ${ns}:pssd.sr-wsls \
-		:description "scale 6 - work and social life scale" \
+		:description "scale 7 - work and social life scale" \
 		:label "scale-6-work-social-life-scale" \
 		:definition < \
 			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -1116,6 +1116,128 @@ proc destroyDocType_pssd_sr_substance_use_alcohol { ns force } {
                 asset.doc.type.destroy :type ${ns}:pssd.sr-substance-use-alcohol :force $force
     }
 }
+
+# Scale 8 - Antisocial Process Screening Device
+#============================================================================#
+proc createDocType_pssd_sr_apsd { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-apsd \
+		:description "scale 8 - antisocial process screening device" \
+		:label "scale-6-work-social-life-scale" \
+		:definition < \
+			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-4" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-5" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-6" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-7" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-9" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-10" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-11" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-12" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-13" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-14" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-15" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-16" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-17" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-18" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-19" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "question-20" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-apsd \
+				> \
+			> \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_sr_substance_use_alcohol { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-substance-use-alcohol]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-substance-use-alcohol :force $force
+    }
+}
+
 
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {

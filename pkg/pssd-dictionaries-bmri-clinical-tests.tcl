@@ -273,6 +273,16 @@ proc createDict_pssd_sr_wsls { ns } {
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "not-applicable"
 }
 
+proc createDict_pssd_sr_apsd { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-apsd]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-apsd :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-apsd "not-at-all"
+	addDictionaryEntry  ${ns}.pssd.sr-apsd "sometimes true"
+	addDictionaryEntry  ${ns}.pssd.sr-apsd "definitely true""
+	addDictionaryEntry  ${ns}.pssd.sr-apsd "missing-not-available"
+}
 
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
