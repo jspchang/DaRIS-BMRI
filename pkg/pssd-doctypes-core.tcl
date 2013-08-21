@@ -376,8 +376,8 @@ proc createPSSDCoreDocTypes { ns } {
 	createDocType_pssd_identity $ns
 	createDocType_pssd_subject_gender $ns
 	createDocType_pssd_subject_handedness $ns
-	createDocType_pssd_subject_general_practioner $ns
-	createDocType_pssd_subject_clinician $ns
+	createDocType_pssd_general_practitioner $ns
+	createDocType_pssd_clinician $ns
 }
 
 #============================================================================#

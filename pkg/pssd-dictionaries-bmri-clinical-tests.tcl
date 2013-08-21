@@ -149,6 +149,49 @@ proc createDict_pssd_ap_sds_scores { ns } {
 }
 
 #============================================================================#
+# Self Report - Scale Dictionaries
+#============================================================================#
+
+proc createDict_pssd_sr_kessler_10 { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-kessler-10]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-kessler-10 :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-kessler-10 "none-of-the-time"
+	addDictionaryEntry  ${ns}.pssd.sr-kessler-10 "a-little-of-the-time"
+	addDictionaryEntry  ${ns}.pssd.sr-kessler-10 "some-of-the-time"
+	addDictionaryEntry  ${ns}.pssd.sr-kessler-10 "most-of-the-time"
+	addDictionaryEntry  ${ns}.pssd.sr-kessler-10 "all-of-the-time"
+	addDictionaryEntry  ${ns}.pssd.sr-kessler-10 "missing"
+}
+
+proc createDict_pssd_sr_dass { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-dass]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-dass :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-dass "0"
+	addDictionaryEntry  ${ns}.pssd.sr-dass "1"
+	addDictionaryEntry  ${ns}.pssd.sr-dass "2"
+	addDictionaryEntry  ${ns}.pssd.sr-dass "2"
+	addDictionaryEntry  ${ns}.pssd.sr-dass "3"
+	addDictionaryEntry  ${ns}.pssd.sr-dass "missing-not-available"
+}
+
+proc createDict_pssd_sr_who_qol { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-who-qol]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-who-qol :description "self report scale 1" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "1"
+	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "2"
+	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "2"
+	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "4"
+	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "5"
+	addDictionaryEntry  ${ns}.pssd.sr-pssd.sr-who-qol "missing-not-available"
+}
+
+#============================================================================#
 proc createUpdatePSSDDicts { ns } {
 	
 	
@@ -160,6 +203,8 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_ap_bprs_sections $ns
 	createDict_pssd_ap_bprs_scores $ns
 	createDict_pssd_ap_sds_scores $ns
+	createDict_pssd_sr_kessler_10 $ns
+	createDict_pssd_sr_dass $ns
 }
 
 #============================================================================#
@@ -167,8 +212,9 @@ proc destroyPSSDDicts { ns } {
 
 	set dicts [list $ns.ap-pssd.ap-staging-model $ns.pssd.ap-ham-d-sections \
 					$ns.pssd.ap-ham-d-scores-2 $ns.pssd.ap-ham-d-scores-3 \
-					$ns.pssd.ap-ham-d-scores-4 $ns:pssd.ap-bprs-sections \
-					$ns:pssd.ap-bprs-scores $ns:pssd.ap-sds-scores]
+					$ns.pssd.ap-ham-d-scores-4 $ns.pssd.ap-bprs-sections \
+					$ns.pssd.ap-bprs-scores $ns.pssd.ap-sds-scores $ns.pssd.sr-kessler-10 \
+					$ns.pssd.sr-dass]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict
