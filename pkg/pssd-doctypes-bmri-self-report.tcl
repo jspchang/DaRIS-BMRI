@@ -3,7 +3,7 @@
 # the Youth mental Health Project 
 #============================================================================#
 
-proc createDocType_pssd_subject_languages{ ns } {
+proc createDocType_pssd_subject_languages { ns } {
 
 	asset.doc.type.update \
 		:create true :type ${ns}:pssd.subject.languages \
@@ -37,7 +37,7 @@ proc destroyDocType_pssd_subject_languages { ns force } {
 
 #============================================================================#
 
-proc createDocType_pssd_subject_education{ ns } {
+proc createDocType_pssd_subject_education { ns } {
 
 	asset.doc.type.update \
 		:create true :type ${ns}:pssd.subject.education \
@@ -62,7 +62,7 @@ proc createDocType_pssd_subject_education{ ns } {
 						:value "masters" \
 						:value "doctorate" \
 						:value "not-applicable" \
-						:vlaue "Missing" \
+						:value "Missing" \
 				> \
 			> \
 			:element -name "total-years-full-time-education" -type string -min-occurs 0 -index true -case-sensitive false \
@@ -81,7 +81,7 @@ proc destroyDocType_pssd_subject_education { ns force } {
 
 #============================================================================#
 
-proc createDocType_pssd_sr_vocation{ ns } {
+proc createDocType_pssd_sr_vocation { ns } {
 
 	asset.doc.type.update \
 		:create true :type ${ns}:pssd.sr-vocation \
@@ -107,6 +107,8 @@ proc createDocType_pssd_sr_vocation{ ns } {
 				:restriction -base "enumeration" < \
 					:value "part-time-employment" \
 					:value "full-time-employment" \
+				> \
+			> \
 			:element -name "volunteer" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "subjects employment status" \
 				:restriction -base "enumeration" < \
@@ -204,7 +206,7 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 			:element -name "high-blood-pressure" -min-occurs 0 -max-occurs 1 -type boolean -index true < \
 				:description "has the subject suffered or been affected by high blood pressure" \
 				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
-				:element -name "medication" -type string -min-occurs 0 -max-occurs infinity -index true -case-sensitive true -label "medication" < \
+				:element -name "medication" -type string -min-occurs 0 -max-occurs infinity -index true -case-sensitive true -label "medication" <\
 					:element -name "length-of-treatment" -type integer -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
 					:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 						:restriction -base "enumeration" < \
@@ -243,6 +245,7 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 					:restriction -base "enumeration" < \
 						:value "hyperthyroidism" \
 						:value "hypothyroidism" \
+					> \
 					:element -name "medication" -type string -min-occurs 0 -max-occurs infinity -index true -case-sensitive true -label "medication" < \
 						:element -name "length-of-treatment" -type integer -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
 						:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
@@ -267,7 +270,7 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 						:value "post-traumatic-amnesis" \
 						:value "hospitalisation" \
 					> \
-					:element -name "duration" -min-ocurrs 0 -max-occurs 1 -type integer -index true < \
+					:element -name "duration" -min-occurs 0 -max-occurs 1 -type integer -index true < \
 						:element -name "unit" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 							:restriction -base "enumeration" < \
 								:value "minutes" \
@@ -596,7 +599,10 @@ proc createDocType_pssd_sr_dass { ns } {
 					:dictionary $ns.pssd.sr-dass \
 				> \
 			> \
-			:element -name "total-score" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "depression-score-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "anxiety-score-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "stress-score-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -828,7 +834,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 					:dictionary $ns.pssd.standard-no-yes \
 				> \
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
-				:element -name "specify" -type string -min-occurs -max-occurs 1 -index true -case-sensitive true \ 
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
 			:element -name "alcohol-use-in-last-week" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "cannabis-use-in-last-week" -type integer -min-occurs 0 -max-occurs 1 -index true \
@@ -881,7 +887,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 					:dictionary $ns.pssd.sr-substance-use-scale-last-3-months \
 				> \
 			> \
-			:element -name "hallucinogens" -type enumeration -min-occurs 0 -max-occurs 1 -index true  < \
+			:element -name "hallucinogens" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-substance-use-scale-last-3-months \
 				> \
@@ -894,7 +900,8 @@ proc createDocType_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 			:element -name "other" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-substance-use-scale-last-3-months \
-				:element -name "specify" -type string -min-occurs -max-occurs 1 -index true -case-sensitive true \ 
+				> \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
 		> \
 }
@@ -1359,6 +1366,127 @@ proc destroyDocType_pssd_sr_sias { ns force } {
     }
 }
 
+# Scale 9 - Social interaction Anxiety Scale
+#============================================================================#
+proc createDocType_pssd_sr_sias { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-sias \
+		:description "scale 8 - antisocial process screening device" \
+		:label "scale-6-work-social-life-scale" \
+		:definition < \
+			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-4" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-5" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-6" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-7" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-9" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-10" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-11" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-12" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-13" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-14" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-15" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-16" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-17" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-18" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-19" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "question-20" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-sias \
+				> \
+			> \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_sr_sias { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-sias]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-sias :force $force
+    }
+}
+
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {
 
@@ -1371,11 +1499,11 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocType_pssd_sr_kessler_10 $ns
 	createDocType_pssd_sr_dass $ns
 	createDocType_pssd_sr_who_qol $ns
-	createDocTYpe_pssd_sr_substance_use_scale_4_ever $ns
-	createDocTYpe_pssd_sr_substance_use_scale_4_ever_last_3_months $ns
-	createDocTYpe_pssd_sr_substance_use_baseline_audit $ns
-	createDocTYpe_pssd_sr_substance_use_alcohol $ns
-	createDocTYpe_pssd_sr_apsd $ns
+	createDocType_pssd_sr_substance_use_scale_4_ever $ns
+	createDocType_pssd_sr_substance_use_scale_4_last_3_months $ns
+	createDocType_pssd_sr_substance_use_baseline_audit $ns
+	createDocType_pssd_sr_substance_use_alcohol $ns
+	createDocType_pssd_sr_apsd $ns
 
 
 }

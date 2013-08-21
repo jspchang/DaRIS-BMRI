@@ -93,6 +93,9 @@ create-PSSD-bmri-ymh-DocTypes $tns
 source pssd-doctypes-bmri-clinical-tests.tcl
 createPSSD-bmri-clinical-tests-DocTypes $tns
 
+source pssd-doctypes-bmri-self-report.tcl
+createPSSD-bmri-self-report $tns
+
 #=============================================================================
 # Create methods
 #=============================================================================
