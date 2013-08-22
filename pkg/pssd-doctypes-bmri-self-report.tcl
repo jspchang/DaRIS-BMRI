@@ -2504,6 +2504,33 @@ proc destroyDocType_pssd_sr_scale_13 { ns force } {
                 asset.doc.type.destroy :type ${ns}:pssd.sr-scale-13 :force $force
     }
 }
+
+# Scale 13 
+#============================================================================#
+proc createDocType_pssd_sr_time_to_complete { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-time-to-complete \
+		:description "time to complete form" \
+		:label "time-to-complete" \
+		:definition < \
+			:element -name "time-to-complete" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "hours" \
+					> \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_time_to_complete { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-time-to-complete]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-time-to-complete :force $force
+    }
+}
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {
 
@@ -2532,7 +2559,7 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocType_pssd_sr_scale_11_part_g $ns
 	createDocType_pssd_sr_scale_12 $ns
 	createDocType_pssd_sr_scale_13 $ns
-
+	createDocType_pssd_sr_time_to_complete $ns
 }
 
 #============================================================================#
@@ -2549,7 +2576,7 @@ set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
 				$ns:pssd.sr-scale-11-part-b $ns:pssd.sr-scale-11-part-c \
 				$ns:pssd.sr-scale-11-part-d $ns:pssd.sr-scale-11-part-e \
 				$ns:pssd.sr-scale-11-part-f $ns:pssd.sr-scale-11-part-g\
-				$ns:pssd.sr-scale-12 $ns:pssd.sr-scale-13]
+				$ns:pssd.sr-scale-12 $ns:pssd.sr-scale-13 $ns:pssd.sr-time-to-complete]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
