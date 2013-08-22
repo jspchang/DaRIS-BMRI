@@ -1068,7 +1068,7 @@ proc createDocType_pssd_sr_wsls { ns } {
 
 	asset.doc.type.update :create true :type ${ns}:pssd.sr-wsls \
 		:description "scale 7 - work and social life scale" \
-		:label "scale-6-work-social-life-scale" \
+		:label "scale-7-work-social-life-scale" \
 		:definition < \
 			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
@@ -1096,7 +1096,7 @@ proc createDocType_pssd_sr_wsls { ns } {
 				> \
 			> \
 			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "question-6" -min-ocurrs 0 -max-occurs 1 -type integer -index true < \
+			:element -name "question-6" -min-occurs 0 -max-occurs 1 -type integer -index true < \
 				:description "number of days in the last month where the subject was unable to carry out your usual daily activities" \ 
 				:element -name "unit" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
@@ -1104,7 +1104,7 @@ proc createDocType_pssd_sr_wsls { ns } {
 					> \
 				> \
 			> \
-			:element -name "question-7" -min-ocurrs 0 -max-occurs 1 -type integer -index true < \
+			:element -name "question-7" -min-occurs 0 -max-occurs 1 -type integer -index true < \
 				:element -name "unit" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:description "number of days in the last month where the subject stayed in bed all or most of the day because of illness or injury" \ 
 					:restriction -base "enumeration" < \
@@ -1130,7 +1130,7 @@ proc createDocType_pssd_sr_apsd { ns } {
 
 	asset.doc.type.update :create true :type ${ns}:pssd.sr-apsd \
 		:description "scale 8 - antisocial process screening device" \
-		:label "scale-6-work-social-life-scale" \
+		:label "scale-8-antisocial-process-screening-device" \
 		:definition < \
 			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
@@ -1245,13 +1245,13 @@ proc destroyDocType_pssd_sr_apsd { ns force } {
     }
 }
 
-# Scale 9 - Social interaction Anxiety Scale
+# Scale 9 - Social Interaction Anxiety Scale
 #============================================================================#
 proc createDocType_pssd_sr_sias { ns } {
 
 	asset.doc.type.update :create true :type ${ns}:pssd.sr-sias \
-		:description "scale 8 - antisocial process screening device" \
-		:label "scale-6-work-social-life-scale" \
+		:description "scale 9 - social interaction anxiety scale" \
+		:label "scale-9-social-interaction-anxiety-scale" \
 		:definition < \
 			:element -name "question-1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
@@ -1370,9 +1370,9 @@ proc destroyDocType_pssd_sr_sias { ns force } {
 #============================================================================#
 proc createDocType_pssd_sr_scale_10 { ns } {
 
-	asset.doc.type.update :create true :type ${ns}:pssd_sr_scale_10 \
-		:description "scale 8 - antisocial process screening device" \
-		:label "scale-6-work-social-life-scale" \
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-10 \
+		:description "scale 10 - Difficulties dues to health conditions questionnaire" \
+		:label "scale-10-difficulties-due-to-health-conditions-questionnaire" \
 		:definition < \
 			:element -name "h1" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
@@ -1589,6 +1589,578 @@ proc destroyDocType_pssd_sr_scale_10 { ns force } {
     }
 }
 
+# Scale 11
+#============================================================================#
+proc createDocType_pssd_sr_scale_11_part_a { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-a \
+		:description "scale 11 - part a" \
+		:label "scale-11-part-a" \
+		:definition < \
+			:element -name "time-up-on-an-average-weekday" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "am-pm" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "time-up-on-an-average-weekend" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "am-pm" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "average-waking-hours-spent-alone" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "0-3" \
+					:value "3-6" \
+					:value "6-9" \
+					:value "9-12" \
+					:value "12" \
+					:value "missing-not-available" \
+				> \
+				:element -name "unit" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "hours" \
+					> \
+				> \
+			> \
+			:element -name "subject-starts-conversations-at-home" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "almost-never" \
+					:value "rarely" \
+					:value "sometimes" \
+					:value "often" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "subject-leaves-the-house" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "almost-never" \
+					:value "rarely" \
+					:value "sometimes" \
+					:value "often" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "subject-reaction-in-presence-of-strangers" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "avoid-them" \
+					:value "feel-nervous" \
+					:value "accept-them" \
+					:value "like-them" \
+					:value "missing-not-available" \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_11_part_a { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-11-part-a]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-11-part-a :force $force
+    }
+}
+
+proc createDocType_pssd_sr_scale_11_part_b { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-b \
+		:description "scale 11 - part b" \
+		:label "scale-11-part-b" \
+		:definition < \
+			:element -name "number-of-friends" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "has-partner" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "yes" \
+					:value "no" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "regularity-of-sensible-rational-conversations" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "almost-never" \
+					:value "rarely" \
+					:value "sometimes" \
+					:value "often" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "difficulty-talking-to-people" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "very-easy" \
+					:value "quite-easy" \
+					:value "average" \
+					:value "quite-difficult" \
+					:value "very-difficult" \
+					:value "missing-not-available" \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_11_part_b { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-11-part-b]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-11-part-b :force $force
+    }
+}
+
+proc createDocType_pssd_sr_scale_11_part_c { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-c \
+		:description "scale 11 - part c" \
+		:label "scale-11-part-c" \
+		:definition < \
+			:element -name "buying-items-from-the-shops" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "washing-pots-tidying-up" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "regular-washing-bathing" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "washing-oen-clothes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "looking-for-a-job-or-working" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "doing-food-shopping" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "prepare-and-cook-a-meal" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "leaving-the-house-alone" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "using-buses-trains-etc" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "using-money" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "budgeting" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "choosing-and-buying-clothes-for-self" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "take-care-of-personal-appearance" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_11_part_c { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-11-part-c]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-11-part-c :force $force
+    }
+}
+
+proc createDocType_pssd_sr_scale_11_part_d { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-d \
+		:description "scale 11 - part d" \
+		:label "scale-11-part-d" \
+		:definition < \
+			:element -name "playing-musical-instruments" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "sewing-knitting" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "gardening" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "reading-things" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "watching-television" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "listening-to-record-or-radio" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "cooking" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "d-i-y-activities" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "fixing-things" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "walking-rambling" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "driving-riding-as-recreation" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "swimming" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "hobby" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "shopping" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "artistic-activity" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_11_part_d { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-11-part-d]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-11-part-d :force $force
+    }
+}
+
+proc createDocType_pssd_sr_scale_11_part_e { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-e \
+		:description "scale 11 - part e" \
+		:label "scale-11-part-e" \
+		:definition < \
+			:element -name "cinema" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "theatre-concert" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "watching-indoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "watching-outdoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "art-gallery-museum" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "exhibition" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "visiting-places-of-interest" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "meetings-talks" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "evening-class" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "visiting-relatives-in-their-homes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "being-visited-by-relatives" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "visiting-friends" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "parties" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "formal-occasions" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "disco-etc" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "nightclub-social-club" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "playing-indoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "playing-outdoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "club-society" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "pub" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "eating-out" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+			:element -name "church-activity" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.never-rarely-sometimes-often \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_11_part_e { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-11-part-e]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-11-part-e :force $force
+    }
+}
+
+proc createDocType_pssd_sr_scale_11_part_f { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-f \
+		:description "scale 11 - part f" \
+		:label "scale-11-part-f" \
+		:definition < \
+			:element -name "public-transport" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "handling-money" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "budgeting" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "cooking" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "weekly-shopping" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "looking-for-a-job-in-employment" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "washing-own-clothes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "personal-hygiene" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "washing-tidying" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "purchasing-from-shops" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "leaving-the-house-alone" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "choosing-and-buying-clothes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+			:element -name "caring-for-personal-appearance" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.adequately-needs-help-unable-do-not-know \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_11_part_f { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-11-part-f]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-11-part-f :force $force
+    }
+}
+
+proc createDocType_pssd_sr_scale_11_part_g { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-f \
+		:description "scale 11 - part g" \
+		:label "scale-11-part-g" \
+		:definition < \
+			:element -name "is-the-subject-in-regular-employment" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "yes" \
+					:value "no" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "if-yes-what-sort-of-job" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "if-yes-how-many-hours-worked" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "if-yes-how-long-has-the-subject-had-this-job" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "if-no-when-was-subject-last-employed" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "if-no-what-sort-of-job-was-it" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "if-no-how-many-hours-per-week" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "disabled" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "yes" \
+					:value "no" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "attends-hospital-as-a-day-patient" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "yes" \
+					:value "no" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "subject-is-capable-of-some-sort-of-employment" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "definitely-yes" \
+					:value "would-be-difficult" \
+					:value "no" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "regularity-of-subject-attempts-to-find-employment" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "almost-never" \
+					:value "rarely" \
+					:value "sometimes" \
+					:value "often" \
+					:value "missing-not-available" \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_11_part_g { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-11-part-g]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-11-part-g :force $force
+    }
+}
+
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {
 
@@ -1608,6 +2180,13 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocType_pssd_sr_apsd $ns
 	createDocType_pssd_sr_sias $ns
 	createDocType_pssd_sr_scale_10 $ns
+	createDocType_pssd_sr_scale_11_part_a $ns
+	createDocType_pssd_sr_scale_11_part_b $ns
+	createDocType_pssd_sr_scale_11_part_c $ns
+	createDocType_pssd_sr_scale_11_part_d $ns
+	createDocType_pssd_sr_scale_11_part_e $ns
+	createDocType_pssd_sr_scale_11_part_f $ns
+	createDocType_pssd_sr_scale_11_part_g $ns
 
 }
 
@@ -1621,7 +2200,10 @@ set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
 				$ns:pssd.sr-substance-use-scale-4-last-3-months \
 				$ns:pssd.sr-substance-use-baseline-audit \
 				$ns:pssd.sr-substance-use-alcohol $ns:pssd.sr-apsd $ns:pssd.sr-sias\
-				$ns:pssd.sr-scale-10]
+				$ns:pssd.sr-scale-10 $ns:pssd.sr-scale-11-part-a \
+				$ns:pssd.sr-scale-11-part-b $ns:pssd.sr-scale-11-part-c \
+				$ns:pssd.sr-scale-11-part-d $ns:pssd.sr-scale-11-part-e \
+				$ns:pssd.sr-scale-11-part-f $ns:pssd.sr-scale-11-part-g]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}

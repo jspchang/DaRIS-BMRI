@@ -207,7 +207,7 @@ proc createDict_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 proc createDict_pssd_sr_substance_use_scale_5_a { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-a]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-a :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-a :description "substance use scale a" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "never"
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-a "monthly-or-less"
@@ -220,7 +220,7 @@ proc createDict_pssd_sr_substance_use_scale_5_a { ns } {
 proc createDict_pssd_sr_substance_use_scale_5_b { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-b]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-b :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-b :description "substance use scale  b" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "1-or-2"
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-b "3-or-4"
@@ -234,7 +234,7 @@ proc createDict_pssd_sr_substance_use_scale_5_b { ns } {
 proc createDict_pssd_sr_substance_use_scale_5_c { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-c]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-c :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-c :description "substance use scale c" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "never"
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-c "less-than-monthly"
@@ -247,7 +247,7 @@ proc createDict_pssd_sr_substance_use_scale_5_c { ns } {
 proc createDict_pssd_sr_substance_use_scale_5_d { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-substance-use-scale-5-d]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-d :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-substance-use-scale-5-d :description "substance use scale d" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "no"
 	addDictionaryEntry  ${ns}.pssd.sr-substance-use-scale-5-d "yes-not-in-last-year"
@@ -259,7 +259,7 @@ proc createDict_pssd_sr_substance_use_scale_5_d { ns } {
 proc createDict_pssd_sr_wsls { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-wsls]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-wsls :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-wsls :description "work and social life scale dictionary" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "not"
 	addDictionaryEntry  ${ns}.pssd.sr-wsls "minimally"
@@ -276,7 +276,7 @@ proc createDict_pssd_sr_wsls { ns } {
 proc createDict_pssd_sr_apsd { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-apsd]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-apsd :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-apsd :description "antisocial process screening device dictionary" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-apsd "not-at-all"
 	addDictionaryEntry  ${ns}.pssd.sr-apsd "sometimes true"
@@ -287,7 +287,7 @@ proc createDict_pssd_sr_apsd { ns } {
 proc createDict_pssd_sr_sias { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-sias]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-sias :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-sias :description "social interaction anxiety dictionary" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-sias "not-at-all"
 	addDictionaryEntry  ${ns}.pssd.sr-sias "slightly-characteristic-or-true"
@@ -300,7 +300,7 @@ proc createDict_pssd_sr_sias { ns } {
 proc createDict_pssd_sr_scale_10 { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-scale-10]] == "false" } {
-		dictionary.create :name ${ns}.pssd.sr-scale-10 :description "self report scale 1" :case-sensitive false \
+		dictionary.create :name ${ns}.pssd.sr-scale-10 :description "self report scale 10" :case-sensitive false \
 	}
 	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "none"
 	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "mild"
@@ -308,6 +308,30 @@ proc createDict_pssd_sr_scale_10 { ns } {
 	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "severe"
 	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "extreme-cannot"
 	addDictionaryEntry  ${ns}.pssd.sr-scale-10 "missing-not-available"
+}
+
+proc createDict_pssd_never_rarely_sometimes_often { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.never-rarely-sometimes-often]] == "false" } {
+		dictionary.create :name ${ns}.pssd.never-rarely-sometimes-often :description "never rarely sometimes often dictionary" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.never-rarely-sometimes-often "never"
+	addDictionaryEntry  ${ns}.pssd.never-rarely-sometimes-often "rarely"
+	addDictionaryEntry  ${ns}.pssd.never-rarely-sometimes-often "sometimes"
+	addDictionaryEntry  ${ns}.pssd.never-rarely-sometimes-often "often"
+	addDictionaryEntry  ${ns}.pssd.never-rarely-sometimes-often "missing-not-available"
+}
+
+proc createDict_pssd_adequately_needs_help_unable_do_not_know { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.adequately-needs-help-unable-do-not-know]] == "false" } {
+		dictionary.create :name ${ns}.pssd.adequately-needs-help-unable-do-not-know :description "adequately needs help unable do not know" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.adequately-needs-help-unable-do-not-know "adequately"
+	addDictionaryEntry  ${ns}.pssd.adequately-needs-help-unable-do-not-know "needs-help"
+	addDictionaryEntry  ${ns}.pssd.adequately-needs-help-unable-do-not-know "unable"
+	addDictionaryEntry  ${ns}.pssd.adequately-needs-help-unable-do-not-know "do-not-know"
+	addDictionaryEntry  ${ns}.pssd.adequately-needs-help-unable-do-not-know "missing-not-available"
 }
 
 #============================================================================#
@@ -333,6 +357,8 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_wsls $ns
 	createDict_pssd_sr_sias $ns
 	createDict_pssd_sr_scale_10 $ns
+	createDict_pssd_never_rarely_sometimes_often $ns
+	createDict_pssd_adequately_needs_help_unable_do_not_know $ns
 }
 
 #============================================================================#
@@ -346,7 +372,9 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.sr-substance-use-scale-last-3-months \
 					$ns.pssd.sr-substance-use-scale-5-a $ns.pssd.sr-substance-use-scale-5-b \
 					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d \
-					$ns.pssd.sr-wsls $ns.pssd.sr-sias $ns.pssd.sr-scale-10]
+					$ns.pssd.sr-wsls $ns.pssd.sr-sias $ns.pssd.sr-scale-10 \
+					$ns.pssd.never-rarely-sometimes-often \
+					$ns.pssd.adequately-needs-help-unable-do-not-know]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict
