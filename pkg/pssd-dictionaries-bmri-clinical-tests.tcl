@@ -334,6 +334,18 @@ proc createDict_pssd_adequately_needs_help_unable_do_not_know { ns } {
 	addDictionaryEntry  ${ns}.pssd.adequately-needs-help-unable-do-not-know "missing-not-available"
 }
 
+proc createDict_pssd_sr_scale_13_5 { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-scale-13-5]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-scale-13-5 :description "adequately needs help unable do not know" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.sr-scale-13-5 "not-during-the-past-month"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-13-5 "less-than-once-a-week"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-13-5 "once-or-twice-a-week"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-13-5 "3-or-more-times-a-week"
+	addDictionaryEntry  ${ns}.pssd.sr-scale-13-5 "missing-not-available"
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 	
@@ -359,6 +371,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_scale_10 $ns
 	createDict_pssd_never_rarely_sometimes_often $ns
 	createDict_pssd_adequately_needs_help_unable_do_not_know $ns
+	createDict_pssd_sr_scale_13_5 $ns
 }
 
 #============================================================================#
@@ -374,7 +387,7 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d \
 					$ns.pssd.sr-wsls $ns.pssd.sr-sias $ns.pssd.sr-scale-10 \
 					$ns.pssd.never-rarely-sometimes-often \
-					$ns.pssd.adequately-needs-help-unable-do-not-know]
+					$ns.pssd.adequately-needs-help-unable-do-not-know $ns.pssd.sr-scale-13-5]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

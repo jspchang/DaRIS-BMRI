@@ -29,6 +29,28 @@ proc destroyDocType_pssd_date { ns force } {
     }
 }
 
+proc createDocType_pssd_date_received { ns } {
+
+	asset.doc.type.update \
+		:create true :type ${ns}:pssd.date-received \
+		:description "Date data was received" \
+		:label "date" \
+		:definition < \
+			:element -name "date" -min-occurs 1 -max-occurs 1 -type date -index true -case-sensitive false < \
+				:description "Identifies the date data was collected" \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_date_received { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.date-received]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.date-received :force $force
+    }
+}
+
 # ============================================================================
 # General Psychiatrist Assessment Doc Types (green form)
 # ============================================================================
@@ -544,6 +566,7 @@ proc createDocType_pssd_background_information { ns } {
 
 proc create-PSSD-bmri-ymh-DocTypes { ns } {
     createDocType_pssd_date $ns
+    createDocType_pssd_date_received $ns
     createDocType_pssd_psychiatrist_screening $ns
     createDocType_pssd_diagnostic_information $ns
     createDocType_pssd_diagnostic_ultra_high_risk $ns
@@ -567,6 +590,7 @@ proc create-PSSD-bmri-ymh-DocTypes { ns } {
 proc destroy-PSSD-bmri-ymh-DocTypes { ns } {
     set force "false"
     destroyDocType_pssd_date $ns $force
+    destroyDocType_pssd_date_received $ns $force
     destroyDocType_pssd_psychiatrist_screening $ns $force
     destroyDocType_pssd_diagnostic_information $ns $force
     destroyDocType_pssd_diagnostic_ultra_high_risk $ns $force

@@ -2347,6 +2347,163 @@ proc destroyDocType_pssd_sr_scale_12 { ns force } {
     }
 }
 
+# Scale 13 
+#============================================================================#
+proc createDocType_pssd_sr_scale_13 { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-13 \
+		:description "scale 13" \
+		:label "scale-13" \
+		:definition < \
+			:element -name "question-1" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "question-2" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "minutes" \
+					> \
+				> \
+			> \
+			:element -name "question-3" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "question-4" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "hours" \
+					> \
+				> \
+			> \
+			:element -name "5-a" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-b" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-c" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-d" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-e" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-f" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-g" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-h" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "5-j" -type enumeration -min-occurs 0 -max-occurs infinity -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			> \
+			:element -name "question-6" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "very-good" \
+					:value "fairly-good" \
+					:value "fairly-bad" \
+					:value "very-bad" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "7" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "question-9" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "no-problem-at-all" \
+					:value "only-a-very-slight-problem" \
+					:value "some-what-of-a-problem" \
+					:value "a-very-big-problem" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-10" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "no-bedpartner-or-do-not-share-a-room" \
+					:value "partner-flatmate-in-other-room" \
+					:value "partner-in-same-room-not-same-bed" \
+					:value "partner-in-same-bed" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "11-a" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "11-b" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "11-c" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "11-d" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+			:element -name "11-e" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-scale-13-5 \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_13 { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-13]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-13 :force $force
+    }
+}
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {
 
@@ -2374,6 +2531,7 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocType_pssd_sr_scale_11_part_f $ns
 	createDocType_pssd_sr_scale_11_part_g $ns
 	createDocType_pssd_sr_scale_12 $ns
+	createDocType_pssd_sr_scale_13 $ns
 
 }
 
@@ -2391,7 +2549,7 @@ set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
 				$ns:pssd.sr-scale-11-part-b $ns:pssd.sr-scale-11-part-c \
 				$ns:pssd.sr-scale-11-part-d $ns:pssd.sr-scale-11-part-e \
 				$ns:pssd.sr-scale-11-part-f $ns:pssd.sr-scale-11-part-g\
-				$ns:pssd.sr-scale-12]
+				$ns:pssd.sr-scale-12 $ns:pssd.sr-scale-13]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
