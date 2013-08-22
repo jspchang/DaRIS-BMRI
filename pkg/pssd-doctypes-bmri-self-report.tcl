@@ -2161,6 +2161,192 @@ proc destroyDocType_pssd_sr_scale_11_part_g { ns force } {
     }
 }
 
+#Scale 12
+#============================================================================#
+proc createDocType_pssd_sr_scale_12 { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-12 \
+		:description "scale 12" \
+		:label "scale-12" \
+		:definition < \
+			:element -name "question-1" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "question-2" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "question-3" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "not-at-all-dependent" \
+					:value "slightly-dependent" \
+					:value "fairly-dependent" \
+					:value "very-dependent" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-4" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "not-at-all-easy" \
+					:value "slightly-easy" \
+					:value "fairly-easy" \
+					:value "very-easy" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-5" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "not-at-all-alert" \
+					:value "slightly-alert" \
+					:value "fairly-alert" \
+					:value "very-alert" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-6" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "not-at-all-good" \
+					:value "slightly-good" \
+					:value "fairly-good" \
+					:value "very-good" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-7" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "very-refreshed" \
+					:value "slightly-tired" \
+					:value "fairly-refreshed" \
+					:value "very-very" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-8" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "seldom-or-never-later" \
+					:value "less-than-one-hour" \
+					:value "1-2-hours-later" \
+					:value "more-than-2-hours-later" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-9" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "would-be-on-good-form" \
+					:value "would-be-on-reasonable-form" \
+					:value "would-find-it-difficult" \
+					:value "would-find-it-very-difficult" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-10" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "question-11" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "8am-10am" \
+					:value "11am-1pm" \
+					:value "3pm-5pm" \
+					:value "7pm-9pm" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-12" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "not-tired-at-all" \
+					:value "a-little-tired" \
+					:value "fairly-tired" \
+					:value "very-tired" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-13" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "wake-up-at-usual -time-and-not-go-back-to-sleep" \
+					:value "wake-up-at-usual-time-and-will-doze" \
+					:value "wake-up-at-usual-time-but-will-fall-asleep" \
+					:value "will-wake-up-later-than-usual" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-14" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "not-go-to-bed-until-6am" \
+					:value "nap-before-4am-sleep-after-6am" \
+					:value "good-sleep-before-4am-nap-after-6am" \
+					:value "sleep-before-4am-remain-awake-after-6am" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-15" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "8am-10am" \
+					:value "11am-1pm" \
+					:value "3pm-5pm" \
+					:value "7pm-9pm" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-16" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "would-be-on-good-form" \
+					:value "would-be-on-reasonable-form" \
+					:value "would-find-it-difficult" \
+					:value "would-find-it-very-difficult" \
+					:value "missing-not-available" \
+				> \
+			> \
+			:element -name "question-17" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "question-18" -type integer -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:value "am" \
+						:value "pm" \
+					> \
+				> \
+			> \
+			:element -name "question-19" -type enumeration -min-occurs 0 and -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "morning" \
+					:value "more-morning-than-evening" \
+					:value "more-evening-than-morning" \
+					:value "evening-type" \
+					:value "missing-not-available" \
+				> \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_sr_scale_12 { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-scale-12]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-scale-12 :force $force
+    }
+}
+
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {
 
@@ -2187,6 +2373,7 @@ proc createPSSD-bmri-self-report { ns } {
 	createDocType_pssd_sr_scale_11_part_e $ns
 	createDocType_pssd_sr_scale_11_part_f $ns
 	createDocType_pssd_sr_scale_11_part_g $ns
+	createDocType_pssd_sr_scale_12 $ns
 
 }
 
@@ -2203,7 +2390,8 @@ set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
 				$ns:pssd.sr-scale-10 $ns:pssd.sr-scale-11-part-a \
 				$ns:pssd.sr-scale-11-part-b $ns:pssd.sr-scale-11-part-c \
 				$ns:pssd.sr-scale-11-part-d $ns:pssd.sr-scale-11-part-e \
-				$ns:pssd.sr-scale-11-part-f $ns:pssd.sr-scale-11-part-g]
+				$ns:pssd.sr-scale-11-part-f $ns:pssd.sr-scale-11-part-g\
+				$ns:pssd.sr-scale-12]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
