@@ -392,6 +392,27 @@ proc createDict_PET_tracers { ns } {
 
 }
 
+#=============================================================================
+proc createDict_pssd_languages { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.languages]] == "false" } {
+		dictionary.create :name ${ns}.pssd.languages :description "standard language list" :case-sensitive true
+	}
+	addDictionaryEntry  ${ns}.pssd.languages "english"
+	addDictionaryEntry  ${ns}.pssd.languages "chinese-cantonese-mandarin-taiwanese"
+	addDictionaryEntry  ${ns}.pssd.languages "korean"
+	addDictionaryEntry  ${ns}.pssd.languages "turkish"
+	addDictionaryEntry  ${ns}.pssd.languages "greek"
+	addDictionaryEntry  ${ns}.pssd.languages "hindi"
+	addDictionaryEntry  ${ns}.pssd.languages "polish"
+	addDictionaryEntry  ${ns}.pssd.languages "cantonese"
+	addDictionaryEntry  ${ns}.pssd.languages "taiwanese"
+	addDictionaryEntry  ${ns}.pssd.languages "farsi"
+	addDictionaryEntry  ${ns}.pssd.languages "spanish"
+	addDictionaryEntry  ${ns}.pssd.languages "other"
+
+}
+
 
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
@@ -419,6 +440,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_subject_pathology $ns
 	createDict_pssd_animal_strains $ns
 	createDict_pssd_animal_genes $ns
+	createDict_pssd_languages $ns
 	createDict_PET_tracers $ns
 
 }
@@ -426,14 +448,30 @@ proc createUpdatePSSDDicts { ns } {
 #============================================================================#
 proc destroyPSSDDicts { ns } {
 
-	set dicts [list $ns.pssd.anti-convulsant-types $ns.pssd.stimulant-types $ns.pssd.benzodiazepine-types \
-			$ns.pssd.anti-psychotic-types $ns.pssd.mood-stabiliser-types $ns.pssd.other-adjunctive-types \
-			$ns.pssd.sedative-hypnotic-types $ns.pssd.anti-depressant-types $ns.pssd.relative-medical-condition \
-			$ns.pssd.relative-type $ns.pssd.diagnostic-staging-model $ns.pssd.diagnostic-diagnosis \
-			$ns.pssd.uhr-symptoms $ns.pssd.standard-no-yes-missing $ns.pssd.standard-no-yes \
-			$ns.pss.substance-use-yes-no $ns.pssd.psychiatric-episodes $ns.pssd.subject.gender \
-			$ns.pssd.animal.species $ns.funding.organization $ns.PET.tracer \
-			$ns.pssd.subject.pathology $ns.pssd.animal.strains $ns.pssd.animal.genes]
+	set dicts [list $ns.pssd.anti-convulsant-types \
+			$ns.pssd.stimulant-types \
+			$ns.pssd.benzodiazepine-types \
+			$ns.pssd.anti-psychotic-types \
+			$ns.pssd.mood-stabiliser-types \
+			$ns.pssd.other-adjunctive-types \
+			$ns.pssd.sedative-hypnotic-types \
+			$ns.pssd.anti-depressant-types \
+			$ns.pssd.relative-medical-condition \
+			$ns.pssd.relative-type \
+			$ns.pssd.diagnostic-staging-model \
+			$ns.pssd.diagnostic-diagnosis \
+			$ns.pssd.uhr-symptoms \
+			$ns.pssd.standard-no-yes-missing \
+			$ns.pssd.standard-no-yes \
+			$ns.pssd.substance-use-yes-no \
+			$ns.pssd.psychiatric-episodes \
+			$ns.pssd.subject.gender \
+			$ns.pssd.animal.species \
+			$ns.funding.organization \
+			$ns.PET.tracer \
+			$ns.pssd.subject.pathology \
+			$ns.pssd.animal.strains $ns.pssd.animal.genes \
+			$ns.pssd.languages]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

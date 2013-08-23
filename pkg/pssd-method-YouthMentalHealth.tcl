@@ -63,6 +63,12 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 						:definition -requirement mandatory ${ns}:pssd.subject.age-at-baseline \
 					> \
 					:metadata < \
+						:definition -requirement optional ${ns}:pssd.subject.handedness \
+					> \
+					:metadata < \
+						:definition -requirement optional ${ns}:pssd.subject.languages \
+					> \
+					:metadata < \
 						:definition -requirement optional ${ns}:pssd.referral-date \
 					> \
 					:metadata < \
@@ -283,6 +289,109 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -requirement optional ${ns}:pssd.ap-cowat-scores \
+				> \
+			> \
+		> \
+		:step < \
+			:name ${name3} \
+			:description ${desc3} \
+			:study < \
+				:type ${type3} \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.subject.identifiers \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.date \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-time-to-complete \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.subject.weight \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.subject.height \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.subject.education \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-vocation \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.general-practitioner \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.clinician \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-personal-medical-history \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-current-medication \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-family-medical-history \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-kessler-10 \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-dass \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-who-qol \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-substance-use-scale-4-ever \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-substance-use-baseline-audit \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-substance-use-alcohol \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-wsls \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-apsd \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-sias \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-10 \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-a \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-b \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-c \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-d \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-e \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-f \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-g \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-12 \
+				> \
+				:metadata < \
+					:definition -requirement optional ${ns}:pssd.sr-scale-13 \
 				> \
 			> \
 		>"

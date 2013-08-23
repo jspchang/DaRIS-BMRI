@@ -490,7 +490,7 @@ proc createDocType_pssd_checked_self_report { ns } {
 proc createDocType_pssd_inclusion_exclusion { ns } {
 
 	asset.doc.type.update \
-		:create true :type ${ns}:pssd.inclusion-criteria \
+		:create true :type ${ns}:pssd.inclusion-exclusion \
 		:description "Inclusion exclusion check list for the youth mental health study" \
 		:label "Inclusion exclusion criteria" \
 		:definition < \

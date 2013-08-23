@@ -355,6 +355,23 @@ proc createDocType_pssd_clinician { ns } {
 		> \
 	}
 
+proc createDocType_pssd_weight { ns } {
+
+	asset.doc.type.update \
+		:create true :type ${ns}:pssd.weight \
+		:description "Document to capture clinician details" \
+		:label "clinician" \
+		:definition < \
+			:element -name "weight" -type integer -min-occurs 0 -max-occurs 1 -index 1 < \
+				:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:restriction -base "enumeration" < \
+						:value "kilograms" \
+					> \
+				> \
+			> \
+		> \
+	}
+
 #============================================================================#
 proc createPSSDCoreDocTypes { ns } {
 
@@ -378,18 +395,31 @@ proc createPSSDCoreDocTypes { ns } {
 	createDocType_pssd_subject_handedness $ns
 	createDocType_pssd_general_practitioner $ns
 	createDocType_pssd_clinician $ns
+	createDocType_pssd_weight $ns
 }
 
 #============================================================================#
 proc destroyPSSDCoreDocTypes { ns } {
-set doctypes [list $ns:pssd.project $ns:pssd.subject.identifiers $ns:pssd.subject \
-				$ns:pssd.animal.subject $ns:pssd.subject.date-of-birth \
-				$ns:pssd.subject.age-at-baseline $ns:pssd.referring-clinician \
-				$ns:pssd.referral-date $ns:pssd.patient-data-summary \
-				$ns:pssd.human.identity $ns:pssd.animal.disease \
-				$ns:pssd.animal.genetics $ns:pssd.psychiatrist $ns:pssd.research-psychologist \
-				$ns:pssd.subject.gender $ns:pssd.subject.handedness $ns:pssd.subject.height \
-				$ns:pssd.general-practitioner $ns:pssd.clinician]
+set doctypes [list \
+				$ns:pssd.project \
+				$ns:pssd.subject.identifiers \
+				$ns:pssd.subject \
+				$ns:pssd.animal.subject \
+				$ns:pssd.subject.date-of-birth \
+				$ns:pssd.subject.age-at-baseline \
+				$ns:pssd.referring-clinician \
+				$ns:pssd.referral-date \
+				$ns:pssd.patient-data-summary \
+				$ns:pssd.human.identity \
+				$ns:pssd.animal.disease \
+				$ns:pssd.animal.genetics \
+				$ns:pssd.psychiatrist \
+				$ns:pssd.research-psychologist \
+				$ns:pssd.subject.gender \
+				$ns:pssd.subject.handedness $ns:pssd.subject.height \
+				$ns:pssd.general-practitioner \
+				$ns:pssd.clinician \
+				$ns:pssd.weight]
 	foreach doctype $doctypes {
       	 destroyDocType $doctype "true"
 	}

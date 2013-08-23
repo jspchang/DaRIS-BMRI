@@ -712,14 +712,22 @@ proc createPSSD-bmri-clinical-tests-DocTypes { ns } {
 
 #============================================================================#
 proc destroyPSSD-bmri-clinical-tests-DocTypes { ns } {
-set doctypes [list $ns:pssd.ap-sofas $ns:pssd.ap-sofas $ns:pssd.ap-staging-model\
-					$ns:pssd.ap-ham-d $ns:psdd.ap.bprs $ns:psdd.ap-ymrs \
-					$ns:pssd.ap-sds $ns:pssd.ap-interview-checklist \
-					$ns:pssd.ap-tests-checklist $ns:pssd.ap-cantab-checklist \
-					$ns:pssd.ap-other-checklist $ns:pssd.ap-wtar-raw-zscores \
-					$ns:pssd.ap-wais-wms-scores $ns:pssd.ap-ravlt-scores \
-					$ns:pssd.ap-rcft-scores $ns:pssd.ap-dass-scores \
-					$ns:pssd.ap-cowat-scores]
+set doctypes [list $ns:pssd.ap-sofas \
+				$ns:pssd.ap-staging-model \
+				$ns:pssd.ap-ham-d \
+				$ns:psdd.ap.bprs \
+				$ns:psdd.ap-ymrs \
+				$ns:pssd.ap-sds \
+				$ns:pssd.ap-interview-checklist \
+				$ns:pssd.ap-tests-checklist \
+				$ns:pssd.ap-cantab-checklist \
+				$ns:pssd.ap-other-checklist \
+				$ns:pssd.ap-wtar-raw-zscores \
+				$ns:pssd.ap-wais-wms-scores \
+				$ns:pssd.ap-ravlt-scores \
+				$ns:pssd.ap-rcft-scores \
+				$ns:pssd.ap-dass-scores \
+				$ns:pssd.ap-cowat-scores]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}

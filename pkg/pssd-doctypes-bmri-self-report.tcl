@@ -10,10 +10,10 @@ proc createDocType_pssd_subject_languages { ns } {
 		:description "the subjects language" \
 		:label "Languages" \
 		:definition < \
-			:element -name "language" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false < \
-				:description "Subjects language" \
+			:element -name "languages" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false -label "language" < \
+				:description "subjects language" \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.psd.subject.languages \
+					:dictionary $ns.pssd.languages \
 				> \
 				:element -name "language-type" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
@@ -853,7 +853,7 @@ proc destroyDocType_pssd_sr_substance_use_scale_4_ever { ns force } {
 
 proc createDocType_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 
-	asset.doc.type.update :create true :type ${ns}:pssd.sr-substance-use-scale-4_last_3_months \
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
 		:description "scale 4 - question 2, substances used by subject in last 3 months" \
 		:label "scale-4-substance-use-last-3-months" \
 		:definition < \
@@ -910,8 +910,8 @@ proc destroyDocType_pssd_sr_substance_use_scale_4_last_3_months { ns force } {
     if { $force != "true" && $force != "false" } {
                 set force "false"
     }
-    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-substance-use-scale-4_last_3_months]] == "true" } {
-                asset.doc.type.destroy :type ${ns}:pssd.sr-substance-use-scale-4_last_3_months :force $force
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.sr-substance-use-scale-4-last-3-months]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.sr-substance-use-scale-4-last-3-months :force $force
     }
 }
 
@@ -2101,7 +2101,7 @@ proc destroyDocType_pssd_sr_scale_11_part_f { ns force } {
 
 proc createDocType_pssd_sr_scale_11_part_g { ns } {
 
-	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-f \
+	asset.doc.type.update :create true :type ${ns}:pssd.sr-scale-11-part-g \
 		:description "scale 11 - part g" \
 		:label "scale-11-part-g" \
 		:definition < \
@@ -2564,19 +2564,31 @@ proc createPSSD-bmri-self-report { ns } {
 
 #============================================================================#
 proc destroyPSSD-bmri-self-report { ns } {
-set doctypes [list $ns:pssd.subject.languages $ns:pssd.subject.education \
-				$ns:pssd.sr-vocation $ns:pssd.sr-personal-medical-history \
-				$ns:pssd.sr-current-medication $ns:pssd.sr-family-medical-history \
-				$ns:pssd.sr-kessler-10 $ns:pssd.sr-dass $ns:pssd.sr-who-qol \
+set doctypes [list $ns:pssd.subject.languages \
+				$ns:pssd.subject.education \
+				$ns:pssd.sr-vocation \
+				$ns:pssd.sr-personal-medical-history \
+				$ns:pssd.sr-current-medication \
+				$ns:pssd.sr-family-medical-history \
+				$ns:pssd.sr-kessler-10 \
+				$ns:pssd.sr-dass \
+				$ns:pssd.sr-who-qol \
 				$ns:pssd.sr-substance-use-scale-4-ever \
 				$ns:pssd.sr-substance-use-scale-4-last-3-months \
 				$ns:pssd.sr-substance-use-baseline-audit \
-				$ns:pssd.sr-substance-use-alcohol $ns:pssd.sr-apsd $ns:pssd.sr-sias\
-				$ns:pssd.sr-scale-10 $ns:pssd.sr-scale-11-part-a \
-				$ns:pssd.sr-scale-11-part-b $ns:pssd.sr-scale-11-part-c \
-				$ns:pssd.sr-scale-11-part-d $ns:pssd.sr-scale-11-part-e \
-				$ns:pssd.sr-scale-11-part-f $ns:pssd.sr-scale-11-part-g\
-				$ns:pssd.sr-scale-12 $ns:pssd.sr-scale-13 $ns:pssd.sr-time-to-complete]
+				$ns:pssd.sr-substance-use-alcohol \
+				$ns:pssd.sr-apsd $ns:pssd.sr-sias\
+				$ns:pssd.sr-scale-10 \
+				$ns:pssd.sr-scale-11-part-a \
+				$ns:pssd.sr-scale-11-part-b \
+				$ns:pssd.sr-scale-11-part-c \
+				$ns:pssd.sr-scale-11-part-d \
+				$ns:pssd.sr-scale-11-part-e \
+				$ns:pssd.sr-scale-11-part-f \
+				$ns:pssd.sr-scale-11-part-g\
+				$ns:pssd.sr-scale-12 \
+				$ns:pssd.sr-scale-13 \
+				$ns:pssd.sr-time-to-complete]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
