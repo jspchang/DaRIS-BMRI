@@ -396,7 +396,7 @@ proc createDict_PET_tracers { ns } {
 proc createDict_pssd_languages { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.languages]] == "false" } {
-		dictionary.create :name ${ns}.pssd.languages :description "standard language list" :case-sensitive true
+		dictionary.create :name ${ns}.pssd.languages :description "standard language list" :case-sensitive false
 	}
 	addDictionaryEntry  ${ns}.pssd.languages "english"
 	addDictionaryEntry  ${ns}.pssd.languages "chinese-cantonese-mandarin-taiwanese"

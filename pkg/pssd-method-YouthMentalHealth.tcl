@@ -307,7 +307,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					:definition -requirement optional ${ns}:pssd.sr-time-to-complete \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.weight \
+					:definition -requirement optional ${ns}:pssd.weight \
 				> \
 				:metadata < \
 					:definition -requirement optional ${ns}:pssd.subject.height \

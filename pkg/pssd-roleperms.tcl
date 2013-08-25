@@ -70,6 +70,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.education.years PUBLISH] \
 	[list document ${ns}:pssd.family-medical-history ACCESS] \
 	[list document ${ns}:pssd.family-medical-history PUBLISH] \
+	[list document ${ns}:pssd.general-practitioner ACCESS] \
+	[list document ${ns}:pssd.general-practitioner PUBLISH] \
 	[list document ${ns}:pssd.human.identity ACCESS] \
 	[list document ${ns}:pssd.human.identity PUBLISH] \
 	[list document ${ns}:pssd.identity ACCESS] \
@@ -261,6 +263,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.education.years PUBLISH] \
 	[list document ${ns}:pssd.family-medical-history ACCESS] \
 	[list document ${ns}:pssd.family-medical-history PUBLISH] \
+	[list document ${ns}:pssd.general-practitioner ACCESS] \
+	[list document ${ns}:pssd.general-practitioner PUBLISH] \
 	[list document ${ns}:pssd.human.identity ACCESS] \
 	[list document ${ns}:pssd.human.identity PUBLISH] \
 	[list document ${ns}:pssd.identity ACCESS] \

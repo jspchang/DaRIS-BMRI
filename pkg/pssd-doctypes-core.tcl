@@ -141,9 +141,13 @@ proc createDocType_pssd_subject_height { ns } {
 		:description "Document type for subject height" \
 		:label "Subject height" \
 		:definition < \
-			:element -name height  -min-occurs 0 -max-occurs 1 -type float -min 0.0 -index true  < \
-				:attribute -type enumeration -name units -enumerated-values "m" -min-occurs 0  \
-				:description "Height of subject (m)" \
+			:element -name height -min-occurs 0 -max-occurs 1 -type document < \
+				:element -name "value" -min-occurs 0 -max-occurs 1 -type float -index true  \
+				:element -name "units" -min-occurs 0 -max-occurs 1 -type float -index true  <\
+					:restriction -base "enumeration" < \
+						:value "meters" \
+					> \
+				> \
 			> \
 		> \
 	}
@@ -282,11 +286,11 @@ proc createDocType_pssd_animal_disease { ns } {
 		:definition < \
 		:element -name disease -min-occurs 0 -max-occurs 1 -index true -type enumeration  -dictionary $ns.pssd.subject.pathology -case-sensitive false < \
 			:description "Disease pathology of the subject" > \
-		:element -name disease-state -type document -index true -min-occurs 0 -max-occurs infinity < \
+		:element -name disease-state -type document -min-occurs 0 -max-occurs infinity < \
 			:description "Describe the state of the disease in the subject with time" > < \
 				:element -name state -type enumeration -min-occurs 0 -max-occurs 1 -index true -enumerated-values pre-symptomatic,symptomatic,asymptomatic < \
 					:description "State of the disease at the specified time" > \
-				:element -name time -type document -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name time -type document -min-occurs 0 -max-occurs 1 < \
 					:element -name date -type date -min-occurs 0 -max-occurs 1 -index true < \
 						:description "Date when current disease state was set" > \
 					:element -name time-point -type integer -min-occurs 0 -max-occurs 1 -index true < \
@@ -303,7 +307,7 @@ proc createDocType_pssd_animal_genetics { ns } {
 		:description "Document type for basic animal (Humans included) genetic information" \
 		:label "Animal genetics" \
 		:definition < \
-			:element -name strain -type document -index true -min-occurs 0 -max-occurs infinity < \
+			:element -name strain -type document -min-occurs 0 -max-occurs infinity < \
 				:description "The genetic strain of the animal" \
 				:element -name name -type enumeration  -dictionary nig.pssd.animal.strains -index true -min-occurs 0 -max-occurs 1 < \
 					:description "The standard name of the genetic strain" > \
@@ -320,17 +324,27 @@ proc createDocType_pssd_general_practitioner { ns } {
 		:description "Document to capture general practitioner details" \
 		:label "general-practitioner" \
 		:definition < \
-			:element -name prefix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Prefix" \
-            :element -name first  -type string -min-occurs 1 -max-occurs 1 -length 40 -label "First" \
-            :element -name middle -type string -min-occurs 0 -max-occurs 1 -length 100 -label "Middle" < \
-             	:description "If there are several 'middle' names then put them in this field" \
-             > \
-			:element -name last   -type string -min-occurs 1 -max-occurs 1 -length 40 -label "Last" \
-			:element -name suffix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Suffix" \
-			:element -name referral-notes -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
-			:element -name phone -type integer -min-occurs 0 -max-occurs 1 -label "Phone" \
-			:element -name address -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
-			:element -name time-seeing-general-practioner -type integer -min-occurs 0 -max-occurs 1 \
+			:element -name "clinician-details" -type document -min-occurs 0 -max-occurs infinity < \
+				:element -name prefix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Prefix" \
+				:element -name first  -type string -min-occurs 1 -max-occurs 1 -length 40 -label "First" \
+				:element -name middle -type string -min-occurs 0 -max-occurs 1 -length 100 -label "Middle" < \
+					:description "If there are several 'middle' names then put them in this field" \
+				 > \
+				:element -name last   -type string -min-occurs 1 -max-occurs 1 -length 40 -label "Last" \
+				:element -name suffix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Suffix" \
+				:element -name referral-notes -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
+				:element -name phone -type integer -min-occurs 0 -max-occurs 1 -label "Phone" \
+				:element -name address -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
+				:element -name time-seeing-general-practioner -type document -min-occurs 0 -max-occurs 1 < \
+					:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
+					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+						:restriction -base "enumeration" < \
+							:value "months" \
+							:value "years" \
+					> \
+					> \
+				> \
+			> \
 		> \
 	}
 
@@ -342,11 +356,11 @@ proc createDocType_pssd_clinician { ns } {
 		:label "clinician" \
 		:definition < \
 			:element -name prefix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Prefix" \
-            :element -name first  -type string -min-occurs 1 -max-occurs 1 -length 40 -label "First" \
-            :element -name middle -type string -min-occurs 0 -max-occurs 1 -length 100 -label "Middle" < \
-             	:description "If there are several 'middle' names then put them in this field" \
-             > \
-			:element -name last   -type string -min-occurs 1 -max-occurs 1 -length 40 -label "Last" \
+			:element -name first  -type string -min-occurs 1 -max-occurs 1 -length 40 -label "First" \
+			:element -name middle -type string -min-occurs 0 -max-occurs 1 -length 100 -label "Middle" < \
+				:description "If there are several 'middle' names then put them in this field" \
+			> \
+			:element -name last -type string -min-occurs 1 -max-occurs 1 -length 40 -label "Last" \
 			:element -name suffix -type string -min-occurs 0 -max-occurs 1 -length 20 -label "Suffix" \
 			:element -name referral-notes -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
 			:element -name phone -type integer -min-occurs 0 -max-occurs 1 -label "Phone" \
@@ -362,7 +376,8 @@ proc createDocType_pssd_weight { ns } {
 		:description "Document to capture clinician details" \
 		:label "clinician" \
 		:definition < \
-			:element -name "weight" -type integer -min-occurs 0 -max-occurs 1 -index 1 < \
+			:element -name "weight" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index 1 \
 				:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
 						:value "kilograms" \
