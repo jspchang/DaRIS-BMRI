@@ -143,7 +143,7 @@ proc createDocType_pssd_subject_height { ns } {
 		:definition < \
 			:element -name height -min-occurs 0 -max-occurs 1 -type document < \
 				:element -name "value" -min-occurs 0 -max-occurs 1 -type float -index true  \
-				:element -name "units" -min-occurs 0 -max-occurs 1 -type float -index true  <\
+				:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true  <\
 					:restriction -base "enumeration" < \
 						:value "meters" \
 					> \
@@ -374,7 +374,7 @@ proc createDocType_pssd_weight { ns } {
 	asset.doc.type.update \
 		:create true :type ${ns}:pssd.weight \
 		:description "Document to capture clinician details" \
-		:label "clinician" \
+		:label "weight" \
 		:definition < \
 			:element -name "weight" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index 1 \
