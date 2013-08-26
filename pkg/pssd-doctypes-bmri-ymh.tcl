@@ -117,34 +117,40 @@ proc createDocType_pssd_diagnostic_information { ns } {
 					:dictionary "$ns.pssd.substance-use-no-yes" \
 				> \
 			> \
-			:element -name "amphetamine-user" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "identifies if the subject uses amphetamines" \
-				:restriction -base "enumeration" < \
-					:dictionary "$ns.pssd.substance-use-no-yes" \
+			:element -name "amphetamine-use" -min-occurs 0 -max-occurs 1 -type document < \
+				:element -name "amphetamine-user" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:description "identifies if the subject uses amphetamines" \
+					:restriction -base "enumeration" < \
+						:dictionary "$ns.pssd.substance-use-no-yes" \
+					> \
 				> \
-				:element -name "more-than-once-a-week" -type enumeration -min-occurs 0 < \
+				:element -name "more-than-once-a-week" -type enumeration -min-occurs 0 -max-occurs 1 < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.standard-no-yes" \
 					> \
 				> \
 			> \
-			:element -name "cannabis-user" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "identifies if the subject uses cannabis" \
-				:restriction -base "enumeration" < \
-					:dictionary "$ns.pssd.substance-use-no-yes" \
+			:element -name "cannabis-use" -min-occurs 0 -max-occurs 1 -type document < \
+				:element -name "cannabis-user" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:description "identifies if the subject uses cannabis" \
+					:restriction -base "enumeration" < \
+						:dictionary "$ns.pssd.substance-use-no-yes" \
+					> \
 				> \
-				:element -name "more-than-once-a-week" -type enumeration -min-occurs 0 < \
+				:element -name "more-than-once-a-week" -type enumeration -min-occurs 0 -max-occurs 1 < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.standard-no-yes" \
 					> \
 				> \
 			> \
-			:element -name "alcohol-user" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "identifies if the subject uses alcohol" \
-				:restriction -base "enumeration" < \
-					:dictionary "$ns.pssd.substance-use-no-yes" \
+			:element -name "alcohol-use" -min-occurs 0 -max-occurs 1 -type document < \
+				:element -name "alcohol-user" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:description "identifies if the subject uses alcohol" \
+					:restriction -base "enumeration" < \
+						:dictionary "$ns.pssd.substance-use-no-yes" \
+					> \
 				> \
-				:element -name "more-than-once-a-week" -type enumeration -min-occurs 0 < \
+				:element -name "more-than-once-a-week" -type enumeration -min-occurs 0 -max-occurs 1 < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.standard-no-yes" \
 					> \
@@ -185,29 +191,29 @@ asset.doc.type.update :create true :type ${ns}:pssd.diagnostic-ultra-high-risk \
 				:dictionary "$ns.pssd.standard-no-yes-missing" \
 			> \
 		> \
-		:element -name "uhr-symptoms" -min-occurs 0 -max-occurs 7 -type enumeration -index true -case-sensitive false < \
-			:description "identifies if a subject is displaying ultra high risk symptoms" \
-			:restriction -base "enumeration" < \
-				:dictionary "$ns.pssd.uhr-symptoms" \
-			> \
-			:element -name "symptom-present" -type enumeration -min-occurs 0 < \
-				:restriction -base "enumeration" < \
-					:dictionary "$ns.pssd.standard-no-yes" \
-				> \
-			> \
+		:element -name "uhr-symptoms" -min-occurs 1 -max-occurs 1 -type document < \
+			:element -name "decline-in-social-functioning" -min-occurs 1 -max-occurs 1 -type boolean -index true \
+			:element -name "decline-occupational-vocational-funtioning" -min-occurs 1 -max-occurs 1 -type boolean -index true \
+			:element -name "decline-in-cognition" -min-occurs 1 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-shows-mood-disturbance" -min-occurs 1 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-shows-subthreshold-psychotic-symptoms" -min-occurs 1 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-shows-drug-and-alchole-use" -min-occurs 1 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-has-a-family-history-of-psychiatric-disorder" -min-occurs 1 -max-occurs 1 -type boolean -index true \
 		> \
-		:element -name "diagnosis" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false < \
-			:description "Diagnosis information for subjects condition" \
-			:restriction -base "enumeration" < \
-				:value "primary" \
-				:value "secondary" \
+		:element -name "diagnosis" -min-occurs 0 -max-occurs infinity -type document < \
+			:element -name "diagnosis-type" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:description "Diagnosis information for subjects condition" \
+				:restriction -base "enumeration" < \
+					:value "primary" \
+					:value "secondary" \
+				> \
 			> \
 			:element -name "condition-type" -type enumeration -min-occurs 0 -max-occurs 1 < \
 				:restriction -base "enumeration" < \
 					:dictionary "$ns.pssd.diagnostic-diagnosis" \
 				> \
 			> \
-			:element -name "specify" -type string -min-occurs 0 -index true -case-sensitive false \
+			:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
 		> \
 		:element -name "notes" -type string -min-occurs 0 -max-occurs 0 < \
 			:description "Psychiatrist notes if diagnosis is unclear or the subject is still being assessed" \
@@ -283,25 +289,27 @@ proc createDocType_pssd_family_medical_history { ns } {
 		:description "Family medical history information from the green form" \
 		:label "family-medical-history" \
 		:definition < \
-			:element -name "relative-degree" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false < \
-				:description "relatives with medical histories" \
-				:restriction -base "enumeration" < \
-					:value "first" \
-					:value "second" \
-					:value "not-applicable" \
-					:value "missing" \
+			:element -name "relatives" -min-occurs 0 -max-occurs infinity -type document < \
+				:element -name "relative-degree" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:description "relatives with medical histories" \
+					:restriction -base "enumeration" < \
+						:value "first" \
+						:value "second" \
+						:value "not-applicable" \
+						:value "missing" \
+					> \
 				> \
 				:element -name "relative-type" -type enumeration -min-occurs 0 -max-occurs infinity < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.relative-type" \
 					> \
 				> \
-				:element -name "condition" -type enumeration -min-occurs 0 -max-occurs infinity < \
+				:element -name "conditions" -type enumeration -min-occurs 0 -max-occurs infinity < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.relative-medical-condition" \
 					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "notes" -min-occurs 0 -max-occurs 0 -type string -index true -case-sensitive true \
 		> \
@@ -344,77 +352,93 @@ proc createDocType_pssd_current_treatment { ns } {
 		:description "subjects current treatment information from the green form" \
 		:label "current-treatment" \
 		:definition < \
-			:element -name "anti-depressant-treatment" -type enumeration -min-occurs 0 < \
-				:description "anti-depressant medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary "$ns.pssd.anti-depressant-types" \
+			:element -name "anti-depressant-treatment" -type document -min-occurs 0 < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "anti-depressant medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary "$ns.pssd.anti-depressant-types" \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 -case-sensitive false \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -case-sensitive false -max-occurs 1 \
 			> \
-			:element -name "sedative-hypnotic-treatment" -type enumeration -min-occurs 0 < \
-				:description "sedative and hypnotic medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary "$ns.pssd.sedative-hypnotic-types" \
+			:element -name "sedative-hypnotic-treatment" -type document -min-occurs 0 < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "sedative and hypnotic medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary "$ns.pssd.sedative-hypnotic-types" \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
-			:element -name "other-adjunctive-treatment" -type enumeration -min-occurs 0 < \
-				:description "other adjunctive medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary "$ns.pssd.other-adjunctive-types" \
+			:element -name "other-adjunctive-treatment" -type document -min-occurs 0 < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "other adjunctive medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary "$ns.pssd.other-adjunctive-types" \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
-			:element -name "mood-stabiliser-treatment" -type enumeration -min-occurs 0 < \
-				:description "mood stabiliser medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.mood-stabiliser-types \
+			:element -name "mood-stabiliser-treatment" -type document -min-occurs 0 < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "mood stabiliser medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.mood-stabiliser-types \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
-			:element -name "anti-psychotic-treatment" -type enumeration -min-occurs 0 < \
-				:description "anti-psychotic medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.anti-psychotic-types \
+			:element -name "anti-psychotic-treatment" -type document -min-occurs 0  < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "anti-psychotic medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.anti-psychotic-types \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
-			:element -name "benzodiazepine-treatment" -type enumeration -min-occurs 0 < \
-				:description "benzodiazepine medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.benzodiazepine-types \
+			:element -name "benzodiazepine-treatment" -type document -min-occurs 0 < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "benzodiazepine medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.benzodiazepine-types \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
-			:element -name "stimulant-treatment" -type enumeration -min-occurs 0 < \
-				:description "stimulant medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.stimulant-types \
+			:element -name "stimulant-treatment" -type document -min-occurs 0 < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "stimulant medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.stimulant-types \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
-			:element -name "anti-convulsant-treatment" -type enumeration -min-occurs 0 < \
-				:description "anti-convulsant medication type, dose and frequency" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.anti-convulsant-types \
+			:element -name "anti-convulsant-treatment" -type document -min-occurs 0 < \
+				:element -name "type" -type enumeration -min-occurs 0 -max-occurs 1 < \
+					:description "anti-convulsant medication type, dose and frequency" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.anti-convulsant-types \
+					> \
 				> \
-				:element -name "specify" -type string -min-occurs 0 -case-sensitive false \
-				:element -name "dose" -type float -min-occurs 0 \
-				:element -name "timing" -type string -min-occurs 0 \
+				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
 		> \
 }

@@ -159,34 +159,36 @@ proc createDocType_pssd_ap_bprs { ns } {
 		:description "Brief psychiatric rating scale" \
 		:label "brief-psychiatric-rating-scale" \
 		:definition < \
-			:element -name "sections" -type enumeration -max-occurs 24 -index true -case-sensitive true < \
-				:description "Question sections for the BPRS test" \
-				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.ap-bprs-sections \
+			:element -name "sections" -type document -min-occurs 0 -max-occurs 24 < \
+				:element -name "section" -type enumeration -min-occurs 0 -max-occurs 1 -index true -case-sensitive true < \
+					:description "Question sections for the BPRS test" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-sections \
+					> \
 				> \
-				:element -name "score" -type enumeration < \
+				:element -name "score" -type enumeration -min-occurs 0 max-occurs 1 < \
 					:description "Question section score" \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.ap-bprs-scores \
 					> \
 				> \
 			> \
-			:element -name "bprs-total" -type float -max-occurs 1 -min-occurs 1 -index true < \
+			:element -name "bprs-total" -type float -max-occurs 1 -min-occurs 0 -index true < \
 				:description "total-score" \
 			> \
-			:element -name "bprs-positive-symptoms-factor" -type float -max-occurs 1 -min-occurs 1 < \
+			:element -name "bprs-positive-symptoms-factor" -type float -max-occurs 1 -min-occurs 0 < \
 				:description "positive symptoms factor score" \
 			> \
-			:element -name "bprs-depression-factor" -type float -max-occurs 1 -min-occurs 1 < \
+			:element -name "bprs-depression-factor" -type float -max-occurs 1 -min-occurs 0 < \
 				:description "depression factor score" \
 			> \
-			:element -name "bprs-negative-symptoms-factor" -type float -max-occurs 1 -min-occurs 1 < \
+			:element -name "bprs-negative-symptoms-factor" -type float -max-occurs 1 -min-occurs 0 < \
 				:description "negative symptom factor score" \
 			> \
-			:element -name "bprs-mania-factor" -type float -max-occurs 1 -min-occurs 1 < \
+			:element -name "bprs-mania-factor" -type float -max-occurs 1 -min-occurs 0 < \
 				:description "somatic factor score" \
 			> \
-			:element -name "bprs-dissorientation-factor" -type float -max-occurs 1 -min-occurs 1 < \
+			:element -name "bprs-disorientation-factor" -type float -max-occurs 1 -min-occurs 0 -index true < \
 				:description "disorientation factor score" \
 			> \
 		> \
@@ -207,7 +209,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 		:description "Young mania rating scale" \
 		:label "young-mania-rating-scale" \
 		:definition < \
-			:element -name "elevated-mood" -type enumeration -max-occurs 1 -index true < \
+			:element -name "elevated-mood" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "absent" \
 					:value "mildly" \
@@ -217,7 +219,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "increased-motor-activity-energy" -type enumeration -max-occurs 1 -index true < \
+			:element -name "increased-motor-activity-energy" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "absent" \
 					:value "subjectively-increased" \
@@ -227,7 +229,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "sexual-interest" -type enumeration -max-occurs 1 -index true < \
+			:element -name "sexual-interest" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "Normal"\
 					:value "Mildly" \
@@ -237,7 +239,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "sleep" -type enumeration -max-occurs 1 -index true < \
+			:element -name "sleep" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "none" \
 					:value "less-up-to-1-hour" \
@@ -247,7 +249,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "irritability" -type enumeration -max-occurs 1 -index true < \
+			:element -name "irritability" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "absent" \
 					:value "subjectively-increased" \
@@ -257,7 +259,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "speech" -type enumeration -max-occurs 1 -index true < \
+			:element -name "speech" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "none" \
 					:value "increased" \
@@ -266,7 +268,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "language" -type enumeration -max-occurs 1 -index true < \
+			:element -name "language" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "absent" \
 					:value "circumstantial" \
@@ -276,7 +278,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "content" -type enumeration -max-occurs 1 -index true < \
+			:element -name "content" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "normal" \
 					:value "questionable" \
@@ -286,7 +288,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "disruptive-aggressive-behaviour" -type enumeration -max-occurs 1 -index true < \
+			:element -name "disruptive-aggressive-behaviour" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "absent" \
 					:value "sarcastic" \
@@ -296,7 +298,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "appearance" -type enumeration -max-occurs 1 -index true < \
+			:element -name "appearance" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "appropriate" \
 					:value "minimally" \
@@ -306,7 +308,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "insight" -type enumeration -max-occurs 1 -index true < \
+			:element -name "insight" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
 					:value "present-admits-illness" \
 					:value "possibly-ill" \
@@ -316,7 +318,7 @@ proc createDocType_pssd_ap_ymrs { ns } {
 					:value "missing" \
 				> \
 			> \
-			:element -name "ymrs-total" -type float -max-occurs 1 -min-occurs 1 -index true < \
+			:element -name "ymrs-total" -type float -max-occurs 1 -min-occurs 0 -index true < \
 				:description "total-score" \
 			> \
 		> \
@@ -337,53 +339,53 @@ proc createDocType_pssd_ap_sds { ns } {
 		:description "Severity of Dependence Scale" \
 		:label "severity-of-dependence-scale" \
 		:definition < \
-			:element -name drug-use-class -type string -min-occurs 3 -max-occurs 3 -index true -case-sensitive true < \
+			:element -name drug-use-class -type string -min-occurs 0 -max-occurs 3 -index true -case-sensitive true < \
 				:element -name drug-name -type string -min-occurs 0 -max-occurs 1 < \
 					:description "Name of drug" \
 					:element -name "amount-use-pattern" -type string -min-occurs 0 -max-occurs 1 \
 					:element -name "administration-route" -type string -min-occurs 0 -max-occurs 1 \
 				> \
-				:element -name "response-card-q1" -type enumeration -max-occurs 1 -min-occurs 1 -index true < \
+				:element -name "response-card-q1" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:description "Question 1 - Do you think your use of ‘drug’ was out of control?" \
 					:restriction -base enumeration < \
 						:dictionary $ns.pssd.ap-sds-scores \
 					> \
 				> \
-				:element -name "response-card-q2" -type enumeration -max-occurs 1 -min-occurs 1 -index true < \
+				:element -name "response-card-q2" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:description "Question 2 - Did the prospect of missing a fix (or dose) make you anxious or worried?" \
 					:restriction -base enumeration < \
 						:dictionary $ns.pssd.ap-sds-scores \
 					> \
 				> \
-				:element -name "response-card-q3" -type enumeration -max-occurs 1 -min-occurs 1 -index true < \
+				:element -name "response-card-q3" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:description "Question 3 - Did you worry about your use of ‘drug’?" \
 					:restriction -base enumeration < \
 						:dictionary $ns.pssd.ap-sds-scores \
 					> \
 				> \
-				:element -name "response-card-q4" -type enumeration -max-occurs 1 -min-occurs 1 -index true < \
+				:element -name "response-card-q4" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:description "Question 4 - Did you wish you could stop?" \
 					:restriction -base enumeration < \
 						:dictionary $ns.pssd.ap-sds-scores \
 					> \
 				> \
-				:element -name "response-card-q5" -type enumeration -max-occurs 1 -min-occurs 1 -index true < \
+				:element -name "response-card-q5" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:description "Question 5 - How difficult was it to stop of go without ‘drug’?" \
 					:restriction -base enumeration < \
 						:dictionary $ns.pssd.ap-sds-scores \
 					> \
 				> \
-				:element -name "total-score" -type float -max-occurs 1 -min-occurs 1 -index true \
+				:element -name "total-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			> \
 		> \
 }
 
-proc destroyDocType_pssd_ap_bprs { ns force } {
+proc destroyDocType_pssd_ap_sds { ns force } {
     if { $force != "true" && $force != "false" } {
                 set force "false"
     }
-    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-bprs]] == "true" } {
-                asset.doc.type.destroy :type ${ns}:pssd.ap-bprs :force $force
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-sds]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-sds :force $force
     }
 }
 
@@ -506,9 +508,9 @@ proc createDocType_pssd_ap_wtar_raw_zscores { ns } {
 		:description "Assessment protocol weschler test of adult reading raw and z-scores" \
 		:label "wtar-raw-and-z-scores" \
 		:definition < \
-			:element -name raw-score -type float -max-occurs 1 -index true \
-			:element -name standard-score -type float -max-occurs 1 -index true \
-			:element -name predicted-iq -type float -max-occurs 1 -index true \
+			:element -name raw-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name standard-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name predicted-iq -type float -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -527,16 +529,16 @@ proc createDocType_pssd_ap_wais_wms_scores { ns } {
 		:description "Assessment protocol wais-wms subtests-scores" \
 		:label "wtar-raw-and-z-scores" \
 		:definition < \
-			:element -name "information-raw-score" -type float -max-occurs 1 -index true \
-			:element -name "information-age-ss-score" -type float -max-occurs 1 -index true \
-			:element -name "logical-memory-1-recall-raw-score" -type float -max-occurs 1 -index true \
-			:element -name "logical-memory-1-recall-age-ss-score" -type float -max-occurs 1 -index true \
-			:element -name "logical-memory-2-recall-raw-score" -type float -max-occurs 1 -index true \
-			:element -name "logical-memory-2-recall-age-ss-score" -type float -max-occurs 1 -index true \
-			:element -name "logical-memory-retention-raw-score" -type float -max-occurs 1 -index true \
-			:element -name "logical-memory-retention-age-ss-score" -type float -max-occurs 1 -index true \
-			:element -name "mental-control-raw-score" -type float -max-occurs 1 -index true \
-			:element -name "mental-control-age-ss-score" -type float -max-occurs 1 -index true \
+			:element -name "information-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "information-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-1-recall-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-1-recall-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-2-recall-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-2-recall-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-retention-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-retention-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "mental-control-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "mental-control-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -555,26 +557,26 @@ proc createDocType_pssd_ap_ravlt_scores { ns } {
 		:description "Assessment protocol ravlt scores" \
 		:label "rey-auditory-visual-learning-test-scores" \
 		:definition < \
-			:element -name ravlt-words-1 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-2 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-3 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-4 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-5 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-sum -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-b1 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-6 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-7 -type float -max-occurs 1 -index true \
-			:element -name ravlt-words-rec-a -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-1 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-2 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-3 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-4 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-5 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-sum -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-b1 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-6 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-7 -type float -max-occurs 1 -index true \
-			:element -name ravlt-sd-rec-a -type float -max-occurs 1 -index true \
+			:element -name ravlt-words-1 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-2 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-3 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-4 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-5 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-sum -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-b1 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-6 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-7 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-words-rec-a -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-1 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-2 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-3 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-4 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-5 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-sum -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-b1 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-6 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-7 -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name ravlt-sd-rec-a -type float -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -593,16 +595,16 @@ proc createDocType_pssd_ap_rcft_scores { ns } {
 		:description "Assessment protocol rey complex figures scores" \
 		:label "rey-complex-figure-scores" \
 		:definition < \
-			:element -name time-score -type float -max-occurs 1 -index true \
-			:element -name time-percentile -type string -max-occurs 1 -index true \
-			:element -name copy-score -type float -max-occurs 1 -index true \
-			:element -name copy-percentile -type string -max-occurs 1 -index true \
-			:element -name 3-minute-recall-score -type float -max-occurs 1 -index true \
-			:element -name 3-minute-recall-percentile -type string -max-occurs 1 -index true \
-			:element -name 30-minute-recall-score -type float -max-occurs 1 -index true \
-			:element -name 30-minute-recall-percentile -type string -max-occurs 1 -index true \
-			:element -name recognition-score -type float -max-occurs 1 -index true \
-			:element -name recognition-percentile -type string -max-occurs 1 -index true \
+			:element -name time-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name time-percentile -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name copy-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name copy-percentile -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name 3-minute-recall-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name 3-minute-recall-percentile -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name 30-minute-recall-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name 30-minute-recall-percentile -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name recognition-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name recognition-percentile -type string -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -621,12 +623,12 @@ proc createDocType_pssd_ap_tmt_scores { ns } {
 		:description "Assessment protocol trail making test scores" \
 		:label "trail-making-test-scores" \
 		:definition < \
-			:element -name a-score-secs -type float -max-occurs 1 -index true \
-			:element -name a-errors -type float -max-occurs 1 -index true \
-			:element -name a-z-score -type float -max-occurs 1 -index true \
-			:element -name b-score-secs -type float -max-occurs 1 -index true \
-			:element -name b-errors -type float -max-occurs 1 -index true \
-			:element -name b-z-score -type float -max-occurs 1 -index true \
+			:element -name a-score-secs -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name a-errors -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name a-z-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name b-score-secs -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name b-errors -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name b-z-score -type float -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -645,12 +647,12 @@ proc createDocType_pssd_ap_dass_scores { ns } {
 		:description "Assessment protocol depression anxiety stress scale scores" \
 		:label "depression-anxiety-stress-scale-scores" \
 		:definition < \
-			:element -name depression-score -type float -max-occurs 1 -index true \
-			:element -name depression-range -type string -max-occurs 1 -index true \
-			:element -name anxiety-score -type float -max-occurs 1 -index true \
-			:element -name anxiety-range -type string -max-occurs 1 -index true \
-			:element -name stress-score -type float -max-occurs 1 -index true \
-			:element -name stress-range -type string -max-occurs 1 -index true \
+			:element -name depression-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name depression-range -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name anxiety-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name anxiety-range -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name stress-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name stress-range -type string -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -669,13 +671,13 @@ proc createDocType_pssd_ap_cowat_scores { ns } {
 		:description "Assessment protocol Controlled oral word association test scores" \
 		:label "controlled-oral-word-association-test-scores" \
 		:definition < \
-			:element -name letters-f -type float -max-occurs 1 -index true \
-			:element -name letters-a -type float -max-occurs 1 -index true \
-			:element -name letters-s -type float -max-occurs 1 -index true \
-			:element -name letters-score -type float -max-occurs 1 -index true \
-			:element -name letters-range -type string -max-occurs 1 -index true \
-			:element -name animals-score -type float -max-occurs 1 -index true \
-			:element -name animals-range -type string -max-occurs 1 -index true \
+			:element -name letters-f -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name letters-a -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name letters-s -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name letters-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name letters-range -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name animals-score -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name animals-range -type string -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 

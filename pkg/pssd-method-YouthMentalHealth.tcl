@@ -86,46 +86,43 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type1} \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.identifiers \
+					:definition -group Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.date \
+					:definition -group Pyschiartrist-screening -requirement optional ${ns}:pssd.psychiatrist-screening \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.psychiatrist-screening \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.diagnostic-information \
+					:definition -group Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-information \
 					> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.diagnostic-ultra-high-risk \
+					:definition -group Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-ultra-high-risk \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.diagnostic-staging-model \
+					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.diagnostic-staging-model \
 					:value < \
 						:diagnosis-clinical-staging-model missing \
 					> \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.medical-history \
+					:definition -group Medical-History -requirement optional ${ns}:pssd.medical-history \
 					:value < \
 						:major-medical-conditions missing \
 					> \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.family-medical-history \
+					:definition -group Medical-History -requirement optional ${ns}:pssd.family-medical-history \
 					:value < \
 						:relative-degree missing \
 					> \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sofas \
+					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.sofas \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.current-treatment \
+					:definition -group Current-Treatments -requirement optional ${ns}:pssd.current-treatment \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.additional-gf-notes \
+					:definition -group Administration -requirement optional ${ns}:pssd.additional-gf-notes \
 				> \
 			> \
 		> \
@@ -135,46 +132,34 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type2} \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.identifiers \
+					:definition -group Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.date \
+					:definition -group Administration -requirement optional ${ns}:pssd.research-psychologist \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.research-psychologist \
+					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.checked-self-report \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.date-of-birth \
+					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.education.years \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.gender \
+					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.substance.nicotine-caffeine \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.checked-self-report \
+					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.inclusion-exclusion \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.handedness \
+					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.background-information \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.education.years \
+					:definition -group Staging -requirement optional ${ns}:pssd.ap-staging-model \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.substance.nicotine-caffeine \
+					:definition -group Hamilton-Depression-Rating-Scale -requirement optional ${ns}:pssd.ap-ham-d \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.inclusion-criteria \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.background-information \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-staging-model \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-ham-d \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-bprs \
+					:definition -group Brief-Psychiatric-Rating-Scale -requirement optional ${ns}:pssd.ap-bprs \
 					:value < \
 						:sections somatic-concern \
 						:sections anxiety \
@@ -203,28 +188,31 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					> \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-sofas \
+					:definition -group Young-Mania-Rating-Scale -requirement optional ${ns}:pssd.ap-ymrs \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-sds \
+					:definition -group Social-Occupational-Functioning-Assessment-Scale -requirement optional ${ns}:pssd.ap-sofas \
+				> \
+				:metadata < \
+					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
 					:value < \
 						:drug-use-class primary \
 					> \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-sds \
+					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
 					:value < \
 						:drug-use-class secondary \
 					> \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-sds \
+					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
 					:value < \
 						:drug-use-class tertiary \
 					> \
 				> \
 				:metadata < \
-					:definition -requirement mandatory ${ns}:pssd.ap-interview-checklist \
+					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-interview-checklist \
 					:value < \
 						:diagnosis-check false \
 						:hamilton-depression-scale false \
@@ -234,7 +222,28 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					> \
 				> \
 				:metadata < \
-					:definition -requirement mandatory ${ns}:pssd.ap-tests-checklist \
+					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-wtar-raw-zscores \
+				> \
+				:metadata < \
+					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-wais-wms-scores \
+				> \
+				:metadata < \
+					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-ravlt-scores \
+				> \
+				:metadata < \
+					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-rcft-scores \
+				> \
+				:metadata < \
+					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-tmt-scores \
+				> \
+				:metadata < \
+					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-dass-scores \
+				> \
+				:metadata < \
+					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-cowat-scores \
+				> \
+				:metadata < \
+					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-tests-checklist \
 					:value < \
 						:weschler-test-of-adult-reading false \
 						:logical-memory false \
@@ -250,7 +259,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					> \
 				> \
 				:metadata < \
-					:definition -requirement mandatory ${ns}:pssd.ap-cantab-checklist \
+					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-cantab-checklist \
 					:value < \
 						:motor-screening-task false \
 						:spatial-span false \
@@ -262,33 +271,12 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					> \
 				> \
 				:metadata < \
-					:definition -requirement mandatory ${ns}:pssd.ap-other-checklist \
+					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-other-checklist \
 					:value < \
 						:blood false \
 						:urine-saliva false \
 						:mri false \
 					> \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-wtar-raw-zscores \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-wais-wms-scores \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-ravlt-scores \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-rcft-scores \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-tmt-scores \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-dass-scores \
-				> \
-				:metadata < \
-					:definition -requirement optional ${ns}:pssd.ap-cowat-scores \
 				> \
 			> \
 		> \
@@ -298,100 +286,103 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type3} \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.identifiers \
+					:definition -group Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.date \
+					:definition -group Administration -requirement optional ${ns}:pssd.sr-time-to-complete \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-time-to-complete \
+					:definition -group Demographics -requirement optional ${ns}:pssd.weight \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.weight \
+					:definition -group Demographics -requirement optional ${ns}:pssd.subject.height \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.height \
+					:definition -group Demographics -requirement optional ${ns}:pssd.subject.education \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.subject.education \
+					:definition -group Vocation -requirement optional ${ns}:pssd.sr-vocation \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-vocation \
+					:definition -group Medical-Status -requirement optional ${ns}:pssd.general-practitioner \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.general-practitioner \
+					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.clinician \
+					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-personal-medical-history \
+					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-current-medication \
+					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-personal-medical-history \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-family-medical-history \
+					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-current-medication \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-kessler-10 \
+					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-family-medical-history \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-dass \
+					:definition -group Scale-1 -requirement optional ${ns}:pssd.sr-kessler-10 \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-who-qol \
+					:definition -group Scale-2 -requirement optional ${ns}:pssd.sr-dass \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-substance-use-scale-4-ever \
+					:definition -group Scale-3 -requirement optional ${ns}:pssd.sr-who-qol \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
+					:definition -group Scale-4 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-ever \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-substance-use-baseline-audit \
+					:definition -group Scale-4 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-substance-use-alcohol \
+					:definition -group Scale-5 -requirement optional ${ns}:pssd.sr-substance-use-baseline-audit \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-wsls \
+					:definition -group Scale-6 -requirement optional ${ns}:pssd.sr-substance-use-alcohol \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-apsd \
+					:definition -group Scale-7 -requirement optional ${ns}:pssd.sr-wsls \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-sias \
+					:definition -group Scale-8 -requirement optional ${ns}:pssd.sr-apsd \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-10 \
+					:definition -group Scale-9 -requirement optional ${ns}:pssd.sr-sias \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-a \
+					:definition -group Scale-10 -requirement optional ${ns}:pssd.sr-scale-10 \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-b \
+					:definition -group Scale-11 -requirement optional ${ns}:pssd.sr-scale-11-part-a \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-c \
+					:definition -group Scale-11 -requirement optional ${ns}:pssd.sr-scale-11-part-b \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-d \
+					:definition -group Scale-11 -requirement optional ${ns}:pssd.sr-scale-11-part-c \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-e \
+					:definition -group Scale-11 -requirement optional ${ns}:pssd.sr-scale-11-part-d \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-f \
+					:definition -group Scale-11 -requirement optional ${ns}:pssd.sr-scale-11-part-e \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-11-part-g \
+					:definition -group Scale-11 -requirement optional ${ns}:pssd.sr-scale-11-part-f \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-12 \
+					:definition -group Scale-11 -requirement optional ${ns}:pssd.sr-scale-11-part-g \
 				> \
 				:metadata < \
-					:definition -requirement optional ${ns}:pssd.sr-scale-13 \
+					:definition -group Scale-12 -requirement optional ${ns}:pssd.sr-scale-12 \
+				> \
+				:metadata < \
+					:definition -group Scale-13 -requirement optional ${ns}:pssd.sr-scale-13 \
 				> \
 			> \
 		>"

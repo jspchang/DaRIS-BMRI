@@ -170,31 +170,31 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.weight PUBLISH]] \
 
 # Service access
-   set pssd_svc_perms  [list [list service ${ns}.pssd.* ACCESS] \
-		       [list service ${ns}.pssd.* MODIFY] \
-                       [list service server.database.describe ACCESS]]
+	set pssd_svc_perms	[list [list service ${ns}.pssd.* ACCESS] \
+						[list service ${ns}.pssd.* MODIFY] \
+						[list service server.database.describe ACCESS]]
 
 # Role for user of this package; grant this to your users.
-    set domain_model_user_role        $ns.pssd.model.user
-    createRole     $domain_model_user_role
-    grantRolePerms $domain_model_user_role $pssd_doc_perms
-    grantRolePerms $domain_model_user_role $pssd_svc_perms
+	set domain_model_user_role        $ns.pssd.model.user
+	createRole     $domain_model_user_role
+	grantRolePerms $domain_model_user_role $pssd_doc_perms
+	grantRolePerms $domain_model_user_role $pssd_svc_perms
  
 # Grant end users the right to access the  document namespace
-   actor.grant :name  $domain_model_user_role :type role :perm < :resource -type document:namespace $ns :access ACCESS >
+	actor.grant :name  $domain_model_user_role :type role :perm < :resource -type document:namespace $ns :access ACCESS >
 
 # DICOM server permissions 
 # This is the role to grant your DICOM proxy users
-   set domain_dicom_ingest_role      $ns.pssd.dicom-ingest
-   createRole     $domain_dicom_ingest_role
+	set domain_dicom_ingest_role      $ns.pssd.dicom-ingest
+	createRole     $domain_dicom_ingest_role
 
 # DOcument Types
 # Grant DICOM users the right to access the  document namespace
-   actor.grant :name  $domain_dicom_ingest_role :type role :perm < :resource -type document:namespace $ns :access ACCESS >
+	actor.grant :name  $domain_dicom_ingest_role :type role :perm < :resource -type document:namespace $ns :access ACCESS >
 
 # Set the permissions that allow the <ns>.pssd.subject.meta.set service to be called
 # and used by the DICOM server framework
-    set dicom_ingest_doc_perms [list \
+	set dicom_ingest_doc_perms [list \
 	[list document ${ns}:pssd.additional-gf-notes ACCESS] \
 	[list document ${ns}:pssd.additional-gf-notes PUBLISH] \
 	[list document ${ns}:pssd.anaesthetic ACCESS] \
@@ -362,10 +362,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.weight ACCESS] \
 	[list document ${ns}:pssd.weight PUBLISH]] \
 
-
-			     
 # Grant permissions to dicom role
-   grantRolePerms $domain_dicom_ingest_role $dicom_ingest_doc_perms
+	grantRolePerms $domain_dicom_ingest_role $dicom_ingest_doc_perms
 
 # Service that allows the DICOM server to set domain-specific meta-data
 #set dicom_ingest_service_perms [list [list service ${ns}.pssd.object.meta.set MODIFY]]

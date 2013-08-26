@@ -14,10 +14,10 @@ proc createDocType_pssd_project { ns } {
 		:label "Project" \
 		:description "Document type for  project" \
 		:definition < \
-            :element -name facility-id -min-occurs 0 -max-occurs infinity -type enumeration -index true -enumerated-values  "Brain and Mind research Institute,Other" < \
-            	:description "Facility ID of the project allocated by some other authority" > \
-            :element -name "funding-id"  -index "true" -min-occurs "0" -type enumeration -dictionary ${ns}.funding.organization < \
-                :description "An identifier for the funding source (e.g. ARC/LIEF)" > \
+			:element -name facility-id -min-occurs 0 -max-occurs infinity -type enumeration -index true -enumerated-values  "Brain and Mind research Institute,Other" < \
+				:description "Facility ID of the project allocated by some other authority" > \
+			:element -name "funding-id"  -index "true" -min-occurs "0" -type enumeration -dictionary ${ns}.funding.organization < \
+				:description "An identifier for the funding source (e.g. ARC/LIEF)" > \
 			:element -name keyword -type string -index true -min-occurs 0 -max-occurs infinity < \
 				:description "A keyword relevant to this Project" > \
 			:element -name field-of-research -type enumeration -min-occurs 1 -max-occurs infinity -index true -dictionary  pssd.ANZSRC.Division-11.field-of-research < \

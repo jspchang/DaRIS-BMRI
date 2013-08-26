@@ -208,53 +208,67 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 		:description "subject medical status" \
 		:label "personal-medical-history" \
 		:definition < \
-			:element -name "heart-disease" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.standard-no-yes \
+			:element -name "heart-disease" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "has-heart-disease" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
 				> \
 				:description "has the subject suffered or been affected by heart disease" \
 				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
-			:element -name "vascular-disease" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.standard-no-yes \
+			:element -name "vascular-disease" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "has-vascular-disease" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
 				> \
 				:description "has the subject suffered or been affected by vascular disease" \
 				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
-			:element -name "high-blood-pressure" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.standard-no-yes \
+			:element -name "high-blood-pressure" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "has-high-blood-pressure" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
 				> \
 				:description "has the subject suffered or been affected by high blood pressure" \
-				:element -name "medication" -type string -min-occurs 0 -max-occurs infinity -index true -case-sensitive true -label "medication" <\
+				:element -name "medication" -type document -min-occurs 0 -max-occurs infinity <\
+					:element -name "medication" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 					:element -name "length-of-treatment" -type integer -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
 					:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 						:restriction -base "enumeration" < \
 							:value "months" \
+							:value "years" \
 						> \
 					> \
 					:element -name "still-receiving-treatment" -min-occurs 0 -max-occurs 1 -type boolean -index true \
 				> \
 				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
-			:element -name "high-cholesterol" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.standard-no-yes \
+			:element -name "high-cholesterol" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "has-high-cholesterol" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
 				> \
 				:description "has the subject suffered or been affected by high cholesterol" \
 				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
-			:element -name "stroke-or-cerebral-haemorrhage" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.standard-no-yes \
+			:element -name "stroke-or-cerebral-haemorrhage" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "has-stroke-or-cerebral-haemorrhage" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
 				> \
 				:description "has the subject suffered or been affected by stroke or cerebral haemorrhage" \
 				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
-			:element -name "transient-ischaemic-attacks" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.standard-no-yes \
+			:element -name "transient-ischaemic-attacks" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "transient-ischaemic-attacks" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
 				> \
 				:description "has the subject suffered or been affected by transient ischaemic attacks" \
 				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
@@ -314,26 +328,27 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
 				> \
-				:element -name "type" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false < \
-					:restriction -base "enumeration" < \
-						:value "skull-fracture" \
-						:value "loss-of-consciousness" \
-						:value "post-traumatic-amnesis" \
-						:value "hospitalisation" \
-					> \
-				> \
-				:element -name "duration" -max-occurs 1 -type document -min-occurs 0 < \
-					:element -name "value" -min-occurs 0 -max-occurs 1 -type integer -index true \
-					:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:element -name "details" -min-occurs 0 -max-occurs infinity -type document < \
+					:element -name "type" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false < \
 						:restriction -base "enumeration" < \
-							:value "minutes" \
-							:value "hours" \
-							:value "days" \
-							:value "months" \
+							:value "skull-fracture" \
+							:value "loss-of-consciousness" \
+							:value "post-traumatic-amnesis" \
+							:value "hospitalisation" \
 						> \
 					> \
+					:element -name "duration" -max-occurs 1 -type document -min-occurs 0 < \
+						:element -name "value" -min-occurs 0 -max-occurs 1 -type integer -index true \
+						:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+							:restriction -base "enumeration" < \
+								:value "minutes" \
+								:value "hours" \
+								:value "days" \
+								:value "months" \
+							> \
+						> \
+					:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 				> \
-				:element -name "details" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
 			:element -name "chronic-pain" -type document -min-occurs 0 -max-occurs 1 < \
 				:description "has the subject suffered or been affected by chronic pain" \
@@ -439,21 +454,20 @@ proc createDocType_pssd_sr_current_medication { ns } {
 		:description "medication currently being taken by subject" \
 		:label "current-medication" \
 		:definition < \
-			:element -name "medication" -type string -min-occurs 0 -max-occurs 7 -case-sensitive false -label "name-of-medication" < \
-				:element -name "name-of-medication" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false -label "name-of-medication" \
+			:element -name "medication" -type document -min-occurs 0 -max-occurs 7 < \
+				:element -name "name-of-medication" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "length-of-treatment" -type integer -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
-				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-						:restriction -base "enumeration" < \
-							:value "milligrams" \
-							:value "micrograms" \
-						> \
+				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 \
+				:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:restriction -base "enumeration" < \
+						:value "milligrams" \
+						:value "micrograms" \
 					> \
-					:element -name "timing" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
-					:element -name "medication-start-date" -type date -min-occurs 0 -max-occurs 1 \
 				> \
-				:element -name "medication-notes" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "medication-start-date" -type date -min-occurs 0 -max-occurs 1 \
 			> \
+			:element -name "medication-notes" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 		> \
 }
 
@@ -1725,7 +1739,7 @@ proc createDocType_pssd_sr_scale_11_part_a { ns } {
 		:definition < \
 			:element -name "time-up-on-an-average-weekday" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "time" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "am-pm" -type enumeration -min-occurs 1 -max-occurs 1 -index true < \
+				:element -name "am-pm" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:value "am" \
 						:value "pm" \
@@ -2558,7 +2572,7 @@ proc createDocType_pssd_sr_scale_13 { ns } {
 				> \
 			> \
 			:element -name "5-j" -type document -min-occurs 0 -max-occurs infinity < \
-				:element -name "answer" -type enumeration -min-occurs 0 -max-occurs infinity -index true < \
+				:element -name "answer" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.sr-scale-13-5 \
 					> \
