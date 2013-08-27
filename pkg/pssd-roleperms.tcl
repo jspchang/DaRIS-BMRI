@@ -74,8 +74,6 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.general-practitioner PUBLISH] \
 	[list document ${ns}:pssd.human.identity ACCESS] \
 	[list document ${ns}:pssd.human.identity PUBLISH] \
-	[list document ${ns}:pssd.identity ACCESS] \
-	[list document ${ns}:pssd.identity PUBLISH] \
 	[list document ${ns}:pssd.inclusion-exclusion ACCESS] \
 	[list document ${ns}:pssd.inclusion-exclusion PUBLISH] \
 	[list document ${ns}:pssd.medical-history ACCESS] \
@@ -267,8 +265,6 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.general-practitioner PUBLISH] \
 	[list document ${ns}:pssd.human.identity ACCESS] \
 	[list document ${ns}:pssd.human.identity PUBLISH] \
-	[list document ${ns}:pssd.identity ACCESS] \
-	[list document ${ns}:pssd.identity PUBLISH] \
 	[list document ${ns}:pssd.inclusion-exclusion ACCESS] \
 	[list document ${ns}:pssd.inclusion-exclusion PUBLISH] \
 	[list document ${ns}:pssd.medical-history ACCESS] \

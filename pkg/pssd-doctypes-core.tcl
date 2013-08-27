@@ -24,29 +24,7 @@ proc createDocType_pssd_project { ns } {
                 :description "Standard ANZSRC Field of Research (Medical and Health Sciences) classification" > \
         > \
 	}
-proc createDocType_pssd_identity { ns } {
 
-	asset.doc.type.update \
-		:create true :type $ns:pssd.identity \
-		:description "Document type for subject identity" \
-		:label "External Subject Identifier" \
-		:definition < \
-		:element -name id -min-occurs 0 -max-occurs infinity  -type string -index true  < \
-		:description "Unique identifier for the subject allocated by some other authority for cross-referencing" \
-		:attribute -name type -type enumeration -min-occurs 0 < \
-		:restriction -base enumeration < \
-		:value RCH \
-		:value HFIAS \
-		:value aMRIF \
-		:value INF \
-		:value VIBES \
-		:value Other \
-		> \
-		> \
-		> \
-		>
-
-}
 # ============================================================================
 # Subject Doc Types
 # ============================================================================
@@ -405,7 +383,6 @@ proc createPSSDCoreDocTypes { ns } {
 	createDocType_pssd_human_identity $ns
 	createDocType_pssd_animal_disease $ns
 	createDocType_pssd_animal_genetics $ns
-	createDocType_pssd_identity $ns
 	createDocType_pssd_subject_gender $ns
 	createDocType_pssd_subject_handedness $ns
 	createDocType_pssd_general_practitioner $ns
@@ -425,7 +402,6 @@ set doctypes [list \
 				$ns:pssd.referring-clinician \
 				$ns:pssd.referral-date \
 				$ns:pssd.patient-data-summary \
-				$ns:pssd.human.identity \
 				$ns:pssd.animal.disease \
 				$ns:pssd.animal.genetics \
 				$ns:pssd.psychiatrist \
