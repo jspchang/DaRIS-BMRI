@@ -111,9 +111,6 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -group Medical-History -requirement optional ${ns}:pssd.family-medical-history \
-					:value < \
-						:relative-degree missing \
-					> \
 				> \
 				:metadata < \
 					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.sofas \

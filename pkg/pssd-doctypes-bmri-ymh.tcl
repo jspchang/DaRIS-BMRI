@@ -299,7 +299,7 @@ proc createDocType_pssd_family_medical_history { ns } {
 						:value "missing" \
 					> \
 				> \
-				:element -name "relative-type" -type enumeration -min-occurs 0 -max-occurs infinity < \
+				:element -name "relative-type" -type enumeration -min-occurs 0 -max-occurs 1 < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.relative-type" \
 					> \

@@ -329,7 +329,7 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 					> \
 				> \
 				:element -name "details" -min-occurs 0 -max-occurs infinity -type document < \
-					:element -name "type" -min-occurs 0 -max-occurs infinity -type enumeration -index true -case-sensitive false < \
+					:element -name "type" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 						:restriction -base "enumeration" < \
 							:value "skull-fracture" \
 							:value "loss-of-consciousness" \
