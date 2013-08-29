@@ -372,6 +372,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_never_rarely_sometimes_often $ns
 	createDict_pssd_adequately_needs_help_unable_do_not_know $ns
 	createDict_pssd_sr_scale_13_5 $ns
+	createDict_pssd_sr_apsd $ns
 }
 
 #============================================================================#
@@ -387,7 +388,8 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.sr-substance-use-scale-5-c $ns.pssd.sr-substance-use-scale-5-d \
 					$ns.pssd.sr-wsls $ns.pssd.sr-sias $ns.pssd.sr-scale-10 \
 					$ns.pssd.never-rarely-sometimes-often \
-					$ns.pssd.adequately-needs-help-unable-do-not-know $ns.pssd.sr-scale-13-5]
+					$ns.pssd.adequately-needs-help-unable-do-not-know $ns.pssd.sr-scale-13-5\
+					$ns.pssd.sr-apsd]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

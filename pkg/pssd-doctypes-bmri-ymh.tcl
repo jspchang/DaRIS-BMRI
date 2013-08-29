@@ -191,14 +191,14 @@ asset.doc.type.update :create true :type ${ns}:pssd.diagnostic-ultra-high-risk \
 				:dictionary "$ns.pssd.standard-no-yes-missing" \
 			> \
 		> \
-		:element -name "uhr-symptoms" -min-occurs 1 -max-occurs 1 -type document < \
-			:element -name "decline-in-social-functioning" -min-occurs 1 -max-occurs 1 -type boolean -index true \
-			:element -name "decline-occupational-vocational-funtioning" -min-occurs 1 -max-occurs 1 -type boolean -index true \
-			:element -name "decline-in-cognition" -min-occurs 1 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-shows-mood-disturbance" -min-occurs 1 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-shows-subthreshold-psychotic-symptoms" -min-occurs 1 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-shows-drug-and-alchole-use" -min-occurs 1 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-has-a-family-history-of-psychiatric-disorder" -min-occurs 1 -max-occurs 1 -type boolean -index true \
+		:element -name "uhr-symptoms" -min-occurs 0 -max-occurs 1 -type document < \
+			:element -name "decline-in-social-functioning" -min-occurs 0 -max-occurs 1 -type boolean -index true \
+			:element -name "decline-occupational-vocational-funtioning" -min-occurs 0 -max-occurs 1 -type boolean -index true \
+			:element -name "decline-in-cognition" -min-occurs 0 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-shows-mood-disturbance" -min-occurs 0 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-shows-subthreshold-psychotic-symptoms" -min-occurs 0 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-shows-drug-and-alchole-use" -min-occurs 0 -max-occurs 1 -type boolean -index true \
+			:element -name "patient-has-a-family-history-of-psychiatric-disorder" -min-occurs 0 -max-occurs 1 -type boolean -index true \
 		> \
 		:element -name "diagnosis" -min-occurs 0 -max-occurs infinity -type document < \
 			:element -name "diagnosis-type" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
@@ -215,7 +215,7 @@ asset.doc.type.update :create true :type ${ns}:pssd.diagnostic-ultra-high-risk \
 			> \
 			:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
 		> \
-		:element -name "notes" -type string -min-occurs 0 -max-occurs 0 < \
+		:element -name "notes" -type string -min-occurs 0 -max-occurs 1 < \
 			:description "Psychiatrist notes if diagnosis is unclear or the subject is still being assessed" \
 		> \
 	> \
@@ -261,13 +261,15 @@ proc createDocType_pssd_medical_history { ns } {
 		:description "Medical History information from the green form" \
 		:label "medical-history" \
 		:definition < \
-			:element -name "major-medical-conditions" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "identifies if patient has a medical history" \
-				:restriction -base "enumeration" < \
-					:value "no" \
-					:value "yes" \
-					:value "questionable" \
-					:value "missing" \
+			:element -name "major-medical-conditions" -min-occurs 0 -max-occurs 1 -type document < \
+				:element -name "has-a-major-medical-conditions" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:description "identifies if patient has a medical history" \
+					:restriction -base "enumeration" < \
+						:value "no" \
+						:value "yes" \
+						:value "questionable" \
+						:value "missing" \
+					> \
 				> \
 				:element -name specify -type string -min-occurs 0 -index true -case-sensitive false \
 			> \
@@ -311,7 +313,7 @@ proc createDocType_pssd_family_medical_history { ns } {
 				> \
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 \
 			> \
-			:element -name "notes" -min-occurs 0 -max-occurs 0 -type string -index true -case-sensitive true \
+			:element -name "notes" -min-occurs 0 -max-occurs 1 -type string -index true -case-sensitive true \
 		> \
 }
 
@@ -486,11 +488,13 @@ proc createDocType_pssd_substance_nicotine_caffeine { ns } {
 		:description "Document type for nicotine or caffeine use" \
 		:label "Has had today" \
 		:definition < \
-			:element -name smoking-nicotine-consumption  -min-occurs 0 -max-occurs 2 -type enumeration -index true -case-sensitive false < \
-				:description "describes the substance the subject has had." \
-				:restriction -base "enumeration" < \
-					:value "caffeine" \
-					:value "nicotine" \
+			:element -name smoking-nicotine-consumption  -min-occurs 0 -max-occurs 2 -type document < \
+				:element -name type -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:description "describes the substance the subject has had." \
+					:restriction -base "enumeration" < \
+						:value "caffeine" \
+						:value "nicotine" \
+					> \
 				> \
 				:element -name quantity -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false \
 				:element -name average-intake -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false \

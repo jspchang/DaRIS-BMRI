@@ -144,6 +144,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.sr-vocation PUBLISH] \
 	[list document ${ns}:pssd.sr-who-qol ACCESS] \
 	[list document ${ns}:pssd.sr-who-qol PUBLISH] \
+	[list document ${ns}:pssd.sr-wsls ACCESS] \
+	[list document ${ns}:pssd.sr-wsls PUBLISH] \
 	[list document ${ns}:pssd.subject ACCESS] \
 	[list document ${ns}:pssd.subject PUBLISH] \
 	[list document ${ns}:pssd.subject.age-at-baseline ACCESS] \
@@ -335,6 +337,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.sr-vocation PUBLISH] \
 	[list document ${ns}:pssd.sr-who-qol ACCESS] \
 	[list document ${ns}:pssd.sr-who-qol PUBLISH] \
+	[list document ${ns}:pssd.sr-wsls ACCESS] \
+	[list document ${ns}:pssd.sr-wsls PUBLISH] \
 	[list document ${ns}:pssd.subject ACCESS] \
 	[list document ${ns}:pssd.subject PUBLISH] \
 	[list document ${ns}:pssd.subject.age-at-baseline ACCESS] \

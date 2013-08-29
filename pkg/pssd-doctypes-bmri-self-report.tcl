@@ -161,6 +161,9 @@ proc createDocType_pssd_sr_vocation { ns } {
 				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:value "hours" \
+						:value "weeks" \
+						:value "months" \
+						:value "years" \
 					> \
 				> \
 			> \
@@ -458,7 +461,7 @@ proc createDocType_pssd_sr_current_medication { ns } {
 			:element -name "medication" -type document -min-occurs 0 -max-occurs 7 < \
 				:element -name "name-of-medication" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "length-of-treatment" -type integer -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
-				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 \
+				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
 				:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
 						:value "milligrams" \
@@ -2532,47 +2535,47 @@ proc createDocType_pssd_sr_scale_13 { ns } {
 					> \
 				> \
 			> \
-			:element -name "5-a" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-a" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-b" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-b" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-c" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-c" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-d" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-d" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-e" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-e" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-f" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-f" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-g" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-g" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-h" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-5-h" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "5-j" -type document -min-occurs 0 -max-occurs infinity < \
+			:element -name "questions-5-j" -type document -min-occurs 0 -max-occurs infinity < \
 				:element -name "answer" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.sr-scale-13-5 \
@@ -2589,12 +2592,12 @@ proc createDocType_pssd_sr_scale_13 { ns } {
 					:value "missing-not-available" \
 				> \
 			> \
-			:element -name "7" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-7" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
@@ -2617,27 +2620,27 @@ proc createDocType_pssd_sr_scale_13 { ns } {
 					:value "missing-not-available" \
 				> \
 			> \
-			:element -name "11-a" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-11-a" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "11-b" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-11-b" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "11-c" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-11-c" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "11-d" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-11-d" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \
 			> \
-			:element -name "11-e" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+			:element -name "questions-11-e" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-13-5 \
 				> \

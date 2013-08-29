@@ -99,15 +99,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.diagnostic-staging-model \
-					:value < \
-						:diagnosis-clinical-staging-model missing \
-					> \
 				> \
 				:metadata < \
 					:definition -group Medical-History -requirement optional ${ns}:pssd.medical-history \
-					:value < \
-						:major-medical-conditions missing \
-					> \
 				> \
 				:metadata < \
 					:definition -group Medical-History -requirement optional ${ns}:pssd.family-medical-history \
@@ -192,21 +186,6 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
-					:value < \
-						:drug-use-class primary \
-					> \
-				> \
-				:metadata < \
-					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
-					:value < \
-						:drug-use-class secondary \
-					> \
-				> \
-				:metadata < \
-					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
-					:value < \
-						:drug-use-class tertiary \
-					> \
 				> \
 				:metadata < \
 					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-interview-checklist \
