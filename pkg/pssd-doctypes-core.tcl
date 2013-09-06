@@ -365,6 +365,19 @@ proc createDocType_pssd_weight { ns } {
 		> \
 	}
 
+proc createDocType_pssd_subject_initials { ns } {
+
+	asset.doc.type.update \
+		:create true :type ${ns}:pssd.subject.initials \
+		:description "Document to capture clinician details" \
+		:label "initials" \
+		:definition < \
+			:element -name "initials" -type string -length 2 -min-occurs 0 -max-occurs 1 \
+			> \
+		> \
+	}
+
+
 #============================================================================#
 proc createPSSDCoreDocTypes { ns } {
 
@@ -388,6 +401,7 @@ proc createPSSDCoreDocTypes { ns } {
 	createDocType_pssd_general_practitioner $ns
 	createDocType_pssd_clinician $ns
 	createDocType_pssd_weight $ns
+	createDocType_pssd_subject_initials $ns
 }
 
 #============================================================================#
@@ -410,7 +424,8 @@ set doctypes [list \
 				$ns:pssd.subject.handedness $ns:pssd.subject.height \
 				$ns:pssd.general-practitioner \
 				$ns:pssd.clinician \
-				$ns:pssd.weight]
+				$ns:pssd.weight \
+				$ns:pssd.subject.initials]
 	foreach doctype $doctypes {
       	 destroyDocType $doctype "true"
 	}

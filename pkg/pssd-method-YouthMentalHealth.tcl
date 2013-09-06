@@ -42,13 +42,16 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 						:definition -requirement mandatory ${ns}:pssd.subject.identifiers \
 					> \
 					:metadata < \
+						:definition -requirement optional ${ns}:pssd.subject.initials \
+					> \
+					:metadata < \
 						:definition -requirement mandatory ${ns}:pssd.subject \
 						:value < \
 							:type constant(animal) \
 						> \
 					> \
 					:metadata < \
-						:definition -requirement mandatory $ns:pssd.subject.gender \
+						:definition -requirement optional $ns:pssd.subject.gender \
 					> \
 					:metadata < \
 						:definition -requirement mandatory ${ns}:pssd.animal.subject \
@@ -57,10 +60,10 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 						> \
 					> \
 					:metadata < \
-						:definition -requirement mandatory ${ns}:pssd.subject.date-of-birth \
+						:definition -requirement optional ${ns}:pssd.subject.date-of-birth \
 					> \
 					:metadata < \
-						:definition -requirement mandatory ${ns}:pssd.subject.age-at-baseline \
+						:definition -requirement optional ${ns}:pssd.subject.age-at-baseline \
 					> \
 					:metadata < \
 						:definition -requirement optional ${ns}:pssd.subject.handedness \
@@ -75,7 +78,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 						:definition -requirement optional ${ns}:pssd.referring-clinician \
 					> \
 					:metadata < \
-						:definition -requirement mandatory ${ns}:pssd.patient-data-summary \
+						:definition -requirement optional ${ns}:pssd.patient-data-summary \
 					> \
 				> \
 			> \

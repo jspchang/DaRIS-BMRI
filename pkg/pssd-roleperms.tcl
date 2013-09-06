@@ -162,6 +162,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.height PUBLISH] \
 	[list document ${ns}:pssd.subject.identifiers ACCESS] \
 	[list document ${ns}:pssd.subject.identifiers PUBLISH] \
+	[list document ${ns}:pssd.subject.initials ACCESS] \
+	[list document ${ns}:pssd.subject.initials PUBLISH] \
 	[list document ${ns}:pssd.subject.languages ACCESS] \
 	[list document ${ns}:pssd.subject.languages PUBLISH] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
@@ -355,6 +357,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.height PUBLISH] \
 	[list document ${ns}:pssd.subject.identifiers ACCESS] \
 	[list document ${ns}:pssd.subject.identifiers PUBLISH] \
+	[list document ${ns}:pssd.subject.initials ACCESS] \
+	[list document ${ns}:pssd.subject.initials PUBLISH] \
 	[list document ${ns}:pssd.subject.languages ACCESS] \
 	[list document ${ns}:pssd.subject.languages PUBLISH] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
