@@ -373,7 +373,6 @@ proc createDocType_pssd_subject_initials { ns } {
 		:label "initials" \
 		:definition < \
 			:element -name "initials" -type string -length 2 -min-occurs 0 -max-occurs 1 \
-			> \
 		> \
 	}
 

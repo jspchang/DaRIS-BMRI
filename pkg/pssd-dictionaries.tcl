@@ -194,7 +194,6 @@ proc createDict_pssd_diagnostic_staging_model { ns } {
 	addDictionaryEntry  ${ns}.pssd.diagnostic-staging-model "stage-3b"
 	addDictionaryEntry  ${ns}.pssd.diagnostic-staging-model "stage-3c"
 	addDictionaryEntry  ${ns}.pssd.diagnostic-staging-model "stage-4"
-	addDictionaryEntry  ${ns}.pssd.diagnostic-staging-model "control"
 	addDictionaryEntry  ${ns}.pssd.diagnostic-staging-model "not-applicable"
 	addDictionaryEntry  ${ns}.pssd.diagnostic-staging-model "missing"
 }

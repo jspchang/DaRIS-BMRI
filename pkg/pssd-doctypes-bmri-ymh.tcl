@@ -442,6 +442,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
 				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 \
 			> \
+			:element -name "notes" -type string -min-occurs 0 -max-occurs 1 -case-sensitive true \
 		> \
 }
 
