@@ -176,6 +176,7 @@ proc setRolePerms { ns } {
 						[list service ${ns}.pssd.* MODIFY] \
 						[list service server.database.describe ACCESS]]
 
+
 # Role for user of this package; grant this to your users.
 	set domain_model_user_role        $ns.pssd.model.user
 	createRole     $domain_model_user_role
@@ -374,4 +375,10 @@ proc setRolePerms { ns } {
 #
 # Grant this role to the DICOM server proxy user
 #grantRolePerms $domain_dicom_ingest_role $dicom_ingest_service_perms
+
+##########################################################################
+# These specialized services grant roles to other roles and users
+# They need to have system-administrator role to do this
+grantRole plugin:service ${ns}.pssd.user.create system-administrator
+
 }

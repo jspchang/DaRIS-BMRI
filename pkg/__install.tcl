@@ -65,8 +65,8 @@ srefresh
 # ============================================================================
 # Domain access configuration
 # ============================================================================
-source pssd-domain-config.tcl
-grantDomainPerms $tns
+#source pssd-domain-config.tcl
+#grantDomainPerms $tns
 
 # ============================================================================
 # Create PSSD object namespaces
