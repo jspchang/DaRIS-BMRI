@@ -46,7 +46,7 @@ proc createDocType_pssd_subject_education { ns } {
 		:description "subject education information" \
 		:label "Education" \
 		:definition < \
-			:element -name "high-school-grade-completed" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+			:element -name "highest-school-grade-completed" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "Subjects language" \
 				:restriction -base "enumeration" < \
 						:value "primary" \
@@ -113,7 +113,7 @@ proc createDocType_pssd_sr_vocation { ns } {
 					:value "full-time-employment" \
 				> \
 			> \
-			:element -name "volunteer" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+			:element -name "occupation" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "subjects employment status" \
 				:restriction -base "enumeration" < \
 					:value "volunteer-work" \
@@ -942,6 +942,14 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				> \
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
+			:element -name "inhalants" -type document -min-occurs 0 -max-occurs 1 < \
+				:element -name "has-used-inhalants" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
+				> \
+				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
+			> \
 			:element -name "sedatives" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "has-used-sedatives" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
@@ -1021,6 +1029,11 @@ proc createDocType_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 					:dictionary $ns.pssd.sr-substance-use-scale-last-3-months \
 				> \
 			> \
+			:element -name "inhalants" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.sr-substance-use-scale-last-3-months \
+				> \
+			> \
 			:element -name "sedatives" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-substance-use-scale-last-3-months \
@@ -1042,7 +1055,6 @@ proc createDocType_pssd_sr_substance_use_scale_4_last_3_months { ns } {
 						:dictionary $ns.pssd.sr-substance-use-scale-last-3-months \
 					> \
 				> \
-				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
 		> \

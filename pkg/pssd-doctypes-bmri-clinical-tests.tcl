@@ -339,8 +339,19 @@ proc createDocType_pssd_ap_sds { ns } {
 		:description "Severity of Dependence Scale" \
 		:label "severity-of-dependence-scale" \
 		:definition < \
-			:element -name drug -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name drug-name -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name drug -type document -min-occurs 0 -max-occurs 3 < \
+				:element -name "drug-name" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+					:restriction -base enumeration < \
+						:value "alcohol" \
+						:value "cannabis" \
+						:value "amphetamine" \
+						:value "ecstasy" \
+						:value "other" \
+						:value "opioids" \
+						:value "missing-not-available" \
+						:value "not-applicable" \
+					> \
+				> \
 				:element -name "drug-class" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:restriction -base enumeration < \
 						:value "primary" \
@@ -350,38 +361,38 @@ proc createDocType_pssd_ap_sds { ns } {
 				> \
 				:element -name "amount-use-pattern" -type string -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "administration-route" -type string -min-occurs 0 -max-occurs 1 -index true \
-			> \
-			:element -name "response-card-q1" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
-				:description "Question 1 - Do you think your use of ‘drug’ was out of control?" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.ap-sds-scores \
+				:element -name "response-card-q1" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+					:description "Question 1 - Do you think your use of ‘drug’ was out of control?" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.ap-sds-scores \
+					> \
 				> \
-			> \
-			:element -name "response-card-q2" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
-				:description "Question 2 - Did the prospect of missing a fix (or dose) make you anxious or worried?" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.ap-sds-scores \
+				:element -name "response-card-q2" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+					:description "Question 2 - Did the prospect of missing a fix (or dose) make you anxious or worried?" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.ap-sds-scores \
+					> \
 				> \
-			> \
-			:element -name "response-card-q3" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
-				:description "Question 3 - Did you worry about your use of ‘drug’?" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.ap-sds-scores \
+				:element -name "response-card-q3" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+					:description "Question 3 - Did you worry about your use of ‘drug’?" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.ap-sds-scores \
+					> \
 				> \
-			> \
-			:element -name "response-card-q4" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
-				:description "Question 4 - Did you wish you could stop?" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.ap-sds-scores \
+				:element -name "response-card-q4" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+					:description "Question 4 - Did you wish you could stop?" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.ap-sds-scores \
+					> \
 				> \
-			> \
-			:element -name "response-card-q5" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
-				:description "Question 5 - How difficult was it to stop of go without ‘drug’?" \
-				:restriction -base enumeration < \
-					:dictionary $ns.pssd.ap-sds-scores \
+				:element -name "response-card-q5" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+					:description "Question 5 - How difficult was it to stop of go without ‘drug’?" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.ap-sds-scores \
+					> \
 				> \
+				:element -name "total-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			> \
-			:element -name "total-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -538,8 +549,13 @@ proc createDocType_pssd_ap_wais_wms_scores { ns } {
 		:definition < \
 			:element -name "information-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "information-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-1-recall-story-a-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-1-1st-recall-story-b" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-1-2nd-recall-story-b" -type float -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "logical-memory-1-recall-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "logical-memory-1-recall-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-2-recall-story-a-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "logical-memory-2-recall-story-b-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "logical-memory-2-recall-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "logical-memory-2-recall-age-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "logical-memory-retention-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
