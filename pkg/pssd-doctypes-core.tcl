@@ -21,7 +21,7 @@ proc createDocType_pssd_project { ns } {
 				:element -name "funder" -index "true" -min-occurs "0" -type enumeration -dictionary ${ns}.funding.organization < \
 					:description "An identifier for the funding source (e.g. ARC/LIEF)" \
 				> \
-				:element -name "grant-id" -index "true" -min-occurs 1 -max-occurs 1 -case-sensitive "true"
+				:element -name "grant-id" -type string -index "true" -min-occurs 1 -max-occurs 1 -case-sensitive "true" \
 			> \
 			:element -name keyword -type string -index true -min-occurs 0 -max-occurs infinity < \
 				:description "A keyword relevant to this Project" \
@@ -41,7 +41,6 @@ proc createDocType_pssd_project { ns } {
 					> \
 				> \
 				:element -name "identifier" -type string -min-occurs 1 -max-occurs 1 -index 1 \
-				> \
 			> \
 			:element -name "publications" -type document -min-occurs 0 -max-occurs infinity < \
 				:element -name "title" -type integer -min-occurs 1 -max-occurs 1 -index 1 \
