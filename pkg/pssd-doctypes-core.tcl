@@ -15,14 +15,21 @@ proc createDocType_pssd_project { ns } {
 		:description "Document type for  project" \
 		:definition < \
 			:element -name facility-id -min-occurs 0 -max-occurs infinity -type enumeration -index true -enumerated-values  "Brain and Mind research Institute,Other" < \
-				:description "Facility ID of the project allocated by some other authority" > \
-			:element -name "funding-id"  -index "true" -min-occurs "0" -type enumeration -dictionary ${ns}.funding.organization < \
-				:description "An identifier for the funding source (e.g. ARC/LIEF)" > \
+				:description "Facility ID of the project allocated by some other authority" \
+			> \
+			:element -name "associated-grant" -index "true" -min-occurs "0" -max-occurs infinity -type document < \
+				:element -name "funder" -index "true" -min-occurs "0" -type enumeration -dictionary ${ns}.funding.organization < \
+					:description "An identifier for the funding source (e.g. ARC/LIEF)" \
+				> \
+				:element -name "grant-id" -index "true" -min-occurs 1 -max-occurs 1 -case-sensitive "true"
+			> \
 			:element -name keyword -type string -index true -min-occurs 0 -max-occurs infinity < \
-				:description "A keyword relevant to this Project" > \
+				:description "A keyword relevant to this Project" \
+			> \
 			:element -name field-of-research -type enumeration -min-occurs 1 -max-occurs infinity -index true -dictionary  pssd.ANZSRC.Division-11.field-of-research < \
-                :description "Standard ANZSRC Field of Research (Medical and Health Sciences) classification" > \
-        > \
+				:description "Standard ANZSRC Field of Research (Medical and Health Sciences) classification" \
+			> \
+		> \
 	}
 
 # ============================================================================
