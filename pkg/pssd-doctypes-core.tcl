@@ -29,6 +29,46 @@ proc createDocType_pssd_project { ns } {
 			:element -name field-of-research -type enumeration -min-occurs 1 -max-occurs infinity -index true -dictionary  pssd.ANZSRC.Division-11.field-of-research < \
 				:description "Standard ANZSRC Field of Research (Medical and Health Sciences) classification" \
 			> \
+			:element -name "service" -type document -min-occurs 0 -max-occurs infinity < \
+				:element -name "relation-type" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:restriction -base "enumeration" < \
+						:value "supports" \
+						:value "isAvailableThrough" \
+						:value "isProducedBy" \
+						:value "isPresentedBy" \
+						:value "isOperatedOnBy" \
+						:value "hasValueAddedBy" \
+					> \
+				> \
+				:element -name "identifier" -type string -min-occurs 1 -max-occurs 1 -index 1 \
+				> \
+			> \
+			:element -name "publications" -type document -min-occurs 0 -max-occurs infinity < \
+				:element -name "title" -type integer -min-occurs 1 -max-occurs 1 -index 1 \
+				:element -name "identifier" -type document -min-occurs 1 -max-occurs 1 -index 1 < \
+					:element -name "type" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+						:restriction -base "enumeration" < \
+							:value "ark" \
+							:value "doi" \
+							:value "ean13" \
+							:value "eissn" \
+							:value "handle" \
+							:value "infouri" \
+							:value "purl" \
+							:value "uri" \
+							:value "issn" \
+							:value "isbn" \
+							:value "istc" \
+							:value "lissn" \
+							:value "upc" \
+							:value "urn" \
+							:value "mediaType" \
+						> \
+					> \
+					:element -name "value" -type string -min-occurs 1 -max-occurs 1 -index 1 \
+				> \
+				:element -name "Citation" -type string -min-occurs 0 -max-occurs 1 -index 1 \
+			> \
 		> \
 	}
 
