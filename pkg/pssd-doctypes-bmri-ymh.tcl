@@ -489,7 +489,7 @@ proc createDocType_pssd_substance_nicotine_caffeine { ns } {
 		:description "Document type for nicotine or caffeine use" \
 		:label "Has had today" \
 		:definition < \
-			:element -name smoking-nicotine-consumption  -min-occurs 0 -max-occurs 2 -type document < \
+			:element -name caffeine-nicotine-consumption  -min-occurs 0 -max-occurs 2 -type document < \
 				:element -name type -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:description "describes the substance the subject has had." \
 					:restriction -base "enumeration" < \
