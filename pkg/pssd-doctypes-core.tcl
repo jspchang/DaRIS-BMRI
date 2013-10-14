@@ -14,7 +14,7 @@ proc createDocType_pssd_project { ns } {
 		:label "Project" \
 		:description "Document type for  project" \
 		:definition < \
-			:element -name facility-id -min-occurs 0 -max-occurs infinity -type enumeration -index true -enumerated-values  "Brain and Mind rRsearch Institute,Other" < \
+			:element -name facility-id -min-occurs 0 -max-occurs infinity -type enumeration -index true -enumerated-values  "Brain and Mind Research Institute,Other" < \
 				:description "Facility ID of the project allocated by some other authority" \
 			> \
 			:element -name "associated-grant" -index "true" -min-occurs "0" -max-occurs infinity -type document < \
@@ -43,7 +43,7 @@ proc createDocType_pssd_project { ns } {
 				:element -name "identifier" -type string -min-occurs 1 -max-occurs 1 -index 1 \
 			> \
 			:element -name "publications" -type document -min-occurs 0 -max-occurs infinity < \
-				:element -name "title" -type integer -min-occurs 1 -max-occurs 1 -index 1 \
+				:element -name "title" -type string -min-occurs 1 -max-occurs 1 -index 1 \
 				:element -name "identifier" -type document -min-occurs 1 -max-occurs 1 -index 1 < \
 					:element -name "type" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 						:restriction -base "enumeration" < \
