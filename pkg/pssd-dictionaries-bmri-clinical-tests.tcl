@@ -346,6 +346,32 @@ proc createDict_pssd_sr_scale_13_5 { ns } {
 	addDictionaryEntry  ${ns}.pssd.sr-scale-13-5 "missing-not-available"
 }
 
+proc createDict_pssd_dose_units { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.dose-units]] == "false" } {
+		dictionary.create :name ${ns}.pssd.dose-units :description "medication does units of measure" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.dose-units "gram-g"
+	addDictionaryEntry  ${ns}.pssd.dose-units "microgram-ug"
+	addDictionaryEntry  ${ns}.pssd.dose-units "microlitre-uL"
+	addDictionaryEntry  ${ns}.pssd.dose-units "micron-um"
+	addDictionaryEntry  ${ns}.pssd.dose-units "milligram-mg"
+	addDictionaryEntry  ${ns}.pssd.dose-units "millieliter-mL"
+	addDictionaryEntry  ${ns}.pssd.dose-units "nanogram-ng"
+}
+
+proc createDict_pssd_dose_timing { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.dose-timing]] == "false" } {
+		dictionary.create :name ${ns}.pssd.dose-timing :description "medication dose timing unit" :case-sensitive false \
+	}
+	addDictionaryEntry  ${ns}.pssd.dose-timing "per-day"
+	addDictionaryEntry  ${ns}.pssd.dose-timing "per-week"
+	addDictionaryEntry  ${ns}.pssd.dose-timing "per-month"
+	addDictionaryEntry  ${ns}.pssd.dose-timing "per-year"
+
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 	
@@ -373,6 +399,8 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_adequately_needs_help_unable_do_not_know $ns
 	createDict_pssd_sr_scale_13_5 $ns
 	createDict_pssd_sr_apsd $ns
+	createDict_pssd_dose_units $ns
+	createDict_pssd_dose_timing $ns
 }
 
 #============================================================================#
@@ -389,7 +417,7 @@ proc destroyPSSDDicts { ns } {
 					$ns.pssd.sr-wsls $ns.pssd.sr-sias $ns.pssd.sr-scale-10 \
 					$ns.pssd.never-rarely-sometimes-often \
 					$ns.pssd.adequately-needs-help-unable-do-not-know $ns.pssd.sr-scale-13-5\
-					$ns.pssd.sr-apsd]
+					$ns.pssd.sr-apsd $ns.pssd.dose-units $ns.pssd.dose-timing]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

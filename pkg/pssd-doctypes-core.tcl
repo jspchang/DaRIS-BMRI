@@ -4,77 +4,6 @@
 # re-usable by multiple methods.
 # ============================================================================
 
-# ============================================================================
-# Project Doc Types
-# ============================================================================
-proc createDocType_pssd_project { ns } {
-
-	asset.doc.type.update \
-		:create true :type ${ns}:pssd.project \
-		:label "Project" \
-		:description "Document type for  project" \
-		:definition < \
-			:element -name facility-id -min-occurs 0 -max-occurs infinity -type enumeration -index true -enumerated-values  "Brain and Mind Research Institute,Other" < \
-				:description "Facility ID of the project allocated by some other authority" \
-			> \
-			:element -name "associated-grant" -index "true" -min-occurs "0" -max-occurs infinity -type document < \
-				:element -name "funder" -index "true" -min-occurs "0" -type enumeration -dictionary ${ns}.funding.organization < \
-					:description "An identifier for the funding source (e.g. ARC/LIEF)" \
-				> \
-				:element -name "grant-id" -type string -index "true" -min-occurs 1 -max-occurs 1 -case-sensitive "true" \
-			> \
-			:element -name keyword -type string -index true -min-occurs 0 -max-occurs infinity < \
-				:description "A keyword relevant to this Project" \
-			> \
-			:element -name field-of-research -type enumeration -min-occurs 1 -max-occurs infinity -index true -dictionary  pssd.ANZSRC.Division-11.field-of-research < \
-				:description "Standard ANZSRC Field of Research (Medical and Health Sciences) classification" \
-			> \
-			:element -name "service" -type document -min-occurs 0 -max-occurs infinity < \
-				:element -name "relation-type" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-					:restriction -base "enumeration" < \
-						:value "supports" \
-						:value "isAvailableThrough" \
-						:value "isProducedBy" \
-						:value "isPresentedBy" \
-						:value "isOperatedOnBy" \
-						:value "hasValueAddedBy" \
-					> \
-				> \
-				:element -name "identifier" -type string -min-occurs 1 -max-occurs 1 -index 1 \
-			> \
-			:element -name "publications" -type document -min-occurs 0 -max-occurs infinity < \
-				:element -name "title" -type string -min-occurs 1 -max-occurs 1 -index 1 \
-				:element -name "identifier" -type document -min-occurs 1 -max-occurs 1 -index 1 < \
-					:element -name "type" -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-						:restriction -base "enumeration" < \
-							:value "ark" \
-							:value "doi" \
-							:value "ean13" \
-							:value "eissn" \
-							:value "handle" \
-							:value "infouri" \
-							:value "purl" \
-							:value "uri" \
-							:value "issn" \
-							:value "isbn" \
-							:value "istc" \
-							:value "lissn" \
-							:value "upc" \
-							:value "urn" \
-							:value "mediaType" \
-						> \
-					> \
-					:element -name "value" -type string -min-occurs 1 -max-occurs 1 -index 1 \
-				> \
-				:element -name "Citation" -type string -min-occurs 0 -max-occurs 1 -index 1 \
-			> \
-		> \
-	}
-
-# ============================================================================
-# Subject Doc Types
-# ============================================================================
-
 proc createDocType_pssd_subject_identifiers { ns } {
 
     asset.doc.type.update \
@@ -426,7 +355,6 @@ proc createDocType_pssd_subject_initials { ns } {
 #============================================================================#
 proc createPSSDCoreDocTypes { ns } {
 
-	createDocType_pssd_project $ns
 	createDocType_pssd_subject_identifiers $ns
 	createDocType_pssd_subject $ns
 	createDocType_pssd_animal_subject $ns
@@ -452,7 +380,6 @@ proc createPSSDCoreDocTypes { ns } {
 #============================================================================#
 proc destroyPSSDCoreDocTypes { ns } {
 set doctypes [list \
-				$ns:pssd.project \
 				$ns:pssd.subject.identifiers \
 				$ns:pssd.subject \
 				$ns:pssd.animal.subject \

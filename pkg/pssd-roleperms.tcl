@@ -80,8 +80,6 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.medical-history PUBLISH] \
 	[list document ${ns}:pssd.patient-data-summary ACCESS] \
 	[list document ${ns}:pssd.patient-data-summary PUBLISH] \
-	[list document ${ns}:pssd.project ACCESS] \
-	[list document ${ns}:pssd.project PUBLISH] \
 	[list document ${ns}:pssd.psychiatrist ACCESS] \
 	[list document ${ns}:pssd.psychiatrist PUBLISH] \
 	[list document ${ns}:pssd.psychiatrist-screening ACCESS] \
@@ -276,8 +274,6 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.medical-history PUBLISH] \
 	[list document ${ns}:pssd.patient-data-summary ACCESS] \
 	[list document ${ns}:pssd.patient-data-summary PUBLISH] \
-	[list document ${ns}:pssd.project ACCESS] \
-	[list document ${ns}:pssd.project PUBLISH] \
 	[list document ${ns}:pssd.psychiatrist ACCESS] \
 	[list document ${ns}:pssd.psychiatrist PUBLISH] \
 	[list document ${ns}:pssd.psychiatrist-screening ACCESS] \
