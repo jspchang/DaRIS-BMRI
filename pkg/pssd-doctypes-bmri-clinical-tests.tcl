@@ -159,14 +159,146 @@ proc createDocType_pssd_ap_bprs { ns } {
 		:description "Brief psychiatric rating scale" \
 		:label "brief-psychiatric-rating-scale" \
 		:definition < \
-			:element -name "sections" -type document -min-occurs 0 -max-occurs 24 < \
-				:element -name "section" -type enumeration -min-occurs 0 -max-occurs 1 -index true -case-sensitive true < \
-					:description "Question sections for the BPRS test" \
+			:element -name "sections" -type document -min-occurs 1 -max-occurs 1 < \
+				:element -name "somatic-concern" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
 					:restriction -base "enumeration" < \
-						:dictionary $ns.pssd.ap-bprs-sections \
+						:dictionary $ns.pssd.ap-bprs-scores \
 					> \
 				> \
-				:element -name "score" -type enumeration -min-occurs 0 max-occurs 1 < \
+				:element -name "anxiety" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "depression" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "suicidality" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "guilt" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "hostility" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "elated-mood" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "grandiosity" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "suspiciousness" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "hallucinations" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "unusual-thought-content" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "bizarre-behaviour" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "self-neglect" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "disorientation" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "conceptual-disorganisation" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "blunted-effect" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "emotional-withdrawal" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "motor-retardation" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "tension" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "uncooperativeness" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "excitement" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "distractibility" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "motor-hyperactivity" -type enumeration -min-occurs 0 max-occurs 1 < \
+					:description "Question section score" \
+					:restriction -base "enumeration" < \
+						:dictionary $ns.pssd.ap-bprs-scores \
+					> \
+				> \
+				:element -name "mannerisms-and-posturing" -type enumeration -min-occurs 0 max-occurs 1 < \
 					:description "Question section score" \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.ap-bprs-scores \

@@ -154,32 +154,6 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -group Brief-Psychiatric-Rating-Scale -requirement optional ${ns}:pssd.ap-bprs \
-					:value < \
-						:sections somatic-concern \
-						:sections anxiety \
-						:sections depression \
-						:sections suicidality \
-						:sections guilt \
-						:sections hostility \
-						:sections elated-mood \
-						:sections grandiosity \
-						:sections suspiciousness \
-						:sections hallucinations \
-						:sections unusual-thought-content \
-						:sections bizarre-behaviour \
-						:sections self-neglect \
-						:sections disorientation \
-						:sections conceptual-disorganisation \
-						:sections blunted-effect \
-						:sections emotional-withdrawal \
-						:sections motor-retardation \
-						:sections tension \
-						:sections uncoopoerativeness \
-						:sections excitement \
-						:sections distractibility \
-						:sections motor-hyperactivity \
-						:sections mannerisms-and-posturing \
-					> \
 				> \
 				:metadata < \
 					:definition -group Young-Mania-Rating-Scale -requirement optional ${ns}:pssd.ap-ymrs \
