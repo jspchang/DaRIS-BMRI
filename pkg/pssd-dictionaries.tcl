@@ -181,7 +181,18 @@ proc createDict_pssd_relative_type { ns } {
 }
 
 #=============================================================================
+proc createDict_pssd_relative_degree { ns } {
 
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.relative-degree]] == "false" } {
+		dictionary.create :name ${ns}.pssd.relative-degree :description "dictionary for types of subjects relative degree" :case-sensitive true :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "first" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "second" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "not-applicable" :variant -lang numeric "888"
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "missing-not-available" :variant -lang numeric "999"
+}
+
+#=============================================================================
 proc createDict_pssd_staging_model { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.staging-model]] == "false" } {
@@ -425,6 +436,50 @@ proc createDict_pssd_am_pm { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.am-pm :term "pm" :variant -lang other "pm"
 }
 
+#=============================================================================
+proc createDict_pssd_major_medical_condition_yes_no { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.major-medical-condition-yes-no]] == "false" } {
+		dictionary.create :name ${ns}.pssd.major-medical-condition-yes-no :description "major medical condition yes no list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.major-medical-condition-yes-no :term "no" :variant -lang other "0"
+	dictionary.entry.add  :dictionary ${ns}.pssd.major-medical-condition-yes-no :term "yes" :variant -lang other "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.major-medical-condition-yes-no :term "questionable" :variant -lang other "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.major-medical-condition-yes-no :term "missing-not-available" :variant -lang other "999"
+}
+
+#=============================================================================
+proc createDict_pssd_child_abuse_yes_no { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.child-abuse-yes-no]] == "false" } {
+		dictionary.create :name ${ns}.pssd.child-abuse-yes-no :description "child abuse yes no list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-abuse-yes-no :term "no" :variant -lang other "0"
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-abuse-yes-no :term "yes" :variant -lang other "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-abuse-yes-no :term "possible" :variant -lang other "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-abuse-yes-no :term "not-asked" :variant -lang other "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-abuse-yes-no :term "missing-not-available" :variant -lang other "999"
+}
+
+#=============================================================================
+proc createDict_pssd_diagnosis_type { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.diagnosis-type]] == "false" } {
+		dictionary.create :name ${ns}.pssd.diagnosis-type :description "diagnosis type list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.diagnosis-type :term "primary" :variant -lang other "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.diagnosis-type :term "secondary" :variant -lang other "2"
+}
+
+#=============================================================================
+proc createDict_pssd_nicotine_caffeine { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.nicotine-caffeine]] == "false" } {
+		dictionary.create :name ${ns}.pssd.nicotine-caffeine :description "diagnosis type list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.nicotine-caffeine :term "nicotine" :variant -lang other "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.nicotine-caffeine :term "caffeine" :variant -lang other "2"
+}
 
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
@@ -439,6 +494,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_anti_depressant_types $ns
 	createDict_pssd_relative_medical_condition $ns
 	createDict_pssd_relative_type $ns
+	createDict_pssd_relative_degree $ns
 	createDict_pssd_staging_model $ns
 	createDict_pssd_diagnostic_diagnosis $ns
 	createDict_pssd_uhr_symptoms $ns
@@ -455,6 +511,10 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_language_type $ns
 	createDict_PET_tracers $ns
 	createDict_pssd_am_pm $ns
+	createDict_pssd_major_medical_condition_yes_no $ns
+	createDict_pssd_child_abuse_yes_no $ns
+	createDict_pssd_diagnosis_type $ns
+	createDict_pssd_nicotine_caffeine $ns
 
 }
 
@@ -471,6 +531,7 @@ proc destroyPSSDDicts { ns } {
 			$ns.pssd.anti-depressant-types \
 			$ns.pssd.relative-medical-condition \
 			$ns.pssd.relative-type \
+			$ns.pssd.relative-degree \
 			$ns.pssd.staging-model \
 			$ns.pssd.diagnostic-diagnosis \
 			$ns.pssd.uhr-symptoms \
@@ -485,7 +546,11 @@ proc destroyPSSDDicts { ns } {
 			$ns.pssd.animal.strains $ns.pssd.animal.genes \
 			$ns.pssd.languages \
 			$ns.pssd.language-type \
-			$ns.pssd.am-pm]
+			$ns.pssd.am-pm \
+			$ns.pssd.major-medical-condition-yes-no \
+			$ns.pssd.child-abuse-yes-no \
+			$ns.pssd.diagnosis-type \
+			$ns.pssd.nicotine-caffeine]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

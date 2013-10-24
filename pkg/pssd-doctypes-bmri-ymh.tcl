@@ -160,11 +160,7 @@ proc createDocType_pssd_diagnostic_information { ns } {
 			:element -name "child-abuse" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "identifies if the subject has been abused" \
 				:restriction -base "enumeration" < \
-					:value "no" \
-					:value "yes" \
-					:value "possible" \
-					:value "not-asked" \
-					:value "missing" \
+					:dictionary "$ns.pssd.child-abuse-yes-no" \
 				> \
 			> \
 		> \
@@ -204,8 +200,7 @@ asset.doc.type.update :create true :type ${ns}:pssd.diagnostic-ultra-high-risk \
 			:element -name "diagnosis-type" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "Diagnosis information for subjects condition" \
 				:restriction -base "enumeration" < \
-					:value "primary" \
-					:value "secondary" \
+					:dictionary "$ns.pssd.diagnosis_type" \
 				> \
 			> \
 			:element -name "condition-type" -type enumeration -min-occurs 0 -max-occurs 1 < \
@@ -265,10 +260,7 @@ proc createDocType_pssd_medical_history { ns } {
 				:element -name "has-a-major-medical-conditions" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:description "identifies if patient has a medical history" \
 					:restriction -base "enumeration" < \
-						:value "no" \
-						:value "yes" \
-						:value "questionable" \
-						:value "missing" \
+						:dictionary $ns.pssd.major-medical-condition-yes-no \
 					> \
 				> \
 				:element -name specify -type string -min-occurs 0 -index true -case-sensitive false \
@@ -295,10 +287,7 @@ proc createDocType_pssd_family_medical_history { ns } {
 				:element -name "relative-degree" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:description "relatives with medical histories" \
 					:restriction -base "enumeration" < \
-						:value "first" \
-						:value "second" \
-						:value "not-applicable" \
-						:value "missing" \
+						:dictionary $ns.pssd.relative-degree \
 					> \
 				> \
 				:element -name "relative-type" -type enumeration -min-occurs 0 -max-occurs 1 < \
@@ -613,8 +602,7 @@ proc createDocType_pssd_substance_nicotine_caffeine { ns } {
 				:element -name type -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:description "describes the substance the subject has had." \
 					:restriction -base "enumeration" < \
-						:value "caffeine" \
-						:value "nicotine" \
+						:dictionary "$ns.pssd.nicotine-caffeine" \
 					> \
 				> \
 				:element -name quantity -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false \
