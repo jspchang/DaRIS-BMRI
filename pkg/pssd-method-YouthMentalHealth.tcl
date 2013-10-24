@@ -355,6 +355,52 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					:definition -group Scale-13 -requirement optional ${ns}:pssd.sr-scale-13 \
 				> \
 			> \
+		> \
+		:step < \
+			:name ${name7} \
+			:description ${desc7} \
+			:study < \
+				:dicom < \
+					:modality MR \
+				> \
+				:type ${type7} \
+			> \
+		> \
+		:step < \
+			:name ${name4} \
+			:transform < \
+				:definition -version 0 1 \
+				:iterator < \
+					:scope ex-method \
+					:type citeable-id \
+					:query \"model='om.pssd.study' and mf-dicom-study has value \" \
+					:parameter pid \
+				> \
+			> \
+		> \
+		:step < \
+			:name ${name5} \
+			:transform < \
+				:definition -version 0 1 \
+				:iterator < \
+					:scope ex-method \
+					:type citeable-id \
+					:query \"model='om.pssd.study' and mf-dicom-study has value \" \
+					:parameter pid \
+				> \
+			> \
+		> \
+		:step < \
+			:name ${name6} \
+			:transform < \
+				:definition -version 0 1 \
+				:iterator < \
+					:scope ex-method \
+					:type citeable-id \
+					:query \"model='om.pssd.study' and mf-dicom-study has value\" \
+					:parameter pid \
+				> \
+			> \
 		>"
 # Create/update the Method
 	set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
