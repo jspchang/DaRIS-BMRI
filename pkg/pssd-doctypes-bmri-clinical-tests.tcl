@@ -34,7 +34,7 @@ proc createDocType_pssd_ap_staging_model { ns } {
 			:element -name "diagnosis-clinical-staging-model" -type enumeration -min-occurs 0 -max-occurs 1 < \
 				:description "Subject's Diagnosis and clinical staging model stage" \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.ap-staging-model \
+					:dictionary $ns.pssd.staging-model \
 				> \
 			> \
 		> \
@@ -343,111 +343,57 @@ proc createDocType_pssd_ap_ymrs { ns } {
 		:definition < \
 			:element -name "elevated-mood" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "absent" \
-					:value "mildly" \
-					:value "definite" \
-					:value "elevated" \
-					:value "euphoric" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-a \
 				> \
 			> \
 			:element -name "increased-motor-activity-energy" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "absent" \
-					:value "subjectively-increased" \
-					:value "animated" \
-					:value "excessive" \
-					:value "motor-excitement" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-b \
 				> \
 			> \
 			:element -name "sexual-interest" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "Normal"\
-					:value "Mildly" \
-					:value "Definite" \
-					:value "Spontaneous" \
-					:value "Overt" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-c \
 				> \
 			> \
 			:element -name "sleep" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "none" \
-					:value "less-up-to-1-hour" \
-					:value "less-more-than-1-hour" \
-					:value "decreased" \
-					:value "denies" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-d \
 				> \
 			> \
 			:element -name "irritability" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "absent" \
-					:value "subjectively-increased" \
-					:value "irritable" \
-					:value "frequently" \
-					:value "hostile" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-e \
 				> \
 			> \
 			:element -name "speech" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "none" \
-					:value "increased" \
-					:value "push" \
-					:value "pressured" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-f \
 				> \
 			> \
 			:element -name "language" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "absent" \
-					:value "circumstantial" \
-					:value "distractible" \
-					:value "flight of ideas" \
-					:value "incoherent" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-g \
 				> \
 			> \
 			:element -name "content" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "normal" \
-					:value "questionable" \
-					:value "special-project" \
-					:value "grandiose" \
-					:value "delusions" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-h \
 				> \
 			> \
 			:element -name "disruptive-aggressive-behaviour" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "absent" \
-					:value "sarcastic" \
-					:value "demanding" \
-					:value "threatening" \
-					:value "assaultive" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-i \
 				> \
 			> \
 			:element -name "appearance" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "appropriate" \
-					:value "minimally" \
-					:value "poorly" \
-					:value "disheveled" \
-					:value "completely" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-j \
 				> \
 			> \
 			:element -name "insight" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:restriction -base enumeration < \
-					:value "present-admits-illness" \
-					:value "possibly-ill" \
-					:value "admits-change" \
-					:value "admits-possible-change" \
-					:value "denies-change" \
-					:value "missing" \
+					:dictionary $ns.pssd.sr-ymrs-k \
 				> \
 			> \
 			:element -name "ymrs-total" -type float -max-occurs 1 -min-occurs 0 -index true < \
@@ -474,21 +420,12 @@ proc createDocType_pssd_ap_sds { ns } {
 			:element -name drug -type document -min-occurs 0 -max-occurs 3 < \
 				:element -name "drug-name" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:restriction -base enumeration < \
-						:value "alcohol" \
-						:value "cannabis" \
-						:value "amphetamine" \
-						:value "ecstasy" \
-						:value "other" \
-						:value "opioids" \
-						:value "missing-not-available" \
-						:value "not-applicable" \
+						:dictionary $ns.pssd.ap-sds-types \
 					> \
 				> \
 				:element -name "drug-class" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 					:restriction -base enumeration < \
-						:value "primary" \
-						:value "secondary" \
-						:value "tertiary" \
+						:dictionary $ns.pssd.ap-sds-drug-class \
 					> \
 				> \
 				:element -name "amount-use-pattern" -type string -min-occurs 0 -max-occurs 1 -index true \

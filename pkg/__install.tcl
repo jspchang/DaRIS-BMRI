@@ -30,7 +30,7 @@ set tns bmri
 source pssd-dictionaries.tcl
 createUpdatePSSDDicts $tns
 
-source pssd-dictionaries-bmri-clinical-tests.tcl
+source pssd-dictionaries-bmri-ymh.tcl
 createUpdatePSSDDicts $tns
 
 #============================================================================

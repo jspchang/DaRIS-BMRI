@@ -188,7 +188,7 @@ asset.doc.type.update :create true :type ${ns}:pssd.diagnostic-ultra-high-risk \
 		:element -name "is-ultra-high-risk" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 			:description "identifies if subject is ultra high risk" \
 			:restriction -base "enumeration" < \
-				:dictionary "$ns.pssd.standard-no-yes-missing" \
+				:dictionary "$ns.pssd.standard-no-yes" \
 			> \
 		> \
 		:element -name "uhr-symptoms" -min-occurs 0 -max-occurs 1 -type document < \
@@ -240,7 +240,7 @@ proc createDocType_pssd_diagnostic_staging_model { ns } {
 			:element -name "diagnosis-clinical-staging-model" -type enumeration -min-occurs 0 -max-occurs 1 < \
 				:description "Subject's Diagnosis and clinical staging model stage" \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.diagnostic-staging-model \
+					:dictionary $ns.pssd.staging-model \
 				> \
 			> \
 		> \

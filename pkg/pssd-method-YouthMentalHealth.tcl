@@ -7,7 +7,8 @@
 proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	# ExMethod metadata	
 	set name "youth-mental-health"
-	set description "Youth Mental Health data"
+	set desc "Youth Mental Health data"
+	set namespace "/pssd/methods"
 	#
 	set name1 "ymh-psychiatrist-protocol"
 	set desc1 "Youth Mental Health Study Psychiatrist Protocol (Green Form)"
@@ -21,9 +22,25 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	set desc3 "Youth Mental Health Study Self-report"
 	set type3 "ymh-self-report"
 	#
+	set name4 "ymh-t1-wighted-mri-transform"
+	set desc4 "Youth Mental Health T1 Structural MRI Transform"
+	set type4 "ymh-t1-transform"
+	#
+	set name5 "ymh-t2-wighted-mri-transform"
+	set desc5 "Youth Mental Health T2 functional MRI Transform"
+	set type5 "ymh-t2-transform"
+	#
+	set name6 "ymh-dti-mri-transform"
+	set desc6 "Youth Mental Health Diffusion Tensor Imaging MRI Transform"
+	set type6 "ymh-dti-transform"
+	#
+	set name7 "MR"
+	set desc7 "Magnetic Resonance Imaging"
+	set type7 "Magnetic Resonance Imaging"
+	#
 	set margs ""
 	# See if Method pre-exists
-	set id [getMethodId $name]
+	set id [getMethodId $name1]
 	
 	# Set arguments based on desired action	
 	set margs [setMethodUpdateArgs $id $action]
@@ -32,9 +49,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	}
 	#
 	set args "${margs} \
-		:namespace pssd/methods \
+		:namespace /pssd/methods \
 		:name ${name} \
-		:description ${description} \
+		:description ${desc} \
 		:subject < \
 			:project < \
 				:public < \
@@ -349,3 +366,4 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 		return $id2
 	}
 }
+ 
