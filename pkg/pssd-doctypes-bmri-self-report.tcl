@@ -485,10 +485,7 @@ proc createDocType_pssd_sr_family_medical_history { ns } {
 				:element -name "relative-degree" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:description "relatives with medical histories" \
 					:restriction -base "enumeration" < \
-						:value "first" \
-						:value "second" \
-						:value "not-applicable" \
-						:value "missing" \
+						:dictionary "$ns.pssd.relative-degree" \
 					> \
 				> \
 				:element -name "relative-type" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \

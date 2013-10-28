@@ -475,7 +475,7 @@ proc createDict_pssd_diagnosis_type { ns } {
 proc createDict_pssd_nicotine_caffeine { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.nicotine-caffeine]] == "false" } {
-		dictionary.create :name ${ns}.pssd.nicotine-caffeine :description "diagnosis type list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
+		dictionary.create :name ${ns}.pssd.nicotine-caffeine :description "caffeine nicotine list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
 	}
 	dictionary.entry.add  :dictionary ${ns}.pssd.nicotine-caffeine :term "nicotine" :variant -lang other "1"
 	dictionary.entry.add  :dictionary ${ns}.pssd.nicotine-caffeine :term "caffeine" :variant -lang other "2"

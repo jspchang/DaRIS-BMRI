@@ -200,7 +200,7 @@ asset.doc.type.update :create true :type ${ns}:pssd.diagnostic-ultra-high-risk \
 			:element -name "diagnosis-type" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "Diagnosis information for subjects condition" \
 				:restriction -base "enumeration" < \
-					:dictionary "$ns.pssd.diagnosis_type" \
+					:dictionary "$ns.pssd.diagnosis-type" \
 				> \
 			> \
 			:element -name "condition-type" -type enumeration -min-occurs 0 -max-occurs 1 < \
