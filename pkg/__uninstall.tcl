@@ -12,3 +12,8 @@ set plugin_jar        bmri-pssd-plugin.jar
 set plugin_path       $plugin_namespace/$plugin_jar
 set module_class      bmri.mf.plugin.pssd.PSSDPluginModule
 unloadPlugin $plugin_path $module_class
+
+#=============================================================================
+# Uninstall ymh-tags-trigger.tcl trigger script
+#=============================================================================
+source ymh-tags-trigger-uninstall.tcl

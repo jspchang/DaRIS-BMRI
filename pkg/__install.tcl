@@ -129,3 +129,8 @@ registerMember $tns
 #=============================================================================
 source pssd-roleperms.tcl
 setRolePerms $tns
+
+#=============================================================================
+# Install ymh-tags-trigger.tcl script as trigger
+#=============================================================================
+source ymh-tags-trigger-install.tcl

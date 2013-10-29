@@ -67,7 +67,7 @@ proc tag_dicom_dataset { dataset_cid } {
     
     if { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "DTI 77 direction 2mm"] && ${size} == 4235 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-dti-mri" >
-    } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "3D T1 0.9mm isotropic"] && ${size} == 160 } {
+    } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "3D T1 0.9mm isotropic"] && ${size} == 196 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t1-mri" >
     } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "fMRI 64 Resting State"] && ${number_of_temporal_positions} == 140 && ${size} == 39 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t2-mri" >
