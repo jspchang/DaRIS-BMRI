@@ -100,7 +100,7 @@ proc tag_dicom_dataset { dataset_cid } {
 
 ##
 ## NOTE: you need to substitude the YMH_PROJECT_CID to the id of your YMH prject.
-## limits trigger to the ymh project
+##
 set YMH_PROJECT_CID 687.2.1
 
 ##############################################################################
