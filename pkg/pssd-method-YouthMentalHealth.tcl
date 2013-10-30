@@ -397,7 +397,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				:iterator < \
 					:scope ex-method \
 					:type citeable-id \
-					:query \"model='om.pssd.study' and mf-dicom-study has value\" \
+					:query \"model='om.pssd.study' and mf-dicom-study has value \" \
 					:parameter pid \
 				> \
 			> \
