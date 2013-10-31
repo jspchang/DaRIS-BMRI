@@ -13,11 +13,22 @@ proc get_dicom_element_value { dataset_cid tag } {
 }
 
 ##
+##  Procedure: get_image_in_acquisition
+##  Description: get the value of image in acquisition (0020,1002).
+##  Arguments: 
+##      dataset_cid  - the citeable id of the DICOM dataset/series.
+##  Returns:
+##      the value of image in acquisition.
+##
+proc get_image_in_acquisition { dataset_cid } {
+    return [ get_dicom_element_value ${dataset_id} "00201002" ]
+}
+
+##
 ##  Procedure: get_number_of_temporal_positions
 ##  Description: get the number of temporal positions (0020,0105).
 ##  Arguments: 
 ##      dataset_cid  - the citeable id of the DICOM dataset/series.
-##      tag          - the DICOM tag in the format of ggggeeee, e.g. 00100020
 ##  Returns:
 ##      the number of temporal positions.
 ##
@@ -63,13 +74,14 @@ proc tag_dicom_dataset { dataset_cid } {
     set protocol [xvalue asset/meta/mf-dicom-series/protocol [asset.get :cid ${dataset_cid}]]
     set description [xvalue asset/meta/mf-dicom-series/description [asset.get :cid ${dataset_cid}]]
     set size [xvalue asset/meta/mf-dicom-series/size [asset.get :cid ${dataset_cid}]]
+    set image_in_acquisition         [get_image_in_acquisition ${dataset_id}]
     set number_of_temporal_positions [get_number_of_temporal_positions ${dataset_cid}]
     
-    if { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "DTI 77 direction 2mm"] && ${size} == 4235 } {
+    if { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "DTI 77 direction 2mm"] && ${image_in_acquisition} == 4235 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-dti-mri" >
-    } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "3D T1 0.9mm isotropic"] && ${size} == 196 } {
+    } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "3D T1 0.9mm isotropic"] && ${image_in_acquisition} == 196 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t1-mri" >
-    } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "fMRI 64 Resting State"] && ${number_of_temporal_positions} == 140 && ${size} == 39 } {
+    } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "fMRI 64 Resting State"] && ${number_of_temporal_positions} == 140 && ${image_in_acquisition} == 39 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t2-mri" >
     }
 }
