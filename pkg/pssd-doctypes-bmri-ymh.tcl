@@ -188,13 +188,41 @@ asset.doc.type.update :create true :type ${ns}:pssd.diagnostic-ultra-high-risk \
 			> \
 		> \
 		:element -name "uhr-symptoms" -min-occurs 0 -max-occurs 1 -type document < \
-			:element -name "decline-in-social-functioning" -min-occurs 0 -max-occurs 1 -type boolean -index true \
-			:element -name "decline-occupational-vocational-funtioning" -min-occurs 0 -max-occurs 1 -type boolean -index true \
-			:element -name "decline-in-cognition" -min-occurs 0 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-shows-mood-disturbance" -min-occurs 0 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-shows-subthreshold-psychotic-symptoms" -min-occurs 0 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-shows-drug-and-alchole-use" -min-occurs 0 -max-occurs 1 -type boolean -index true \
-			:element -name "patient-has-a-family-history-of-psychiatric-disorder" -min-occurs 0 -max-occurs 1 -type boolean -index true \
+			:element -name "decline-in-social-functioning" -min-occurs 0 -max-occurs 1 -type enumeration -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
+			:element -name "decline-occupational-vocational-funtioning" -min-occurs 0 -max-occurs 1 -type enumeration -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
+			:element -name "decline-in-cognition" -min-occurs 0 -max-occurs 1 -type enumeration -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
+			:element -name "patient-shows-mood-disturbance" -min-occurs 0 -max-occurs 1 -type enumeration -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
+			:element -name "patient-shows-subthreshold-psychotic-symptoms" -min-occurs 0 -max-occurs 1 -type enumeration -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
+			:element -name "patient-shows-drug-and-alchole-use" -min-occurs 0 -max-occurs 1 -type enumeration -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
+			:element -name "patient-has-a-family-history-of-psychiatric-disorder" -min-occurs 0 -max-occurs 1 -type enumeration -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
 		> \
 		:element -name "diagnosis" -min-occurs 0 -max-occurs infinity -type document < \
 			:element -name "diagnosis-type" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \

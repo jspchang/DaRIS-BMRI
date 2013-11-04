@@ -46,7 +46,7 @@ proc createDocType_pssd_subject_education { ns } {
 		:label "Education" \
 		:definition < \
 			:element -name "highest-school-grade-completed" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "Subjects language" \
+				:description "Subjects highest school grade completed" \
 				:restriction -base "enumeration" < \
 						:value "primary" \
 						:value "year-9-10" \
@@ -55,7 +55,7 @@ proc createDocType_pssd_subject_education { ns } {
 				> \
 			> \
 			:element -name "tertiary-education-completed" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "Subjects language" \
+				:description "Subjects highest tertiary qualification comlpeted" \
 				:restriction -base "enumeration" < \
 						:value "TAFE" \
 						:value "university-degree" \
