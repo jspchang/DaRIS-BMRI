@@ -34,8 +34,8 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	set desc6 "Youth Mental Health Diffusion Tensor Imaging MRI Transform"
 	set type6 "ymh-dti-transform"
 	#
-	set name7 "MR"
-	set desc7 "Magnetic Resonance Imaging"
+	set name7 "MRI acquisition" 
+	set desc7 "MRI acquisition of subject" 
 	set type7 "Magnetic Resonance Imaging"
 	#
 	set margs ""
@@ -360,10 +360,10 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:name ${name7} \
 			:description ${desc7} \
 			:study < \
+				:type ${type7} \
 				:dicom < \
 					:modality MR \
 				> \
-				:type ${type7} \
 			> \
 		> \
 		:step < \
