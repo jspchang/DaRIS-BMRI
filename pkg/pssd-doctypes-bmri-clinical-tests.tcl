@@ -141,6 +141,15 @@ proc createDocType_pssd_ap_ham_d { ns } {
 				> \
 			> \
 			:element -name "total-score" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "anxiety-score" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "depression-score" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "insomnia-score" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "somatic-score" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "suicide-flag" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:dictionary $ns.pssd.standard-no-yes \
+				> \
+			> \
 		> \
 }
 
@@ -462,6 +471,7 @@ proc createDocType_pssd_ap_sds { ns } {
 				> \
 				:element -name "total-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			> \
+			:element -name "substance-use-notes" -type string -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 

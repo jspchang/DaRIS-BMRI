@@ -787,7 +787,7 @@ proc createDocType_pssd_sr_who_qol { ns } {
 			> \
 			:element -name "question-12" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-who-qol \
+					:dictionary $ns.pssd.sr-who-qol-2 \
 				> \
 			> \
 			:element -name "question-13" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -797,7 +797,7 @@ proc createDocType_pssd_sr_who_qol { ns } {
 			> \
 			:element -name "question-14" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-who-qol \
+					:dictionary $ns.pssd.sr-who-qol-2 \
 				> \
 			> \
 			:element -name "question-15" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -889,7 +889,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 		:label "scale-4-substance-use-ever" \
 		:definition < \
 			:element -name "tobacco" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-tobacco" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -897,7 +897,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "alcohol" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-alcohol" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -905,7 +905,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "cannabis" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-cannabis" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -913,7 +913,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "cocaine" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-cocaine" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -921,7 +921,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "amphetamine" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-amphetamine" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -929,7 +929,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "inhalants" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-inhalants" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -937,7 +937,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "sedatives" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-sedatives" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -945,7 +945,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "hallucinogens" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-hallucinogens" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -953,7 +953,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "opioids" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-opioids" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -1118,7 +1118,7 @@ proc createDocType_pssd_sr_substance_use_baseline_audit { ns } {
 					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
 				> \
 			> \
-			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-auto-score" -type string -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -1235,7 +1235,6 @@ proc createDocType_pssd_sr_wsls { ns } {
 					:dictionary $ns.pssd.sr-wsls \
 				> \
 			> \
-			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "question-6" -max-occurs 1 -type document -min-occurs 0 < \
 				:description "number of days in the last month where the subject was unable to carry out your usual daily activities" \
 				:element -name "value" -min-occurs 0 -max-occurs 1 -type integer -index true \
@@ -1254,6 +1253,7 @@ proc createDocType_pssd_sr_wsls { ns } {
 					> \
 				> \
 			> \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
