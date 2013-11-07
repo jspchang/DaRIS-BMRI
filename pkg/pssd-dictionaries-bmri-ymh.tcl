@@ -632,6 +632,106 @@ proc createDict_pssd_sr_ymrs_k { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-k :term "missing-not-available" :variant -lang numeric "999"
 }
 
+proc createDict_pssd_sr_student_status { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-student-status]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-student-status :description "Self report student type list" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "part-time-secondary" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "full-time-secondary" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "part-time-tertiary" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "full-time-tertiary" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "discontinued-school-or-study-due-to-symptoms" :variant -lang numeric "5"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "full-time-primary" :variant -lang numeric "6"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "not-applicable" :variant -lang numeric "888"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-student-status :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
+proc createDict_pssd_sr_vocational_status { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-vocational-status]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-vocational-status :description "Self report vocational status list" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "part-time-employment" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "full-time-employment" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "volunteer-work" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "not-currently-working" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "leave-of-absence" :variant -lang numeric "5"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "house-duties" :variant -lang numeric "6"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "unemployed" :variant -lang numeric "7"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "retired" :variant -lang numeric "888"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-vocational-status :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
+proc createDict_pssd_sr_occupational_status { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-occupational-status]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-occupational-status :description "Self report occupational status list" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "student" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "employed" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "volunteer-work-not-working" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "unemployed" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
+proc createDict_pssd_timing { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.timing]] == "false" } {
+		dictionary.create :name ${ns}.pssd.timing :description "unit of time" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.timing :term "days" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.timing :term "weeks" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.timing :term "months" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.timing :term "years" :variant -lang numeric "4"
+
+}
+
+proc createDict_pssd_sr_marital_status { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-marital-status]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-marital-status :description "Self report marital status list" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-marital-status :term "never-married" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-marital-status :term "married-de-facto" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-marital-status :term "separated" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-marital-status :term "widowed" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-marital-status :term "divorced" :variant -lang numeric "5"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-marital-status :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
+proc createDict_pssd_sr_living_status { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-living-status]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-living-status :description "Self report marital status list" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-living-status :term "home-alone-independent" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-living-status :term "independent-shared-accommodation" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-living-status :term "partially-supported" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-living-status :term "dependent" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-living-status :term "other" :variant -lang numeric "5"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-living-status :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
+proc createDict_pssd_sr_tobacco_usage { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.sr-tobacco-usage]] == "false" } {
+		dictionary.create :name ${ns}.pssd.sr-tobacco-usage :description "tobacco usage dictionary" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-tobacco-usage :term "never" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-tobacco-usage :term "occasionally but stopped" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-tobacco-usage :term "occasionally continuing" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-tobacco-usage :term "regularly but stopped" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-tobacco-usage :term "regularly continuing" :variant -lang numeric "5"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-tobacco-usage :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 
@@ -681,6 +781,13 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_ymrs_i $ns
 	createDict_pssd_sr_ymrs_j $ns
 	createDict_pssd_sr_ymrs_k $ns
+	createDict_pssd_sr_student_status $ns
+	createDict_pssd_sr_vocational_status $ns
+	createDict_pssd_sr_occupational_status $ns
+	createDict_pssd_sr_marital_status $ns
+	createDict_pssd_sr_living_status $ns
+	createDict_pssd_timing $ns
+	createDict_pssd_sr_tobacco_usage $ns
 }
 
 #============================================================================#
@@ -730,7 +837,14 @@ proc destroyPSSDDicts { ns } {
 				$ns.pssd.sr-ymrs-h \
 				$ns.pssd.sr-ymrs-i \
 				$ns.pssd.sr-ymrs-j \
-				$ns.pssd.sr-ymrs-k]
+				$ns.pssd.sr-ymrs-k \
+				$ns.pssd.sr-student-status \
+				$ns.pssd.sr-vocational-status \
+				$ns.pssd.sr-occupational-status \
+				$ns.pssd.sr-marital-status \
+				$ns.pssd.sr-living-status \
+				$ns.pssd.timing
+				$ns.pssd.sr-tobacco-usage]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

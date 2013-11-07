@@ -12,9 +12,14 @@ proc createDocType_pssd_subject_identifiers { ns } {
         :label "Subject Identifiers" \
         :definition < \
         	:element -name "subject-bmri-id" -type "string" -index true -min-occurs 1 -max-occurs 1 < \
-            	:description "The BMRI ID for a subject, used to link a subject across multiple projects" > \
+            	:description "The BMRI ID for a subject, used to link a subject across multiple projects" \
+            > \
     		:element -name "subject-project-id" -type "string" -index true -min-occurs 1 -max-occurs 1 < \
-            	:description "The project specific ID for a subject" > \
+            	:description "The project specific ID for a subject" \
+            > \
+            :element -name "other-identifiers" -type "string" -index true -min-occurs 0 -max-occurs infinity < \
+            	:description "other identifiers for the subject" \
+            > \
     	> \
 	}
 
@@ -31,8 +36,11 @@ proc createDocType_pssd_subject { ns } {
 			:element -name "control" -min-occurs 0 -max-occurs 1 -type boolean -index true < \
 				:description "Identifies if the subject is a member of a control group" \
 			> \
-			:element -name "included"  -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false -enumerated-values "included,excluded,to-be-determined" < \
-            	:description "Identifies if subject is included in study" \
+			:element -name "included"  -min-occurs 1 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:description "Identifies if subject is included in study" \
+				:restriction -base enumeration < \
+					:dictionary $ns.pssd.subject.included \
+				> \
             > \
         > \
 	}
@@ -78,10 +86,7 @@ proc createDocType_pssd_subject_handedness { ns } {
 			:element -name handedness -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "Handedness of the subject" \
 				:restriction -base "enumeration" < \
-					:value left \
-					:value right \
-					:value ambidextrous \
-					:value unknown \
+					:dictionary "$ns.pssd.subject.handedness" \
 				> \
 			> \
 		> \
@@ -292,9 +297,8 @@ proc createDocType_pssd_general_practitioner { ns } {
 					:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 						:restriction -base "enumeration" < \
-							:value "months" \
-							:value "years" \
-					> \
+							:dictionary "$ns.pssd.timing" \
+						> \
 					> \
 				> \
 			> \
@@ -326,7 +330,7 @@ proc createDocType_pssd_weight { ns } {
 
 	asset.doc.type.update \
 		:create true :type ${ns}:pssd.weight \
-		:description "Document to capture clinician details" \
+		:description "Document to capture weight information" \
 		:label "weight" \
 		:definition < \
 			:element -name "weight" -type document -min-occurs 0 -max-occurs 1 < \
@@ -348,6 +352,17 @@ proc createDocType_pssd_subject_initials { ns } {
 		:label "initials" \
 		:definition < \
 			:element -name "initials" -type string -length 2 -min-occurs 0 -max-occurs 1 \
+		> \
+	}
+
+proc createDocType_pssd_notes { ns } {
+
+	asset.doc.type.update \
+		:create true :type ${ns}:pssd.notes \
+		:description "Document to capture weight information" \
+		:label "notes" \
+		:definition < \
+			:element -name "notes" -type document -min-occurs 0 -max-occurs 1 \
 		> \
 	}
 
@@ -374,6 +389,7 @@ proc createPSSDCoreDocTypes { ns } {
 	createDocType_pssd_general_practitioner $ns
 	createDocType_pssd_clinician $ns
 	createDocType_pssd_weight $ns
+	createDocType_pssd_notes $ns
 	createDocType_pssd_subject_initials $ns
 }
 
@@ -397,6 +413,7 @@ set doctypes [list \
 				$ns:pssd.general-practitioner \
 				$ns:pssd.clinician \
 				$ns:pssd.weight \
+				$ns:pssd.notes \
 				$ns:pssd.subject.initials]
 	foreach doctype $doctypes {
       	 destroyDocType $doctype "true"

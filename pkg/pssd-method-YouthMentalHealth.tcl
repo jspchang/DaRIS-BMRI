@@ -149,6 +149,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					:definition -group Administration -requirement optional ${ns}:pssd.research-psychologist \
 				> \
 				:metadata < \
+					:definition -group Administration -requirement optional ${ns}:pssd.notes \
+				> \
+				:metadata < \
 					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.checked-self-report \
 				> \
 				:metadata < \
@@ -248,6 +251,24 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 						:mri false \
 					> \
 				> \
+				:metadata < \
+					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-stories \
+				> \
+				:metadata < \
+					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-rapid-visual-processing \
+				> \
+				:metadata < \
+					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-spatial-span \
+				> \
+				:metadata < \
+					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-choice-reaction-time \
+				> \
+				:metadata < \
+					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-paired-associate-learning \
+				> \
+				:metadata < \
+					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-intra-extradimensional-shift \
+				> \
 			> \
 		> \
 		:step < \
@@ -263,6 +284,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -group Demographics -requirement optional ${ns}:pssd.weight \
+				> \
+				:metadata < \
+					:definition -group Disability -requirement optional ${ns}:pssd.subject.disability \
 				> \
 				:metadata < \
 					:definition -group Demographics -requirement optional ${ns}:pssd.subject.height \

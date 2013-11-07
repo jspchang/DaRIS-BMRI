@@ -48,6 +48,22 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.ap-wtar-raw-zscores PUBLISH] \
 	[list document ${ns}:pssd.ap-ymrs ACCESS] \
 	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
+	[list document ${ns}:pssd.ap-stories ACCESS] \
+	[list document ${ns}:pssd.ap-stories PUBLISH] \
+	[list document ${ns}:pssd.ap-sequences ACCESS] \
+	[list document ${ns}:pssd.ap-sequences PUBLISH] \
+	[list document ${ns}:pssd.ap-rapid-visual-processing ACCESS] \
+	[list document ${ns}:pssd.ap-rapid-visual-processing PUBLISH] \
+	[list document ${ns}:pssd.ap-spatial-span ACCESS] \
+	[list document ${ns}:pssd.ap-spatial-span PUBLISH] \
+	[list document ${ns}:pssd.ap-choice-reaction-time ACCESS] \
+	[list document ${ns}:pssd.ap-choice-reaction-time PUBLISH] \
+	[list document ${ns}:pssd.ap-paired-associate-learning ACCESS] \
+	[list document ${ns}:pssd.ap-paired-associate-learning PUBLISH] \
+	[list document ${ns}:pssd.ap-intra-extradimensional-shift ACCESS] \
+	[list document ${ns}:pssd.ap-intra-extradimensional-shift PUBLISH] \
+	[list document ${ns}:pssd.subject.disability ACCESS] \
+	[list document ${ns}:pssd.subject.disability PUBLISH] \
 	[list document ${ns}:pssd.background-information ACCESS] \
 	[list document ${ns}:pssd.background-information PUBLISH] \
 	[list document ${ns}:pssd.checked-self-report ACCESS] \
@@ -152,20 +168,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.date-of-birth PUBLISH] \
 	[list document ${ns}:pssd.subject.education ACCESS] \
 	[list document ${ns}:pssd.subject.education PUBLISH] \
-	[list document ${ns}:pssd.subject.gender ACCESS] \
-	[list document ${ns}:pssd.subject.gender PUBLISH] \
-	[list document ${ns}:pssd.subject.handedness ACCESS] \
-	[list document ${ns}:pssd.subject.handedness PUBLISH] \
-	[list document ${ns}:pssd.subject.height ACCESS] \
-	[list document ${ns}:pssd.subject.height PUBLISH] \
-	[list document ${ns}:pssd.subject.identifiers ACCESS] \
-	[list document ${ns}:pssd.subject.identifiers PUBLISH] \
-	[list document ${ns}:pssd.subject.initials ACCESS] \
-	[list document ${ns}:pssd.subject.initials PUBLISH] \
-	[list document ${ns}:pssd.subject.languages ACCESS] \
-	[list document ${ns}:pssd.subject.languages PUBLISH] \
-	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
-	[list document ${ns}:pssd.substance.nicotine-caffeine PUBLISH] \
+	[list document ${ns}:pssd.notes ACCESS] \
+	[list document ${ns}:pssd.notes PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
 	[list document ${ns}:pssd.weight PUBLISH]] \
 
@@ -242,6 +246,22 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.ap-wtar-raw-zscores PUBLISH] \
 	[list document ${ns}:pssd.ap-ymrs ACCESS] \
 	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
+	[list document ${ns}:pssd.ap-stories ACCESS] \
+	[list document ${ns}:pssd.ap-stories PUBLISH] \
+	[list document ${ns}:pssd.ap-sequences ACCESS] \
+	[list document ${ns}:pssd.ap-sequences PUBLISH] \
+	[list document ${ns}:pssd.ap-rapid-visual-processing ACCESS] \
+	[list document ${ns}:pssd.ap-rapid-visual-processing PUBLISH] \
+	[list document ${ns}:pssd.ap-spatial-span ACCESS] \
+	[list document ${ns}:pssd.ap-spatial-span PUBLISH] \
+	[list document ${ns}:pssd.ap-choice-reaction-time ACCESS] \
+	[list document ${ns}:pssd.ap-choice-reaction-time PUBLISH] \
+	[list document ${ns}:pssd.ap-paired-associate-learning ACCESS] \
+	[list document ${ns}:pssd.ap-paired-associate-learning PUBLISH] \
+	[list document ${ns}:pssd.ap-intra-extradimensional-shift ACCESS] \
+	[list document ${ns}:pssd.ap-intra-extradimensional-shift PUBLISH] \
+	[list document ${ns}:pssd.subject.disability ACCESS] \
+	[list document ${ns}:pssd.subject.disability PUBLISH] \
 	[list document ${ns}:pssd.background-information ACCESS] \
 	[list document ${ns}:pssd.background-information PUBLISH] \
 	[list document ${ns}:pssd.checked-self-report ACCESS] \
@@ -360,6 +380,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.languages PUBLISH] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine PUBLISH] \
+	[list document ${ns}:pssd.notes ACCESS] \
+	[list document ${ns}:pssd.notes PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
 	[list document ${ns}:pssd.weight PUBLISH]] \
 

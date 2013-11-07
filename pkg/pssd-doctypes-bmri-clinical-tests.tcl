@@ -792,6 +792,229 @@ proc destroyDocType_pssd_ap_cowat_scores { ns force } {
 	}
 }
 
+#======================================================================================
+# stories docType
+
+proc createDocType_pssd_ap_stories { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.ap-stories \
+		:description "Assessment protocol wais-wms subtests-scores" \
+		:label "wtar-raw-and-z-scores" \
+		:definition < \
+			:element -name "story-1-recall-c-or-e-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "story-1-recall-d-or-f-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "story-1-recall-total-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "story-1-recall-total-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "story-2-recall-c-or-e-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "story-2-recall-d-or-f-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "story-2-recall-total-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "story-2-recall-total-ss-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_ap_stories { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-stories]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-stories :force $force
+    }
+}
+
+#======================================================================================
+# sequences docType
+
+proc createDocType_pssd_ap_sequences { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.ap-sequences \
+		:description "Assessment protocol sequences score" \
+		:label "sequences" \
+		:definition < \
+			:element -name "sequences" -type float -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_ap_sequences { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-sequences]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-sequences :force $force
+    }
+}
+
+#======================================================================================
+# sequences docType
+
+proc createDocType_pssd_ap_rapid_visual_processing { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.ap-rapid-visual-processing \
+		:description "Assessment protocol sequences score" \
+		:label "sequences" \
+		:definition < \
+			:element -name "a-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "a-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "b-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "b-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "mean-latency-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "mean-latency-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_ap_rapid_visual_processing { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-rapid-visual-processing]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-rapid-visual-processing :force $force
+    }
+}
+
+#======================================================================================
+# spatial span docType
+
+proc createDocType_pssd_ap_spatial_span { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.ap-spatial-span \
+		:description "Assessment protocol spatial span scores" \
+		:label "sequences" \
+		:definition < \
+			:element -name "raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "errors-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "errors-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_ap_spatial_span { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-spatial-span]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-spatial-span :force $force
+    }
+}
+
+#======================================================================================
+# choice reaction time docType
+
+proc createDocType_pssd_ap_choice_reaction_time { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.ap-choice-reaction-time \
+		:description "Assessment protocol sequences score" \
+		:label "sequences" \
+		:definition < \
+			:element -name "simple-movement-time-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "simple-movement-time-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "simple-reaction-time-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "simple-reaction-time-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "choice-5-movement-time-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "choice-5-movement-time-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "choice-5-reaction-time-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "choice-5-reaction-time-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_ap_choice_reaction_time { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-choice-reaction-time]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-choice-reaction-time :force $force
+    }
+}
+
+#======================================================================================
+# paired associate learning docType
+
+proc createDocType_pssd_ap_paired_associate_learning { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.ap-paired-associate-learning \
+		:description "Assessment protocol sequences score" \
+		:label "sequences" \
+		:definition < \
+			:element -name "total-erros-adjusted-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-erros-adjusted-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-erros-6-shapes-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-erros-6-shapes-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_ap_paired_associate_learning { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-paired-associate-learning]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-paired-associate-learning :force $force
+    }
+}
+
+#======================================================================================
+# Intra/extra dimensional shift docType
+
+proc createDocType_pssd_ap_intra_extradimensional_shift { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.ap-intra-extradimensional-shift \
+		:description "Assessment protocol intra extra dimensional shift score" \
+		:label "sequences" \
+		:definition < \
+			:element -name "stages-completed-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "stages-completed-raw-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-erros-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-erros-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "pre-extradimensional-shift-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "pre-extradimensional-shift-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "extradimensional-shift-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "extradimensional-shift-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+		> \
+}
+
+proc destroyDocType_pssd_intra_extradimensional_shift { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.ap-intra-extradimensional-shift]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.ap-intra-extradimensional-shift :force $force
+    }
+}
+
+#======================================================================================
+# disability docType
+
+proc createDocType_pssd_subject_disability { ns } {
+
+	asset.doc.type.update :create true :type ${ns}:pssd.subject.disability \
+		:description "Assessment protocol intra extra dimensional shift score" \
+		:label "disability" \
+		:definition < \
+			:element -name "subject-has-a-disability" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+				:description "subject has a learning disability?" \
+				:restriction -base enumeration < \
+					:dictionary $ns.pssd.standard-no-yes \
+				> \
+			> \
+			:element -name "learning-disability" -type document -max-occurs 1 -min-occurs 0 < \
+				:element -name "subject-has-a-learning-disability" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
+					:description "subject has a learning disability?" \
+					:restriction -base enumeration < \
+						:dictionary $ns.pssd.standard-no-yes \
+					> \
+				> \
+				:element -name "specify" -type string -max-occurs 1 -min-occurs 0 -index true \
+			> \
+		> \
+}
+
+proc destroyDocType_pssd_subject_disability { ns force } {
+    if { $force != "true" && $force != "false" } {
+                set force "false"
+    }
+    if { [xvalue exists [asset.doc.type.exists :type ${ns}:pssd.subject.disability]] == "true" } {
+                asset.doc.type.destroy :type ${ns}:pssd.subject.disability :force $force
+    }
+}
+
+
 #============================================================================#
 proc createPSSD-bmri-clinical-tests-DocTypes { ns } {
 
@@ -812,6 +1035,14 @@ proc createPSSD-bmri-clinical-tests-DocTypes { ns } {
 	createDocType_pssd_ap_tmt_scores $ns
 	createDocType_pssd_ap_dass_scores $ns
 	createDocType_pssd_ap_cowat_scores $ns
+	createDocType_pssd_ap_stories $ns
+	createDocType_pssd_ap_sequences $ns
+	createDocType_pssd_ap_rapid_visual_processing $ns
+	createDocType_pssd_ap_spatial_span $ns
+	createDocType_pssd_ap_choice_reaction_time $ns
+	createDocType_pssd_ap_paired_associate_learning $ns
+	createDocType_pssd_ap_intra_extradimensional_shift $ns
+	createDocType_pssd_subject_disability $ns
 }
 
 #============================================================================#
@@ -831,7 +1062,15 @@ set doctypes [list $ns:pssd.ap-sofas \
 				$ns:pssd.ap-ravlt-scores \
 				$ns:pssd.ap-rcft-scores \
 				$ns:pssd.ap-dass-scores \
-				$ns:pssd.ap-cowat-scores]
+				$ns:pssd.ap-cowat-scores \
+				$ns:pssd.ap-stories \
+				$ns:pssd.ap-sequences \
+				$ns:pssd.ap-rapid-visual-processing \
+				$ns:pssd.ap-spatial-span \
+				$ns:pssd.ap-choice-reaction-time \
+				$ns:pssd.ap-paired-associate-learning \
+				$ns:pssd.ap-intra-extradimensional-shift \
+				$ns:pssd.subject.disability]
 	foreach doctype $doctypes {
 		 destroyDocType $doctype "true"
 	}
