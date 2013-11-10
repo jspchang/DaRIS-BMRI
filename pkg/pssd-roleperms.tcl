@@ -16,52 +16,48 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.animal.subject PUBLISH] \
 	[list document ${ns}:pssd.ap-bprs ACCESS] \
 	[list document ${ns}:pssd.ap-bprs PUBLISH] \
-	[list document ${ns}:pssd.ap-cantab-checklist ACCESS] \
-	[list document ${ns}:pssd.ap-cantab-checklist PUBLISH] \
-	[list document ${ns}:pssd.ap-cowat-scores ACCESS] \
-	[list document ${ns}:pssd.ap-cowat-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-dass-scores ACCESS] \
-	[list document ${ns}:pssd.ap-dass-scores PUBLISH] \
+	[list document ${ns}:pssd.ap-cowat ACCESS] \
+	[list document ${ns}:pssd.ap-cowat PUBLISH] \
+	[list document ${ns}:pssd.ap-mood ACCESS] \
+	[list document ${ns}:pssd.ap-mood PUBLISH] \
 	[list document ${ns}:pssd.ap-ham-d ACCESS] \
 	[list document ${ns}:pssd.ap-ham-d PUBLISH] \
 	[list document ${ns}:pssd.ap-interview-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-interview-checklist PUBLISH] \
+	[list document ${ns}:pssd.ap-np-sc-checklist ACCESS] \
+	[list document ${ns}:pssd.ap-np-sc-checklist PUBLISH] \
 	[list document ${ns}:pssd.ap-other-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-other-checklist PUBLISH] \
-	[list document ${ns}:pssd.ap-ravlt-scores ACCESS] \
-	[list document ${ns}:pssd.ap-ravlt-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-rcft-scores ACCESS] \
-	[list document ${ns}:pssd.ap-rcft-scores PUBLISH] \
+	[list document ${ns}:pssd.ap-rey-auditory-verbal-learning-test ACCESS] \
+	[list document ${ns}:pssd.ap-rey-auditory-verbal-learning-test PUBLISH] \
+	[list document ${ns}:pssd.ap-rey-complex-figure-test ACCESS] \
+	[list document ${ns}:pssd.ap-rey-complex-figure-test PUBLISH] \
 	[list document ${ns}:pssd.ap-sds ACCESS] \
 	[list document ${ns}:pssd.ap-sds PUBLISH] \
 	[list document ${ns}:pssd.ap-sofas ACCESS] \
 	[list document ${ns}:pssd.ap-sofas PUBLISH] \
 	[list document ${ns}:pssd.ap-staging-model ACCESS] \
 	[list document ${ns}:pssd.ap-staging-model PUBLISH] \
-	[list document ${ns}:pssd.ap-tests-checklist ACCESS] \
-	[list document ${ns}:pssd.ap-tests-checklist PUBLISH] \
-	[list document ${ns}:pssd.ap-tmt-scores ACCESS] \
-	[list document ${ns}:pssd.ap-tmt-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-wais-wms-scores ACCESS] \
-	[list document ${ns}:pssd.ap-wais-wms-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-wtar-raw-zscores ACCESS] \
-	[list document ${ns}:pssd.ap-wtar-raw-zscores PUBLISH] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing ACCESS] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing PUBLISH] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets ACCESS] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets PUBLISH] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge ACCESS] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge PUBLISH] \
 	[list document ${ns}:pssd.ap-ymrs ACCESS] \
 	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
-	[list document ${ns}:pssd.ap-stories ACCESS] \
-	[list document ${ns}:pssd.ap-stories PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal PUBLISH] \
 	[list document ${ns}:pssd.ap-sequences ACCESS] \
 	[list document ${ns}:pssd.ap-sequences PUBLISH] \
-	[list document ${ns}:pssd.ap-rapid-visual-processing ACCESS] \
-	[list document ${ns}:pssd.ap-rapid-visual-processing PUBLISH] \
-	[list document ${ns}:pssd.ap-spatial-span ACCESS] \
-	[list document ${ns}:pssd.ap-spatial-span PUBLISH] \
-	[list document ${ns}:pssd.ap-choice-reaction-time ACCESS] \
-	[list document ${ns}:pssd.ap-choice-reaction-time PUBLISH] \
-	[list document ${ns}:pssd.ap-paired-associate-learning ACCESS] \
-	[list document ${ns}:pssd.ap-paired-associate-learning PUBLISH] \
-	[list document ${ns}:pssd.ap-intra-extradimensional-shift ACCESS] \
-	[list document ${ns}:pssd.ap-intra-extradimensional-shift PUBLISH] \
+	[list document ${ns}:pssd.ap-sustained-attention ACCESS] \
+	[list document ${ns}:pssd.ap-sustained-attention PUBLISH] \
+	[list document ${ns}:pssd.ap-working-memory ACCESS] \
+	[list document ${ns}:pssd.ap-working-memory PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual PUBLISH] \
+	[list document ${ns}:pssd.ap-executive-functioning ACCESS] \
+	[list document ${ns}:pssd.ap-executive-functioning PUBLISH] \
 	[list document ${ns}:pssd.subject.disability ACCESS] \
 	[list document ${ns}:pssd.subject.disability PUBLISH] \
 	[list document ${ns}:pssd.background-information ACCESS] \
@@ -170,6 +166,10 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.education PUBLISH] \
 	[list document ${ns}:pssd.notes ACCESS] \
 	[list document ${ns}:pssd.notes PUBLISH] \
+	[list document ${ns}:pssd.baseline-followup ACCESS] \
+	[list document ${ns}:pssd.baseline-followup PUBLISH] \
+	[list document ${ns}:pssd.child-adult ACCESS] \
+	[list document ${ns}:pssd.child-adult PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
 	[list document ${ns}:pssd.weight PUBLISH]] \
 
@@ -214,52 +214,48 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.animal.subject PUBLISH] \
 	[list document ${ns}:pssd.ap-bprs ACCESS] \
 	[list document ${ns}:pssd.ap-bprs PUBLISH] \
-	[list document ${ns}:pssd.ap-cantab-checklist ACCESS] \
-	[list document ${ns}:pssd.ap-cantab-checklist PUBLISH] \
-	[list document ${ns}:pssd.ap-cowat-scores ACCESS] \
-	[list document ${ns}:pssd.ap-cowat-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-dass-scores ACCESS] \
-	[list document ${ns}:pssd.ap-dass-scores PUBLISH] \
+	[list document ${ns}:pssd.ap-cowat ACCESS] \
+	[list document ${ns}:pssd.ap-cowat PUBLISH] \
+	[list document ${ns}:pssd.ap-mood ACCESS] \
+	[list document ${ns}:pssd.ap-mood PUBLISH] \
 	[list document ${ns}:pssd.ap-ham-d ACCESS] \
 	[list document ${ns}:pssd.ap-ham-d PUBLISH] \
 	[list document ${ns}:pssd.ap-interview-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-interview-checklist PUBLISH] \
+	[list document ${ns}:pssd.ap-np-sc-checklist ACCESS] \
+	[list document ${ns}:pssd.ap-np-sc-checklist PUBLISH] \
 	[list document ${ns}:pssd.ap-other-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-other-checklist PUBLISH] \
-	[list document ${ns}:pssd.ap-ravlt-scores ACCESS] \
-	[list document ${ns}:pssd.ap-ravlt-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-rcft-scores ACCESS] \
-	[list document ${ns}:pssd.ap-rcft-scores PUBLISH] \
+	[list document ${ns}:pssd.ap-rey-auditory-verbal-learning-test ACCESS] \
+	[list document ${ns}:pssd.ap-rey-auditory-verbal-learning-test PUBLISH] \
+	[list document ${ns}:pssd.ap-rey-complex-figure-test ACCESS] \
+	[list document ${ns}:pssd.ap-rey-complex-figure-test PUBLISH] \
 	[list document ${ns}:pssd.ap-sds ACCESS] \
 	[list document ${ns}:pssd.ap-sds PUBLISH] \
 	[list document ${ns}:pssd.ap-sofas ACCESS] \
 	[list document ${ns}:pssd.ap-sofas PUBLISH] \
 	[list document ${ns}:pssd.ap-staging-model ACCESS] \
 	[list document ${ns}:pssd.ap-staging-model PUBLISH] \
-	[list document ${ns}:pssd.ap-tests-checklist ACCESS] \
-	[list document ${ns}:pssd.ap-tests-checklist PUBLISH] \
-	[list document ${ns}:pssd.ap-tmt-scores ACCESS] \
-	[list document ${ns}:pssd.ap-tmt-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-wais-wms-scores ACCESS] \
-	[list document ${ns}:pssd.ap-wais-wms-scores PUBLISH] \
-	[list document ${ns}:pssd.ap-wtar-raw-zscores ACCESS] \
-	[list document ${ns}:pssd.ap-wtar-raw-zscores PUBLISH] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing ACCESS] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing PUBLISH] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets ACCESS] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets PUBLISH] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge ACCESS] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge PUBLISH] \
 	[list document ${ns}:pssd.ap-ymrs ACCESS] \
 	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
-	[list document ${ns}:pssd.ap-stories ACCESS] \
-	[list document ${ns}:pssd.ap-stories PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal PUBLISH] \
 	[list document ${ns}:pssd.ap-sequences ACCESS] \
 	[list document ${ns}:pssd.ap-sequences PUBLISH] \
-	[list document ${ns}:pssd.ap-rapid-visual-processing ACCESS] \
-	[list document ${ns}:pssd.ap-rapid-visual-processing PUBLISH] \
-	[list document ${ns}:pssd.ap-spatial-span ACCESS] \
-	[list document ${ns}:pssd.ap-spatial-span PUBLISH] \
-	[list document ${ns}:pssd.ap-choice-reaction-time ACCESS] \
-	[list document ${ns}:pssd.ap-choice-reaction-time PUBLISH] \
-	[list document ${ns}:pssd.ap-paired-associate-learning ACCESS] \
-	[list document ${ns}:pssd.ap-paired-associate-learning PUBLISH] \
-	[list document ${ns}:pssd.ap-intra-extradimensional-shift ACCESS] \
-	[list document ${ns}:pssd.ap-intra-extradimensional-shift PUBLISH] \
+	[list document ${ns}:pssd.ap-sustained-attention ACCESS] \
+	[list document ${ns}:pssd.ap-sustained-attention PUBLISH] \
+	[list document ${ns}:pssd.ap-working-memory ACCESS] \
+	[list document ${ns}:pssd.ap-working-memory PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual PUBLISH] \
+	[list document ${ns}:pssd.ap-executive-functioning ACCESS] \
+	[list document ${ns}:pssd.ap-executive-functioning PUBLISH] \
 	[list document ${ns}:pssd.subject.disability ACCESS] \
 	[list document ${ns}:pssd.subject.disability PUBLISH] \
 	[list document ${ns}:pssd.background-information ACCESS] \
@@ -382,6 +378,10 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.substance.nicotine-caffeine PUBLISH] \
 	[list document ${ns}:pssd.notes ACCESS] \
 	[list document ${ns}:pssd.notes PUBLISH] \
+	[list document ${ns}:pssd.baseline-followup ACCESS] \
+	[list document ${ns}:pssd.baseline-followup PUBLISH] \
+	[list document ${ns}:pssd.child-adult ACCESS] \
+	[list document ${ns}:pssd.child-adult PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
 	[list document ${ns}:pssd.weight PUBLISH]] \
 

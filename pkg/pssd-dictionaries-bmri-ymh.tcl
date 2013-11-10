@@ -732,6 +732,17 @@ proc createDict_pssd_sr_tobacco_usage { ns } {
 
 }
 
+proc createDict_pssd_secs_mins_hours { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.secs-mins-hours]] == "false" } {
+		dictionary.create :name ${ns}.pssd.secs-mins-hours :description "unit of time" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "seconds" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "minutes" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "hours" :variant -lang numeric "3"
+
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 
@@ -788,6 +799,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_living_status $ns
 	createDict_pssd_timing $ns
 	createDict_pssd_sr_tobacco_usage $ns
+	createDict_pssd_secs_mins_hours $ns
 }
 
 #============================================================================#
@@ -843,7 +855,8 @@ proc destroyPSSDDicts { ns } {
 				$ns.pssd.sr-occupational-status \
 				$ns.pssd.sr-marital-status \
 				$ns.pssd.sr-living-status \
-				$ns.pssd.timing
+				$ns.pssd.timing \
+				$ns.pssd.secs-mins-hours \
 				$ns.pssd.sr-tobacco-usage]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {

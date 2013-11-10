@@ -83,9 +83,6 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 						:definition -requirement optional ${ns}:pssd.subject.age-at-baseline \
 					> \
 					:metadata < \
-						:definition -requirement optional ${ns}:pssd.subject.handedness \
-					> \
-					:metadata < \
 						:definition -requirement optional ${ns}:pssd.subject.languages \
 					> \
 					:metadata < \
@@ -106,34 +103,37 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type1} \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.date \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -group Pyschiartrist-screening -requirement optional ${ns}:pssd.psychiatrist-screening \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
-					:definition -group Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-information \
+					:definition -group 02-Pyschiartrist-Screening -requirement optional ${ns}:pssd.psychiatrist-screening \
+				> \
+				:metadata < \
+					:definition -group 03-Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-information \
 					> \
 				:metadata < \
-					:definition -group Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-ultra-high-risk \
+					:definition -group 03-Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-ultra-high-risk \
 				> \
 				:metadata < \
-					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.diagnostic-staging-model \
+					:definition -group 04-Staging-Model -requirement optional ${ns}:pssd.diagnostic-staging-model \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.medical-history \
+					:definition -group 05-Medical-History -requirement optional ${ns}:pssd.medical-history \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.family-medical-history \
+					:definition -group 06-Family-Medical-History -requirement optional ${ns}:pssd.family-medical-history \
 				> \
 				:metadata < \
-					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.sofas \
+					:definition -group 07-SOFAS -requirement optional ${ns}:pssd.sofas \
 				> \
 				:metadata < \
-					:definition -group Current-Treatments -requirement optional ${ns}:pssd.current-treatment \
+					:definition -group 08-Current-Treatments -requirement optional ${ns}:pssd.current-treatment \
 				> \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.additional-gf-notes \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.notes \
 				> \
 			> \
 		> \
@@ -143,49 +143,72 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type2} \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.date \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.research-psychologist \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.notes \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.child-adult \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.checked-self-report \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.research-psychologist \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.education.years \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.notes \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.substance.nicotine-caffeine \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.subject.date-of-birth \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.inclusion-exclusion \
+					:definition -group 02-Inclusion-Exclusion -requirement optional $ns:pssd.subject.gender \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.background-information \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.checked-self-report \
 				> \
 				:metadata < \
-					:definition -group Staging -requirement optional ${ns}:pssd.ap-staging-model \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.subject.handedness \
 				> \
 				:metadata < \
-					:definition -group Hamilton-Depression-Rating-Scale -requirement optional ${ns}:pssd.ap-ham-d \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.education.years \
 				> \
 				:metadata < \
-					:definition -group Brief-Psychiatric-Rating-Scale -requirement optional ${ns}:pssd.ap-bprs \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.substance.nicotine-caffeine \
 				> \
 				:metadata < \
-					:definition -group Young-Mania-Rating-Scale -requirement optional ${ns}:pssd.ap-ymrs \
+					:definition -group 03-Clinical-History -requirement optional ${ns}:pssd.background-information \
 				> \
 				:metadata < \
-					:definition -group Social-Occupational-Functioning-Assessment-Scale -requirement optional ${ns}:pssd.ap-sofas \
+					:definition -group 04-Hamilton-Depression-Rating-Scale -requirement optional ${ns}:pssd.ap-ham-d \
 				> \
 				:metadata < \
-					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
+					:definition -group 05-Brief-Psychiatric-Rating-Scale -requirement optional ${ns}:pssd.ap-bprs \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-interview-checklist \
+					:definition -group 06-Young-Mania-Rating-Scale -requirement optional ${ns}:pssd.ap-ymrs \
+				> \
+				:metadata < \
+					:definition -group 07-Social-Occupational-Functioning-Assessment-Scale -requirement optional ${ns}:pssd.ap-sofas \
+				> \
+				:metadata < \
+					:definition -group 08-Clinical-Staging -requirement optional ${ns}:pssd.ap-staging-model \
+				> \
+				:metadata < \
+					:definition -group 09-Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
+				> \
+				:metadata < \
+					:definition -group 10-Neuropsychological-&-Social-Cognition-Checklist -requirement mandatory ${ns}:pssd.ap-np-sc-checklist \
+					:value < \
+						:total-duration < \
+							:unit minutes \
+						> \
+					> \
+				> \
+				:metadata < \
+					:definition -group 10-Neuropsychological-&-Social-Cognition-Checklist -requirement optional ${ns}:pssd.notes \
+				> \
+				:metadata < \
+					:definition -group 11-Interview-Checklist -requirement mandatory ${ns}:pssd.ap-interview-checklist \
 					:value < \
 						:diagnosis-check false \
 						:hamilton-depression-scale false \
@@ -195,79 +218,46 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					> \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-wtar-raw-zscores \
+					:definition -group 12-Imaging-and-Optional-Assessments-Checklist -requirement optional ${ns}:pssd.ap-other-checklist \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-wais-wms-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-intellectual-ability-and-general-knowledge \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-ravlt-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-speed-of-information-processing \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-rcft-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-sustained-attention \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-tmt-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-working-memory \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-dass-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-learning-and-memory-verbal \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-cowat-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-rey-auditory-verbal-learning-test \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-tests-checklist \
-					:value < \
-						:weschler-test-of-adult-reading false \
-						:logical-memory false \
-						:rey-auditory-visual-learning-test false \
-						:information-test false \
-						:rey-complex-figures-test false \
-						:controlled-oral-word-association-test false \
-						:rey-auditory-visual-learning-test-3-minute-delay false \
-						:mental-control-wms-3 false \
-						:trail-making-test false \
-						:logical-memory-25-35-minute-delay false \
-						:rey-auditory-visual-learning-test-20-minute-delay-recognition false \
-					> \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-learning-and-memory-visual \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-cantab-checklist \
-					:value < \
-						:motor-screening-task false \
-						:spatial-span false \
-						:reaction-time false \
-						:stop-signal false \
-						:rapid-visual-information-processing false \
-						:intra-extra-dimensional-set-shifting false \
-						:paired-associate-learning false \
-					> \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-executive-functioning \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-other-checklist \
-					:value < \
-						:blood false \
-						:urine-saliva false \
-						:mri false \
-					> \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-mood \
 				> \
 				:metadata < \
-					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-stories \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-cowat \
 				> \
 				:metadata < \
-					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-rapid-visual-processing \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-wais-wms-subsets \
 				> \
 				:metadata < \
-					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-spatial-span \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-rey-complex-figure-test \
 				> \
 				:metadata < \
-					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-choice-reaction-time \
-				> \
-				:metadata < \
-					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-paired-associate-learning \
-				> \
-				:metadata < \
-					:definition -group CANTAB -requirement optional ${ns}:pssd.ap-intra-extradimensional-shift \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.notes \
 				> \
 			> \
 		> \
@@ -278,6 +268,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				:type ${type3} \
 				:metadata < \
 					:definition -group Administration -requirement optional ${ns}:pssd.date \
+				> \
+				:metadata < \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
 					:definition -group Administration -requirement optional ${ns}:pssd.sr-time-to-complete \

@@ -366,6 +366,21 @@ proc createDocType_pssd_notes { ns } {
 		> \
 	}
 
+proc createDocType_pssd_baseline_followup { ns } {
+
+	asset.doc.type.update \
+		:create true :type ${ns}:pssd.baseline-followup \
+		:description "Is the study a baseline or followup study" \
+		:label "baseline-followup" \
+		:definition < \
+			:element -name "baseline-followup" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:restriction -base "enumeration" < \
+					:value "baseline" \
+					:value "followup" \
+				> \
+			> \
+		> \
+	}
 
 #============================================================================#
 proc createPSSDCoreDocTypes { ns } {
@@ -391,6 +406,7 @@ proc createPSSDCoreDocTypes { ns } {
 	createDocType_pssd_weight $ns
 	createDocType_pssd_notes $ns
 	createDocType_pssd_subject_initials $ns
+	createDocType_pssd_baseline_followup $ns
 }
 
 #============================================================================#
@@ -414,7 +430,8 @@ set doctypes [list \
 				$ns:pssd.clinician \
 				$ns:pssd.weight \
 				$ns:pssd.notes \
-				$ns:pssd.subject.initials]
+				$ns:pssd.subject.initials \
+				$ns:pssd.baseline-followup]
 	foreach doctype $doctypes {
       	 destroyDocType $doctype "true"
 	}
