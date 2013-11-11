@@ -186,10 +186,10 @@ proc createDict_pssd_relative_degree { ns } {
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.relative-degree]] == "false" } {
 		dictionary.create :name ${ns}.pssd.relative-degree :description "dictionary for types of subjects relative degree" :case-sensitive true :variant < :lang numeric :description "numeric variant" > \
 	}
-	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "first" :variant -lang numeric "1"
-	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "second" :variant -lang numeric "2"
-	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "not-applicable" :variant -lang numeric "888"
-	dictionary.entry.add  :dictionary ${ns}.pssd.relative-type :term "missing-not-available" :variant -lang numeric "999"
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-degree :term "first" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-degree :term "second" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-degree :term "not-applicable" :variant -lang numeric "888"
+	dictionary.entry.add  :dictionary ${ns}.pssd.relative-degree :term "missing-not-available" :variant -lang numeric "999"
 }
 
 #=============================================================================
@@ -481,6 +481,30 @@ proc createDict_pssd_nicotine_caffeine { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.nicotine-caffeine :term "caffeine" :variant -lang other "2"
 }
 
+#=============================================================================
+proc createDict_pssd_subject_handedness { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.subject.handedness]] == "false" } {
+		dictionary.create :name ${ns}.pssd.subject.handedness :description "caffeine nicotine list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "left" :variant -lang other "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "right" :variant -lang other "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "ambidextrous" :variant -lang other "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "unknown" :variant -lang other "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "missing-not-available" :variant -lang other "3"
+}
+
+#=============================================================================
+proc createDict_pssd_subject_included { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.subject.included]] == "false" } {
+		dictionary.create :name ${ns}.pssd.subject.included :description "caffeine nicotine list" :case-sensitive false :variant < :lang other :description "am pm variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "included" :variant -lang other "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "excluded" :variant -lang other "0"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "to-be-determined" :variant -lang other "2"
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 	
@@ -515,6 +539,8 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_child_abuse_yes_no $ns
 	createDict_pssd_diagnosis_type $ns
 	createDict_pssd_nicotine_caffeine $ns
+	createDict_pssd_subject_handedness $ns
+	createDict_pssd_subject_included $ns
 
 }
 
@@ -550,7 +576,9 @@ proc destroyPSSDDicts { ns } {
 			$ns.pssd.major-medical-condition-yes-no \
 			$ns.pssd.child-abuse-yes-no \
 			$ns.pssd.diagnosis-type \
-			$ns.pssd.nicotine-caffeine]
+			$ns.pssd.nicotine-caffeine \
+			$ns.pssd.subject.handedness \
+			$ns.pssd.subject.included]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

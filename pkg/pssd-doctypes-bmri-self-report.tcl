@@ -46,7 +46,7 @@ proc createDocType_pssd_subject_education { ns } {
 		:label "Education" \
 		:definition < \
 			:element -name "highest-school-grade-completed" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "Subjects language" \
+				:description "Subjects highest school grade completed" \
 				:restriction -base "enumeration" < \
 						:value "primary" \
 						:value "year-9-10" \
@@ -55,7 +55,7 @@ proc createDocType_pssd_subject_education { ns } {
 				> \
 			> \
 			:element -name "tertiary-education-completed" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "Subjects language" \
+				:description "Subjects highest tertiary qualification comlpeted" \
 				:restriction -base "enumeration" < \
 						:value "TAFE" \
 						:value "university-degree" \
@@ -90,38 +90,24 @@ proc createDocType_pssd_sr_vocation { ns } {
 		:label "vocational-status" \
 		:definition < \
 			:element -name "student" -max-occurs 1 -type document -min-occurs 0 < \
-				:element -name "student-type" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:element -name "student-status" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:description "subjects study status" \
 					:restriction -base "enumeration" < \
-						:value "part-time-secondary" \
-						:value "full-time-secondary" \
-						:value "part-time-tertiary" \
-						:value "full-time-tertiary" \
-						:value "discontinued-school-or-study-due-to-symptoms" \
-						:value "full-time-primary" \
-						:value "not-applicable" \
-						:value "missing" \
+						:dictionary "$ns.pssd.sr-student-status" \
 					> \
 				> \
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
-			:element -name "employed" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "subjects employment status" \
+			:element -name "vocational-status" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:description "subjects vocational status" \
 				:restriction -base "enumeration" < \
-					:value "part-time-employment" \
-					:value "full-time-employment" \
+					:dictionary "$ns.pssd.sr-vocational-status" \
 				> \
 			> \
-			:element -name "occupation" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
-				:description "subjects employment status" \
+			:element -name "occupational-status" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:description "subjects occupational status" \
 				:restriction -base "enumeration" < \
-					:value "volunteer-work" \
-					:value "not-currently-working" \
-					:value "leave-of-absence" \
-					:value "unemployed" \
-`					:value "house-duties" \
-					:value "retired" \
-					:value "missing" \
+					:dictionary "$ns.pssd.sr-occupational-status" \
 				> \
 			> \
 			:element -name "disability-support-pension" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
@@ -145,15 +131,18 @@ proc createDocType_pssd_sr_vocation { ns } {
 				> \
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
+			:element -name "subject-receiving-income" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+				:description "is the subject receiving any income" \
+				:restriction -base "enumeration" < \
+					:dictionary "$ns.pssd.standard-no-yes" \
+				> \
+			> \
 			:element -name "current-last-occupation" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			:element -name "time-in-current-last-occupation" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
-						:value "hours" \
-						:value "weeks" \
-						:value "months" \
-						:value "years" \
+						:dictionary "$ns.pssd.timing" \
 					> \
 				> \
 			> \
@@ -161,23 +150,13 @@ proc createDocType_pssd_sr_vocation { ns } {
 			:element -name "marital-status" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "subjects employment status" \
 				:restriction -base "enumeration" < \
-					:value "never-married" \
-					:value "married-de-facto" \
-					:value "separated" \
-					:value "widowed" \
-					:value "divorced" \
-					:value "missing" \
+					:dictionary "$ns.pssd.sr-marital-status" \
 				> \
 			> \
 			:element -name "living-status" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 				:description "subjects employment status" \
 				:restriction -base "enumeration" < \
-					:value "home-alone-independent" \
-					:value "independent-shared-accommodation" \
-					:value "partially-supported" \
-					:value "dependent" \
-					:value "other" \
-					:value "missing" \
+					:dictionary "$ns.pssd.sr-living-status" \
 				> \
 			> \
 		> \
@@ -231,8 +210,7 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 					:element -name "length-of-treatment" -type integer -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
 					:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 						:restriction -base "enumeration" < \
-							:value "months" \
-							:value "years" \
+							:dictionary $ns.pssd.dose-units \
 						> \
 					> \
 					:element -name "still-receiving-treatment" -min-occurs 0 -max-occurs 1 -type boolean -index true \
@@ -416,17 +394,14 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 				> \
 				:element -name "usage" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
-						:value "never" \
-						:value "occasionally but stopped" \
-						:value "occasionally continuing" \
-						:value "regularly but stopped" \
-						:value "regularly continuing" \
+						:dictionary "$ns.pssd.sr-tobacco-usage" \
 					> \
 				> \
 				:element -name "time-since-quitting" -type integer -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "number-of-years-smoking" -type integer -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "number-of-cigarettes-on-heaviest-day" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
+			:element -name "notes" -type string -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -450,14 +425,25 @@ proc createDocType_pssd_sr_current_medication { ns } {
 		:definition < \
 			:element -name "medication" -type document -min-occurs 0 -max-occurs 7 < \
 				:element -name "name-of-medication" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
-				:element -name "length-of-treatment" -type integer -min-occurs 0 -max-occurs 1 -index true -case-sensitive false \
+				:element -name "length-of-treatment" -type document -min-occurs 0 -max-occurs 1 < \
+					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+						:restriction -base "enumeration" < \
+							:dictionary $ns.pssd.timing \
+						> \
+					> \
+				> \
 				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
 				:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.does-units" \
 					> \
 				> \
-				:element -name "timing" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
+				:element -name "timing" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
+					:restriction -base "enumeration" < \
+						:dictionary "$ns.pssd.does-timing" \
+					> \
+				> \
 				:element -name "medication-start-date" -type date -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "medication-notes" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
@@ -787,7 +773,7 @@ proc createDocType_pssd_sr_who_qol { ns } {
 			> \
 			:element -name "question-12" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-who-qol \
+					:dictionary $ns.pssd.sr-who-qol-2 \
 				> \
 			> \
 			:element -name "question-13" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -797,7 +783,7 @@ proc createDocType_pssd_sr_who_qol { ns } {
 			> \
 			:element -name "question-14" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-who-qol \
+					:dictionary $ns.pssd.sr-who-qol-2 \
 				> \
 			> \
 			:element -name "question-15" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -860,14 +846,15 @@ proc createDocType_pssd_sr_who_qol { ns } {
 					:dictionary $ns.pssd.sr-who-qol-3 \
 				> \
 			> \
-			:element -name "who-qol-physical-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "who-qol-psychological-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "who-qol-social-relationships-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "who-qol-environment-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "who-qol-physical-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "who-qol-psychological-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "who-qol-social-relationships-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "who-qol-environment-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "physical-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "psychological-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "social-relationships-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "environment-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "physical-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "psychological-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "social-relationships-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "environment-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "physical-overall" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -889,7 +876,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 		:label "scale-4-substance-use-ever" \
 		:definition < \
 			:element -name "tobacco" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-tobacco" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -897,7 +884,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "alcohol" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-alcohol" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -905,7 +892,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "cannabis" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-cannabis" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -913,7 +900,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "cocaine" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-cocaine" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -921,7 +908,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "amphetamine" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-amphetamine" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -929,7 +916,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "inhalants" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-inhalants" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -937,7 +924,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "sedatives" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-sedatives" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -945,7 +932,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "hallucinogens" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-hallucinogens" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -953,7 +940,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 			> \
 			:element -name "opioids" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "has-used-opioids" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:element -name "has-used" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary $ns.pssd.standard-no-yes \
 					> \
@@ -1118,7 +1105,7 @@ proc createDocType_pssd_sr_substance_use_baseline_audit { ns } {
 					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
 				> \
 			> \
-			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "total-auto-score" -type string -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -1235,7 +1222,6 @@ proc createDocType_pssd_sr_wsls { ns } {
 					:dictionary $ns.pssd.sr-wsls \
 				> \
 			> \
-			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "question-6" -max-occurs 1 -type document -min-occurs 0 < \
 				:description "number of days in the last month where the subject was unable to carry out your usual daily activities" \
 				:element -name "value" -min-occurs 0 -max-occurs 1 -type integer -index true \
@@ -1254,6 +1240,7 @@ proc createDocType_pssd_sr_wsls { ns } {
 					> \
 				> \
 			> \
+			:element -name "total-score" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
@@ -1701,6 +1688,8 @@ proc createDocType_pssd_sr_scale_10 { ns } {
 					:dictionary $ns.pssd.sr-scale-10 \
 				> \
 			> \
+			:element -name "getting-along-with-people-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "getting-around-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			:element -name "h2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-10-c \
@@ -1709,6 +1698,12 @@ proc createDocType_pssd_sr_scale_10 { ns } {
 			:element -name "h3" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "h4" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "h5" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "household-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "participation-in-society-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "self-care-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "understanding-and-communicating-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "work-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "total-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 		> \
 }
 
@@ -1828,42 +1823,42 @@ proc createDocType_pssd_sr_scale_11_part_c { ns } {
 		:definition < \
 			:element -name "buying-items-from-the-shops" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "washing-pots-tidying-up" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "regular-washing-bathing" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "washing-oen-clothes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "looking-for-a-job-or-working" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "doing-food-shopping" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "prepare-and-cook-a-meal" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "leaving-the-house-alone" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "using-buses-trains-etc" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -1873,22 +1868,22 @@ proc createDocType_pssd_sr_scale_11_part_c { ns } {
 			> \
 			:element -name "using-money" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "budgeting" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "choosing-and-buying-clothes-for-self" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "take-care-of-personal-appearance" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 		> \
@@ -1916,42 +1911,42 @@ proc createDocType_pssd_sr_scale_11_part_d { ns } {
 			> \
 			:element -name "sewing-knitting" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "gardening" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "reading-things" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "watching-television" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "listening-to-record-or-radio" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "cooking" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "d-i-y-activities" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "fixing-things" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "walking-rambling" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -1961,27 +1956,27 @@ proc createDocType_pssd_sr_scale_11_part_d { ns } {
 			> \
 			:element -name "driving-riding-as-recreation" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "swimming" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "hobby" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "shopping" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "artistic-activity" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 		> \
@@ -2004,112 +1999,112 @@ proc createDocType_pssd_sr_scale_11_part_e { ns } {
 		:definition < \
 			:element -name "cinema" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "theatre-concert" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "watching-indoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "watching-outdoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "art-gallery-museum" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "exhibition" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "visiting-places-of-interest" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "meetings-talks" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "evening-class" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "visiting-relatives-in-their-homes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "being-visited-by-relatives" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "visiting-friends" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "parties" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "formal-occasions" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "disco-etc" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "nightclub-social-club" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "playing-indoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "playing-outdoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "club-society" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "pub" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "eating-out" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 			:element -name "church-activity" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-c \
 				> \
 			> \
 		> \
@@ -2272,22 +2267,10 @@ proc createDocType_pssd_sr_scale_12 { ns } {
 		:label "scale-12" \
 		:definition < \
 			:element -name "question-1" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "am" \
-						:value "pm" \
-					> \
-				> \
+				:element -name "time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-2" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "am" \
-						:value "pm" \
-					> \
-				> \
+				:element -name "time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
@@ -2460,28 +2443,13 @@ proc createDocType_pssd_sr_scale_13 { ns } {
 		:label "scale-13" \
 		:definition < \
 			:element -name "question-1" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:dictionary "$ns.pssd.am-pm" \
-					> \
-				> \
+				:element -name "time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-2" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "minutes" \
-					> \
-				> \
+				:element -name "Time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-3" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:dictionary "$ns.pssd.am-pm" \
-					> \
-				> \
+				:element -name "Time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-4" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
@@ -2601,7 +2569,7 @@ proc destroyDocType_pssd_sr_scale_13 { ns force } {
     }
 }
 
-# Scale 13 
+# time to complete
 #============================================================================#
 proc createDocType_pssd_sr_time_to_complete { ns } {
 
@@ -2609,12 +2577,10 @@ proc createDocType_pssd_sr_time_to_complete { ns } {
 		:description "time to complete form" \
 		:label "time-to-complete" \
 		:definition < \
-			:element -name "time-to-complete" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "hours" \
-					> \
+			:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "hours" \
 				> \
 			> \
 		> \
@@ -2628,6 +2594,7 @@ proc destroyDocType_pssd_sr_time_to_complete { ns force } {
                 asset.doc.type.destroy :type ${ns}:pssd.sr-time-to-complete :force $force
     }
 }
+
 #============================================================================#
 proc createPSSD-bmri-self-report { ns } {
 
