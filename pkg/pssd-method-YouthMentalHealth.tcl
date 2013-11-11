@@ -38,15 +38,30 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	set desc7 "MRI acquisition of subject" 
 	set type7 "Magnetic Resonance Imaging"
 	#
+#	set name8 "YMH FSL brain extract" 
+#	set desc8 "Runs the FSL brain extract on DICOM T1 images" 
+#	set type8 "Kepler workflow"
+	#
 	set margs ""
 	# See if Method pre-exists
-	set id [getMethodId $name1]
+	set id [getMethodId $name]
 	
 	# Set arguments based on desired action	
 	set margs [setMethodUpdateArgs $id $action]
 	if { $margs == "quit" } {
 		return
 	}
+	
+	# Wipe out any pre-existing work flows
+	asset.query :where transform:transform-definition has value and xpath(transform:transform-definition/name)='$name4' :action pipe :service -name asset.destroy
+	asset.query :where transform:transform-definition has value and xpath(transform:transform-definition/name)='$name5' :action pipe :service -name asset.destroy
+	asset.query :where transform:transform-definition has value and xpath(transform:transform-definition/name)='$name6' :action pipe :service -name asset.destroy
+	
+	#  Create the FSL brain extract transform definition
+	set trfmT1  [xvalue uid/@asset [transform.definition.create :type kepler :name $name4 :description $desc4 :parameter -name pid -type string :in archive:///fsl_extract.kar]]
+	set trfmT2  [xvalue uid/@asset [transform.definition.create :type kepler :name $name5 :description $desc5 :parameter -name pid -type string :in archive:///fsl_melodic.kar]]
+	set trfmDTI [xvalue uid/@asset [transform.definition.create :type kepler :name $name6 :description $desc6 :parameter -name pid -type string :in archive:///fsl_dti.kar]]
+	
 	#
 	set args "${margs} \
 		:namespace /pssd/methods \
@@ -369,7 +384,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 		:step < \
 			:name ${name4} \
 			:transform < \
-				:definition -version 0 1 \
+				:definition -version 0 -id-type id $trfmT1 \
 				:iterator < \
 					:scope ex-method \
 					:type citeable-id \
@@ -381,7 +396,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 		:step < \
 			:name ${name5} \
 			:transform < \
-				:definition -version 0 1 \
+				:definition -version 0 -id-type id $trfmT2 \
 				:iterator < \
 					:scope ex-method \
 					:type citeable-id \
@@ -393,7 +408,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 		:step < \
 			:name ${name6} \
 			:transform < \
-				:definition -version 0 1 \
+				:definition -version 0 -id-type id $trfmDTI \
 				:iterator < \
 					:scope ex-method \
 					:type citeable-id \
@@ -401,9 +416,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					:parameter pid \
 				> \
 			> \
-		>"
+	>"
 # Create/update the Method
-	set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
+set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
 	if { $id2 == "" } {
 		# An existng Method was updated
 		return $id
@@ -413,3 +428,16 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	}
 }
  
+
+#:step < \
+#	:name ${name8} \
+#	:transform < \
+#		:definition -version 0 -id-type id $keplerExtract \
+#		:iterator < \
+#			:scope ex-method \
+#			:type citeable-id \
+#			:query \"model='om.pssd.study' and mf-dicom-study has value \" \
+#			:parameter pid \
+#		> \
+#	> \
+#> \
