@@ -99,12 +99,10 @@ proc createDocType_pssd_subject_height { ns } {
 		:description "Document type for subject height" \
 		:label "Subject height" \
 		:definition < \
-			:element -name height -min-occurs 0 -max-occurs 1 -type document < \
-				:element -name "value" -min-occurs 0 -max-occurs 1 -type float -index true  \
-				:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true  <\
-					:restriction -base "enumeration" < \
-						:value "meters" \
-					> \
+			:element -name "value" -min-occurs 0 -max-occurs 1 -type float -index true  \
+			:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true  <\
+				:restriction -base "enumeration" < \
+					:value "centimeters" \
 				> \
 			> \
 		> \
@@ -334,7 +332,7 @@ proc createDocType_pssd_weight { ns } {
 		:label "weight" \
 		:definition < \
 			:element -name "weight" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index 1 \
+				:element -name "value" -type float -min-occurs 0 -max-occurs 1 -index 1 \
 				:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
 						:value "kilograms" \
@@ -351,7 +349,7 @@ proc createDocType_pssd_subject_initials { ns } {
 		:description "Document to capture clinician details" \
 		:label "initials" \
 		:definition < \
-			:element -name "initials" -type string -length 2 -min-occurs 0 -max-occurs 1 \
+			:element -name "details" -type string -length 2 -min-occurs 0 -max-occurs 1 \
 		> \
 	}
 

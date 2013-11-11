@@ -1688,6 +1688,8 @@ proc createDocType_pssd_sr_scale_10 { ns } {
 					:dictionary $ns.pssd.sr-scale-10 \
 				> \
 			> \
+			:element -name "getting-along-with-people-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "getting-around-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			:element -name "h2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
 					:dictionary $ns.pssd.sr-scale-10-c \
@@ -1696,6 +1698,12 @@ proc createDocType_pssd_sr_scale_10 { ns } {
 			:element -name "h3" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "h4" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "h5" -type integer -length 2 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "household-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "participation-in-society-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "self-care-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "understanding-and-communicating-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "work-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
+			:element -name "total-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 		> \
 }
 
@@ -2259,22 +2267,10 @@ proc createDocType_pssd_sr_scale_12 { ns } {
 		:label "scale-12" \
 		:definition < \
 			:element -name "question-1" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "am" \
-						:value "pm" \
-					> \
-				> \
+				:element -name "time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-2" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "am" \
-						:value "pm" \
-					> \
-				> \
+				:element -name "time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
@@ -2447,28 +2443,13 @@ proc createDocType_pssd_sr_scale_13 { ns } {
 		:label "scale-13" \
 		:definition < \
 			:element -name "question-1" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:dictionary "$ns.pssd.am-pm" \
-					> \
-				> \
+				:element -name "time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-2" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "minutes" \
-					> \
-				> \
+				:element -name "Time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-3" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:dictionary "$ns.pssd.am-pm" \
-					> \
-				> \
+				:element -name "Time" -type integer -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "question-4" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
@@ -2588,7 +2569,7 @@ proc destroyDocType_pssd_sr_scale_13 { ns force } {
     }
 }
 
-# Scale 13 
+# time to complete
 #============================================================================#
 proc createDocType_pssd_sr_time_to_complete { ns } {
 
@@ -2596,12 +2577,10 @@ proc createDocType_pssd_sr_time_to_complete { ns } {
 		:description "time to complete form" \
 		:label "time-to-complete" \
 		:definition < \
-			:element -name "time-to-complete" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
-					:restriction -base "enumeration" < \
-						:value "hours" \
-					> \
+			:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
+				:restriction -base "enumeration" < \
+					:value "hours" \
 				> \
 			> \
 		> \

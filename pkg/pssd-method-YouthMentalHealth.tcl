@@ -98,6 +98,16 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			> \
 		> \
 		:step < \
+			:name ${name7} \
+			:description ${desc7} \
+			:study < \
+				:type ${type7} \
+				:dicom < \
+					:modality MR \
+				> \
+			> \
+		> \
+		:step < \
 			:name ${name1} \
 			:description ${desc1} \
 			:study < \
@@ -267,79 +277,101 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type3} \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.date \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.sr-time-to-complete \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.sr-time-to-complete \
+					:value < \
+						:unit hours \
+					> \
 				> \
 				:metadata < \
-					:definition -group Demographics -requirement optional ${ns}:pssd.weight \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.weight \
+					:value < \
+						:weight < \
+							:unit kilograms \
+						> \
+					> \
 				> \
 				:metadata < \
-					:definition -group Disability -requirement optional ${ns}:pssd.subject.disability \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.subject.height \
+					:value < \
+						:unit centimeters \
+					> \
 				> \
 				:metadata < \
-					:definition -group Demographics -requirement optional ${ns}:pssd.subject.height \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.subject.languages \
 				> \
 				:metadata < \
-					:definition -group Demographics -requirement optional ${ns}:pssd.subject.education \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.subject.education \
 				> \
 				:metadata < \
-					:definition -group Vocation -requirement optional ${ns}:pssd.sr-vocation \
+					:definition -group 03-Disability -requirement optional ${ns}:pssd.subject.disability \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.general-practitioner \
+					:definition -group 04-Vocation-Status -requirement optional ${ns}:pssd.sr-vocation \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
+					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.general-practitioner \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
+					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
+					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-personal-medical-history \
+					:definition -group 06-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-current-medication \
+					:definition -group 06-Medical-History -requirement optional ${ns}:pssd.sr-personal-medical-history \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-family-medical-history \
+					:definition -group 06-Medical-History -requirement optional ${ns}:pssd.sr-current-medication \
 				> \
 				:metadata < \
-					:definition -group Scale-1 -requirement optional ${ns}:pssd.sr-kessler-10 \
+					:definition -group 07-Family-Medical-History -requirement optional ${ns}:pssd.sr-family-medical-history \
 				> \
 				:metadata < \
-					:definition -group Scale-2 -requirement optional ${ns}:pssd.sr-dass \
+					:definition -group Scale-01 -requirement optional ${ns}:pssd.sr-kessler-10 \
 				> \
 				:metadata < \
-					:definition -group Scale-3 -requirement optional ${ns}:pssd.sr-who-qol \
+					:definition -group Scale-02 -requirement optional ${ns}:pssd.sr-dass \
 				> \
 				:metadata < \
-					:definition -group Scale-4 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-ever \
+					:definition -group Scale-03 -requirement optional ${ns}:pssd.sr-who-qol \
 				> \
 				:metadata < \
-					:definition -group Scale-4 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
+					:definition -group Scale-04 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-ever \
 				> \
 				:metadata < \
-					:definition -group Scale-5 -requirement optional ${ns}:pssd.sr-substance-use-baseline-audit \
+					:definition -group Scale-04 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
 				> \
 				:metadata < \
-					:definition -group Scale-6 -requirement optional ${ns}:pssd.sr-substance-use-alcohol \
+					:definition -group Scale-05 -requirement optional ${ns}:pssd.sr-substance-use-baseline-audit \
 				> \
 				:metadata < \
-					:definition -group Scale-7 -requirement optional ${ns}:pssd.sr-wsls \
+					:definition -group Scale-06 -requirement optional ${ns}:pssd.sr-substance-use-alcohol \
 				> \
 				:metadata < \
-					:definition -group Scale-8 -requirement optional ${ns}:pssd.sr-apsd \
+					:definition -group Scale-07 -requirement optional ${ns}:pssd.sr-wsls \
+					:value < \
+						:question-6 < \
+							:unit days \
+						> \
+						:question-7 < \
+							:unit days \
+						> \
+					> \
 				> \
 				:metadata < \
-					:definition -group Scale-9 -requirement optional ${ns}:pssd.sr-sias \
+					:definition -group Scale-08 -requirement optional ${ns}:pssd.sr-apsd \
+				> \
+				:metadata < \
+					:definition -group Scale-09 -requirement optional ${ns}:pssd.sr-sias \
 				> \
 				:metadata < \
 					:definition -group Scale-10 -requirement optional ${ns}:pssd.sr-scale-10 \
@@ -370,16 +402,11 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -group Scale-13 -requirement optional ${ns}:pssd.sr-scale-13 \
-				> \
-			> \
-		> \
-		:step < \
-			:name ${name7} \
-			:description ${desc7} \
-			:study < \
-				:type ${type7} \
-				:dicom < \
-					:modality MR \
+					:value < \
+						:question-4 < \
+							:unit hours \
+						> \
+					> \
 				> \
 			> \
 		> \
