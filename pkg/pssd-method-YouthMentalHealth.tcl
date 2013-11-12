@@ -34,19 +34,34 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	set desc6 "Youth Mental Health Diffusion Tensor Imaging MRI Transform"
 	set type6 "ymh-dti-transform"
 	#
-	set name7 "MR"
-	set desc7 "Magnetic Resonance Imaging"
+	set name7 "MRI acquisition" 
+	set desc7 "MRI acquisition of subject" 
 	set type7 "Magnetic Resonance Imaging"
+	#
+#	set name8 "YMH FSL brain extract" 
+#	set desc8 "Runs the FSL brain extract on DICOM T1 images" 
+#	set type8 "Kepler workflow"
 	#
 	set margs ""
 	# See if Method pre-exists
-	set id [getMethodId $name1]
+	set id [getMethodId $name]
 	
 	# Set arguments based on desired action	
 	set margs [setMethodUpdateArgs $id $action]
 	if { $margs == "quit" } {
 		return
 	}
+	
+	# Wipe out any pre-existing work flows
+	asset.query :where transform:transform-definition has value and xpath(transform:transform-definition/name)='$name4' :action pipe :service -name asset.destroy
+	asset.query :where transform:transform-definition has value and xpath(transform:transform-definition/name)='$name5' :action pipe :service -name asset.destroy
+	asset.query :where transform:transform-definition has value and xpath(transform:transform-definition/name)='$name6' :action pipe :service -name asset.destroy
+	
+	#  Create the FSL brain extract transform definition
+	set trfmT1  [xvalue uid/@asset [transform.definition.create :type kepler :name $name4 :description $desc4 :parameter -name pid -type string :in archive:///fsl_extract.kar]]
+	set trfmT2  [xvalue uid/@asset [transform.definition.create :type kepler :name $name5 :description $desc5 :parameter -name pid -type string :in archive:///fsl_melodic.kar]]
+	set trfmDTI [xvalue uid/@asset [transform.definition.create :type kepler :name $name6 :description $desc6 :parameter -name pid -type string :in archive:///fsl_dti.kar]]
+	
 	#
 	set args "${margs} \
 		:namespace /pssd/methods \
@@ -83,9 +98,6 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 						:definition -requirement optional ${ns}:pssd.subject.age-at-baseline \
 					> \
 					:metadata < \
-						:definition -requirement optional ${ns}:pssd.subject.handedness \
-					> \
-					:metadata < \
 						:definition -requirement optional ${ns}:pssd.subject.languages \
 					> \
 					:metadata < \
@@ -101,39 +113,52 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			> \
 		> \
 		:step < \
+			:name ${name7} \
+			:description ${desc7} \
+			:study < \
+				:type ${type7} \
+				:dicom < \
+					:modality MR \
+				> \
+			> \
+		> \
+		:step < \
 			:name ${name1} \
 			:description ${desc1} \
 			:study < \
 				:type ${type1} \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.date \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -group Pyschiartrist-screening -requirement optional ${ns}:pssd.psychiatrist-screening \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
-					:definition -group Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-information \
+					:definition -group 02-Pyschiartrist-Screening -requirement optional ${ns}:pssd.psychiatrist-screening \
+				> \
+				:metadata < \
+					:definition -group 03-Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-information \
 					> \
 				:metadata < \
-					:definition -group Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-ultra-high-risk \
+					:definition -group 03-Diagnostic-Information -requirement optional ${ns}:pssd.diagnostic-ultra-high-risk \
 				> \
 				:metadata < \
-					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.diagnostic-staging-model \
+					:definition -group 04-Staging-Model -requirement optional ${ns}:pssd.diagnostic-staging-model \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.medical-history \
+					:definition -group 05-Medical-History -requirement optional ${ns}:pssd.medical-history \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.family-medical-history \
+					:definition -group 06-Family-Medical-History -requirement optional ${ns}:pssd.family-medical-history \
 				> \
 				:metadata < \
-					:definition -group Tests-Assessments -requirement optional ${ns}:pssd.sofas \
+					:definition -group 07-SOFAS -requirement optional ${ns}:pssd.sofas \
 				> \
 				:metadata < \
-					:definition -group Current-Treatments -requirement optional ${ns}:pssd.current-treatment \
+					:definition -group 08-Current-Treatments -requirement optional ${ns}:pssd.current-treatment \
 				> \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.additional-gf-notes \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.notes \
 				> \
 			> \
 		> \
@@ -143,46 +168,72 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type2} \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.date \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.research-psychologist \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.checked-self-report \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.child-adult \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.education.years \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.research-psychologist \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.substance.nicotine-caffeine \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.notes \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.inclusion-exclusion \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.subject.date-of-birth \
 				> \
 				:metadata < \
-					:definition -group Inclusion-Exclusion -requirement optional ${ns}:pssd.background-information \
+					:definition -group 02-Inclusion-Exclusion -requirement optional $ns:pssd.subject.gender \
 				> \
 				:metadata < \
-					:definition -group Staging -requirement optional ${ns}:pssd.ap-staging-model \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.checked-self-report \
 				> \
 				:metadata < \
-					:definition -group Hamilton-Depression-Rating-Scale -requirement optional ${ns}:pssd.ap-ham-d \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.subject.handedness \
 				> \
 				:metadata < \
-					:definition -group Brief-Psychiatric-Rating-Scale -requirement optional ${ns}:pssd.ap-bprs \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.education.years \
 				> \
 				:metadata < \
-					:definition -group Young-Mania-Rating-Scale -requirement optional ${ns}:pssd.ap-ymrs \
+					:definition -group 02-Inclusion-Exclusion -requirement optional ${ns}:pssd.substance.nicotine-caffeine \
 				> \
 				:metadata < \
-					:definition -group Social-Occupational-Functioning-Assessment-Scale -requirement optional ${ns}:pssd.ap-sofas \
+					:definition -group 03-Clinical-History -requirement optional ${ns}:pssd.background-information \
 				> \
 				:metadata < \
-					:definition -group Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
+					:definition -group 04-Hamilton-Depression-Rating-Scale -requirement optional ${ns}:pssd.ap-ham-d \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-interview-checklist \
+					:definition -group 05-Brief-Psychiatric-Rating-Scale -requirement optional ${ns}:pssd.ap-bprs \
+				> \
+				:metadata < \
+					:definition -group 06-Young-Mania-Rating-Scale -requirement optional ${ns}:pssd.ap-ymrs \
+				> \
+				:metadata < \
+					:definition -group 07-Social-Occupational-Functioning-Assessment-Scale -requirement optional ${ns}:pssd.ap-sofas \
+				> \
+				:metadata < \
+					:definition -group 08-Clinical-Staging -requirement optional ${ns}:pssd.ap-staging-model \
+				> \
+				:metadata < \
+					:definition -group 09-Severity-of-Dependence-Scale -requirement optional ${ns}:pssd.ap-sds \
+				> \
+				:metadata < \
+					:definition -group 10-Neuropsychological-&-Social-Cognition-Checklist -requirement mandatory ${ns}:pssd.ap-np-sc-checklist \
+					:value < \
+						:total-duration < \
+							:unit minutes \
+						> \
+					> \
+				> \
+				:metadata < \
+					:definition -group 10-Neuropsychological-&-Social-Cognition-Checklist -requirement optional ${ns}:pssd.notes \
+				> \
+				:metadata < \
+					:definition -group 11-Interview-Checklist -requirement mandatory ${ns}:pssd.ap-interview-checklist \
 					:value < \
 						:diagnosis-check false \
 						:hamilton-depression-scale false \
@@ -192,61 +243,46 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 					> \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-wtar-raw-zscores \
+					:definition -group 12-Imaging-and-Optional-Assessments-Checklist -requirement optional ${ns}:pssd.ap-other-checklist \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-wais-wms-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-intellectual-ability-and-general-knowledge \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-ravlt-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-speed-of-information-processing \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-rcft-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-sustained-attention \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-tmt-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-working-memory \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-dass-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-learning-and-memory-verbal \
 				> \
 				:metadata < \
-					:definition -group Raw-Z-Scores -requirement optional ${ns}:pssd.ap-cowat-scores \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-rey-auditory-verbal-learning-test \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-tests-checklist \
-					:value < \
-						:weschler-test-of-adult-reading false \
-						:logical-memory false \
-						:rey-auditory-visual-learning-test false \
-						:information-test false \
-						:rey-complex-figures-test false \
-						:controlled-oral-word-association-test false \
-						:rey-auditory-visual-learning-test-3-minute-delay false \
-						:mental-control-wms-3 false \
-						:trail-making-test false \
-						:logical-memory-25-35-minute-delay false \
-						:rey-auditory-visual-learning-test-20-minute-delay-recognition false \
-					> \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-learning-and-memory-visual \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-cantab-checklist \
-					:value < \
-						:motor-screening-task false \
-						:spatial-span false \
-						:reaction-time false \
-						:stop-signal false \
-						:rapid-visual-information-processing false \
-						:intra-extra-dimensional-set-shifting false \
-						:paired-associate-learning false \
-					> \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-executive-functioning \
 				> \
 				:metadata < \
-					:definition -group Check-Lists -requirement mandatory ${ns}:pssd.ap-other-checklist \
-					:value < \
-						:blood false \
-						:urine-saliva false \
-						:mri false \
-					> \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-mood \
+				> \
+				:metadata < \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-cowat \
+				> \
+				:metadata < \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-wais-wms-subsets \
+				> \
+				:metadata < \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-rey-complex-figure-test \
+				> \
+				:metadata < \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.notes \
 				> \
 			> \
 		> \
@@ -256,73 +292,101 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 			:study < \
 				:type ${type3} \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.date \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
-					:definition -group Administration -requirement optional ${ns}:pssd.sr-time-to-complete \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
-					:definition -group Demographics -requirement optional ${ns}:pssd.weight \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.sr-time-to-complete \
+					:value < \
+						:unit hours \
+					> \
 				> \
 				:metadata < \
-					:definition -group Demographics -requirement optional ${ns}:pssd.subject.height \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.weight \
+					:value < \
+						:weight < \
+							:unit kilograms \
+						> \
+					> \
 				> \
 				:metadata < \
-					:definition -group Demographics -requirement optional ${ns}:pssd.subject.education \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.subject.height \
+					:value < \
+						:unit centimeters \
+					> \
 				> \
 				:metadata < \
-					:definition -group Vocation -requirement optional ${ns}:pssd.sr-vocation \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.subject.languages \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.general-practitioner \
+					:definition -group 02-Demographics -requirement optional ${ns}:pssd.subject.education \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
+					:definition -group 03-Disability -requirement optional ${ns}:pssd.subject.disability \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
+					:definition -group 04-Vocation-Status -requirement optional ${ns}:pssd.sr-vocation \
 				> \
 				:metadata < \
-					:definition -group Medical-Status -requirement optional ${ns}:pssd.clinician \
+					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.general-practitioner \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-personal-medical-history \
+					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-current-medication \
+					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -group Medical-History -requirement optional ${ns}:pssd.sr-family-medical-history \
+					:definition -group 06-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -group Scale-1 -requirement optional ${ns}:pssd.sr-kessler-10 \
+					:definition -group 06-Medical-History -requirement optional ${ns}:pssd.sr-personal-medical-history \
 				> \
 				:metadata < \
-					:definition -group Scale-2 -requirement optional ${ns}:pssd.sr-dass \
+					:definition -group 06-Medical-History -requirement optional ${ns}:pssd.sr-current-medication \
 				> \
 				:metadata < \
-					:definition -group Scale-3 -requirement optional ${ns}:pssd.sr-who-qol \
+					:definition -group 07-Family-Medical-History -requirement optional ${ns}:pssd.sr-family-medical-history \
 				> \
 				:metadata < \
-					:definition -group Scale-4 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-ever \
+					:definition -group Scale-01 -requirement optional ${ns}:pssd.sr-kessler-10 \
 				> \
 				:metadata < \
-					:definition -group Scale-4 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
+					:definition -group Scale-02 -requirement optional ${ns}:pssd.sr-dass \
 				> \
 				:metadata < \
-					:definition -group Scale-5 -requirement optional ${ns}:pssd.sr-substance-use-baseline-audit \
+					:definition -group Scale-03 -requirement optional ${ns}:pssd.sr-who-qol \
 				> \
 				:metadata < \
-					:definition -group Scale-6 -requirement optional ${ns}:pssd.sr-substance-use-alcohol \
+					:definition -group Scale-04 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-ever \
 				> \
 				:metadata < \
-					:definition -group Scale-7 -requirement optional ${ns}:pssd.sr-wsls \
+					:definition -group Scale-04 -requirement optional ${ns}:pssd.sr-substance-use-scale-4-last-3-months \
 				> \
 				:metadata < \
-					:definition -group Scale-8 -requirement optional ${ns}:pssd.sr-apsd \
+					:definition -group Scale-05 -requirement optional ${ns}:pssd.sr-substance-use-baseline-audit \
 				> \
 				:metadata < \
-					:definition -group Scale-9 -requirement optional ${ns}:pssd.sr-sias \
+					:definition -group Scale-06 -requirement optional ${ns}:pssd.sr-substance-use-alcohol \
+				> \
+				:metadata < \
+					:definition -group Scale-07 -requirement optional ${ns}:pssd.sr-wsls \
+					:value < \
+						:question-6 < \
+							:unit days \
+						> \
+						:question-7 < \
+							:unit days \
+						> \
+					> \
+				> \
+				:metadata < \
+					:definition -group Scale-08 -requirement optional ${ns}:pssd.sr-apsd \
+				> \
+				:metadata < \
+					:definition -group Scale-09 -requirement optional ${ns}:pssd.sr-sias \
 				> \
 				:metadata < \
 					:definition -group Scale-10 -requirement optional ${ns}:pssd.sr-scale-10 \
@@ -353,23 +417,18 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 				> \
 				:metadata < \
 					:definition -group Scale-13 -requirement optional ${ns}:pssd.sr-scale-13 \
+					:value < \
+						:question-4 < \
+							:unit hours \
+						> \
+					> \
 				> \
-			> \
-		> \
-		:step < \
-			:name ${name7} \
-			:description ${desc7} \
-			:study < \
-				:dicom < \
-					:modality MR \
-				> \
-				:type ${type7} \
 			> \
 		> \
 		:step < \
 			:name ${name4} \
 			:transform < \
-				:definition -version 0 1 \
+				:definition -version 0 -id-type id $trfmT1 \
 				:iterator < \
 					:scope ex-method \
 					:type citeable-id \
@@ -381,7 +440,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 		:step < \
 			:name ${name5} \
 			:transform < \
-				:definition -version 0 1 \
+				:definition -version 0 -id-type id $trfmT2 \
 				:iterator < \
 					:scope ex-method \
 					:type citeable-id \
@@ -393,17 +452,17 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 		:step < \
 			:name ${name6} \
 			:transform < \
-				:definition -version 0 1 \
+				:definition -version 0 -id-type id $trfmDTI \
 				:iterator < \
 					:scope ex-method \
 					:type citeable-id \
-					:query \"model='om.pssd.study' and mf-dicom-study has value\" \
+					:query \"model='om.pssd.study' and mf-dicom-study has value \" \
 					:parameter pid \
 				> \
 			> \
-		>"
+	>"
 # Create/update the Method
-	set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
+set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
 	if { $id2 == "" } {
 		# An existng Method was updated
 		return $id
@@ -413,3 +472,16 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	}
 }
  
+
+#:step < \
+#	:name ${name8} \
+#	:transform < \
+#		:definition -version 0 -id-type id $keplerExtract \
+#		:iterator < \
+#			:scope ex-method \
+#			:type citeable-id \
+#			:query \"model='om.pssd.study' and mf-dicom-study has value \" \
+#			:parameter pid \
+#		> \
+#	> \
+#> \

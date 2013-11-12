@@ -111,9 +111,11 @@
 		<replace file="${pkg-temp}/__manifest.xml" token="@server-version@" value="${mf.server.version}" />
 		<copy todir="${pkg-temp}" overwrite="true">
 			<fileset dir="${pkg-src}" includes="**/*.tcl" />
+			<fileset dir="${pkg-src}" includes="**/*.kar" />
 		</copy>
 		<zip filesonly="true" destfile="${dist}/${pkg-file}">
 			<fileset dir="${pkg-temp}" includes="**/*.tcl" />
+			<fileset dir="${pkg-temp}" includes="**/*.kar" />
 			<fileset dir="${pkg-temp}" includes="__manifest.xml" />
 			<fileset dir="${pkg-temp}" includes="${plugin-zip}" />
 		</zip>

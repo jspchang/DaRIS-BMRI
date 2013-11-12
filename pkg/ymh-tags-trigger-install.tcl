@@ -1,5 +1,5 @@
 set scriptNamespace     system/triggers
-set script              ymh-tags-trigger-install.tcl
+set script              ymh-tags-trigger.tcl
 set scriptPath          ${scriptNamespace}/${script}
 set namespace           pssd
 set label               [string toupper PACKAGE_$package]
