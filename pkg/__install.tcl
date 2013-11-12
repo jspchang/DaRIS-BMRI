@@ -68,12 +68,6 @@ srefresh
 #source pssd-domain-config.tcl
 #grantDomainPerms $tns
 
-# ============================================================================
-# Create PSSD object namespaces
-# ============================================================================
-# This function tramples on variable 'ns'... ergo 'tns'
-source pssd-namespaces.tcl
-
 #=============================================================================
 # Create document types in own namespace
 #=============================================================================
