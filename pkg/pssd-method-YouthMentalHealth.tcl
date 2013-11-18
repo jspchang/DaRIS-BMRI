@@ -4,7 +4,12 @@
 #
 # If Method pre-exists, action = 0 (do nothing), 1 (replace), 2 (create new)
 #
-proc create_YouthMentalHealth_Method { ns { action 1 } } {
+proc create_YouthMentalHealth_Method { ns { action 1 } install } {
+	
+	if { $install!="prod" && $install!="dev" } {
+		error INSTALL_ERROR "You must specify the install argument as \"dev\" or \"prod\" in the package install"
+	}
+	
 	# ExMethod metadata	
 	set name "youth-mental-health"
 	set desc "Youth Mental Health data"
@@ -58,9 +63,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 	asset.query :where transform:transform-definition has value and xpath(transform:transform-definition/name)='$name6' :action pipe :service -name asset.destroy
 	
 	#  Create the FSL brain extract transform definition
-	set trfmT1  [xvalue uid/@asset [transform.definition.create :type kepler :name $name4 :description $desc4 :parameter -name pid -type string :in archive:///fsl_extract.kar]]
-	set trfmT2  [xvalue uid/@asset [transform.definition.create :type kepler :name $name5 :description $desc5 :parameter -name pid -type string :in archive:///fsl_melodic.kar]]
-	set trfmDTI [xvalue uid/@asset [transform.definition.create :type kepler :name $name6 :description $desc6 :parameter -name pid -type string :in archive:///fsl_dti.kar]]
+	set trfmT1  [xvalue uid/@asset [transform.definition.create :type kepler :name $name4 :description $desc4 :parameter -name pid -type string :in archive:///$install/fsl_extract.kar]]
+	set trfmT2  [xvalue uid/@asset [transform.definition.create :type kepler :name $name5 :description $desc5 :parameter -name pid -type string :in archive:///$install/fsl_melodic.kar]]
+	set trfmDTI [xvalue uid/@asset [transform.definition.create :type kepler :name $name6 :description $desc6 :parameter -name pid -type string :in archive:///$install/fsl_dti.kar]]
 	
 	#
 	set args "${margs} \

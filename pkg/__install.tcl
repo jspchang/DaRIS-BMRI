@@ -95,7 +95,7 @@ createPSSD-bmri-self-report $tns
 #=============================================================================
 
 source pssd-method-YouthMentalHealth.tcl
-create_YouthMentalHealth_Method $tns 1
+create_YouthMentalHealth_Method $tns 1 $install
 
 #=============================================================================
 # Register doc types with the data model
