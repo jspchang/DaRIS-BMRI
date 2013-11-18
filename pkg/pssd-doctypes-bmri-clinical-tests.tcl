@@ -1061,7 +1061,6 @@ proc createPSSD-bmri-clinical-tests-DocTypes { ns } {
 	createDocType_pssd_ap_sequences $ns
 	createDocType_pssd_ap_sustained_attention $ns
 	createDocType_pssd_ap_working_memory $ns
-	createDocType_pssd_ap_paired_associate_learning $ns
 	createDocType_pssd_ap_executive_functioning $ns
 	createDocType_pssd_subject_disability $ns
 	createDocType_pssd_child_adult $ns

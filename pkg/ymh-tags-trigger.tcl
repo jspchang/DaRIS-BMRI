@@ -97,7 +97,7 @@ proc tag_dicom_dataset { asset_id dataset_cid } {
 ##
 ## NOTE: you need to substitude the YMH_PROJECT_CID to the id of your YMH prject.
 ##
-set YMH_PROJECT_CID 1069.2.4
+set YMH_PROJECT_CID 1069.2.1
 
 ##############################################################################
 ##############################################################################
