@@ -164,6 +164,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.date-of-birth PUBLISH] \
 	[list document ${ns}:pssd.subject.education ACCESS] \
 	[list document ${ns}:pssd.subject.education PUBLISH] \
+	[list document ${ns}:pssd.subject.identifiers ACCESS] \
+	[list document ${ns}:pssd.subject.identifiers PUBLISH] \
 	[list document ${ns}:pssd.notes ACCESS] \
 	[list document ${ns}:pssd.notes PUBLISH] \
 	[list document ${ns}:pssd.baseline-followup ACCESS] \
