@@ -172,6 +172,17 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.baseline-followup PUBLISH] \
 	[list document ${ns}:pssd.child-adult ACCESS] \
 	[list document ${ns}:pssd.child-adult PUBLISH] \
+	[list document ${ns}:pssd.subject.gender ACCESS] \
+	[list document ${ns}:pssd.subject.gender PUBLISH] \
+	[list document ${ns}:pssd.subject.handedness ACCESS] \
+	[list document ${ns}:pssd.subject.handedness PUBLISH] \
+	[list document ${ns}:pssd.subject.height ACCESS] \
+	[list document ${ns}:pssd.subject.height PUBLISH] \
+	[list document ${ns}:pssd.subject.initials PUBLISH] \
+	[list document ${ns}:pssd.subject.languages ACCESS] \
+	[list document ${ns}:pssd.subject.languages PUBLISH] \
+	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
+	[list document ${ns}:pssd.substance.nicotine-caffeine PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
 	[list document ${ns}:pssd.weight PUBLISH]] \
 
