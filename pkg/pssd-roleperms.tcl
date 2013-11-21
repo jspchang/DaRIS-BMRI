@@ -407,7 +407,7 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
-	[list document ${ns}:pssd.weight PUBLISH]
+	[list document ${ns}:pssd.weight PUBLISH] \
 	[list document ${ns}:pssd.years-of-education ACCESS] \
 	[list document ${ns}:pssd.years-of-education PUBLISH]] \
 
