@@ -899,6 +899,8 @@ proc createDocType_pssd_ap_working_memory { ns } {
 			:element -name "spatial-span" -type document -max-occurs 1 -min-occurs 0 < \
 				:element -name "span-length-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "span-length-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+				:element -name "span-length-error-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+				:element -name "span-length-error-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			> \
 		> \
 }
