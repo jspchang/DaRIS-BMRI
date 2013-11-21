@@ -18,12 +18,20 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.ap-bprs PUBLISH] \
 	[list document ${ns}:pssd.ap-cowat ACCESS] \
 	[list document ${ns}:pssd.ap-cowat PUBLISH] \
-	[list document ${ns}:pssd.ap-mood ACCESS] \
-	[list document ${ns}:pssd.ap-mood PUBLISH] \
+	[list document ${ns}:pssd.ap-executive-functioning ACCESS] \
+	[list document ${ns}:pssd.ap-executive-functioning PUBLISH] \
 	[list document ${ns}:pssd.ap-ham-d ACCESS] \
 	[list document ${ns}:pssd.ap-ham-d PUBLISH] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge ACCESS] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge PUBLISH] \
 	[list document ${ns}:pssd.ap-interview-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-interview-checklist PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual PUBLISH] \
+	[list document ${ns}:pssd.ap-mood ACCESS] \
+	[list document ${ns}:pssd.ap-mood PUBLISH] \
 	[list document ${ns}:pssd.ap-np-sc-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-np-sc-checklist PUBLISH] \
 	[list document ${ns}:pssd.ap-other-checklist ACCESS] \
@@ -34,40 +42,36 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.ap-rey-complex-figure-test PUBLISH] \
 	[list document ${ns}:pssd.ap-sds ACCESS] \
 	[list document ${ns}:pssd.ap-sds PUBLISH] \
-	[list document ${ns}:pssd.ap-sofas ACCESS] \
-	[list document ${ns}:pssd.ap-sofas PUBLISH] \
-	[list document ${ns}:pssd.ap-staging-model ACCESS] \
-	[list document ${ns}:pssd.ap-staging-model PUBLISH] \
-	[list document ${ns}:pssd.ap-speed-of-information-processing ACCESS] \
-	[list document ${ns}:pssd.ap-speed-of-information-processing PUBLISH] \
-	[list document ${ns}:pssd.ap-wais-wms-subsets ACCESS] \
-	[list document ${ns}:pssd.ap-wais-wms-subsets PUBLISH] \
-	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge ACCESS] \
-	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge PUBLISH] \
-	[list document ${ns}:pssd.ap-ymrs ACCESS] \
-	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
-	[list document ${ns}:pssd.ap-learning-and-memory-verbal ACCESS] \
-	[list document ${ns}:pssd.ap-learning-and-memory-verbal PUBLISH] \
 	[list document ${ns}:pssd.ap-sequences ACCESS] \
 	[list document ${ns}:pssd.ap-sequences PUBLISH] \
+	[list document ${ns}:pssd.ap-sofas ACCESS] \
+	[list document ${ns}:pssd.ap-sofas PUBLISH] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing ACCESS] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing PUBLISH] \
+	[list document ${ns}:pssd.ap-staging-model ACCESS] \
+	[list document ${ns}:pssd.ap-staging-model PUBLISH] \
 	[list document ${ns}:pssd.ap-sustained-attention ACCESS] \
 	[list document ${ns}:pssd.ap-sustained-attention PUBLISH] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets ACCESS] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets PUBLISH] \
 	[list document ${ns}:pssd.ap-working-memory ACCESS] \
 	[list document ${ns}:pssd.ap-working-memory PUBLISH] \
-	[list document ${ns}:pssd.ap-learning-and-memory-visual ACCESS] \
-	[list document ${ns}:pssd.ap-learning-and-memory-visual PUBLISH] \
-	[list document ${ns}:pssd.ap-executive-functioning ACCESS] \
-	[list document ${ns}:pssd.ap-executive-functioning PUBLISH] \
-	[list document ${ns}:pssd.subject.disability ACCESS] \
-	[list document ${ns}:pssd.subject.disability PUBLISH] \
+	[list document ${ns}:pssd.ap-ymrs ACCESS] \
+	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
 	[list document ${ns}:pssd.background-information ACCESS] \
 	[list document ${ns}:pssd.background-information PUBLISH] \
+	[list document ${ns}:pssd.baseline-followup ACCESS] \
+	[list document ${ns}:pssd.baseline-followup PUBLISH] \
 	[list document ${ns}:pssd.checked-self-report ACCESS] \
 	[list document ${ns}:pssd.checked-self-report PUBLISH] \
+	[list document ${ns}:pssd.child-adult ACCESS] \
+	[list document ${ns}:pssd.child-adult PUBLISH] \
 	[list document ${ns}:pssd.clinician ACCESS] \
 	[list document ${ns}:pssd.clinician PUBLISH] \
 	[list document ${ns}:pssd.current-treatment ACCESS] \
 	[list document ${ns}:pssd.current-treatment PUBLISH] \
+	[list document ${ns}:pssd.data-entered ACCESS] \
+	[list document ${ns}:pssd.data-entered PUBLISH] \
 	[list document ${ns}:pssd.date ACCESS] \
 	[list document ${ns}:pssd.date PUBLISH] \
 	[list document ${ns}:pssd.date-received ACCESS] \
@@ -80,6 +84,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.diagnostic-ultra-high-risk PUBLISH] \
 	[list document ${ns}:pssd.education.years ACCESS] \
 	[list document ${ns}:pssd.education.years PUBLISH] \
+	[list document ${ns}:pssd.examiner ACCESS] \
+	[list document ${ns}:pssd.examiner PUBLISH] \
 	[list document ${ns}:pssd.family-medical-history ACCESS] \
 	[list document ${ns}:pssd.family-medical-history PUBLISH] \
 	[list document ${ns}:pssd.general-practitioner ACCESS] \
@@ -90,6 +96,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.inclusion-exclusion PUBLISH] \
 	[list document ${ns}:pssd.medical-history ACCESS] \
 	[list document ${ns}:pssd.medical-history PUBLISH] \
+	[list document ${ns}:pssd.notes ACCESS] \
+	[list document ${ns}:pssd.notes PUBLISH] \
 	[list document ${ns}:pssd.patient-data-summary ACCESS] \
 	[list document ${ns}:pssd.patient-data-summary PUBLISH] \
 	[list document ${ns}:pssd.psychiatrist ACCESS] \
@@ -162,29 +170,28 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.age-at-baseline PUBLISH] \
 	[list document ${ns}:pssd.subject.date-of-birth ACCESS] \
 	[list document ${ns}:pssd.subject.date-of-birth PUBLISH] \
+	[list document ${ns}:pssd.subject.disability ACCESS] \
+	[list document ${ns}:pssd.subject.disability PUBLISH] \
 	[list document ${ns}:pssd.subject.education ACCESS] \
 	[list document ${ns}:pssd.subject.education PUBLISH] \
-	[list document ${ns}:pssd.subject.identifiers ACCESS] \
-	[list document ${ns}:pssd.subject.identifiers PUBLISH] \
-	[list document ${ns}:pssd.notes ACCESS] \
-	[list document ${ns}:pssd.notes PUBLISH] \
-	[list document ${ns}:pssd.baseline-followup ACCESS] \
-	[list document ${ns}:pssd.baseline-followup PUBLISH] \
-	[list document ${ns}:pssd.child-adult ACCESS] \
-	[list document ${ns}:pssd.child-adult PUBLISH] \
 	[list document ${ns}:pssd.subject.gender ACCESS] \
 	[list document ${ns}:pssd.subject.gender PUBLISH] \
 	[list document ${ns}:pssd.subject.handedness ACCESS] \
 	[list document ${ns}:pssd.subject.handedness PUBLISH] \
 	[list document ${ns}:pssd.subject.height ACCESS] \
 	[list document ${ns}:pssd.subject.height PUBLISH] \
+	[list document ${ns}:pssd.subject.identifiers ACCESS] \
+	[list document ${ns}:pssd.subject.identifiers PUBLISH] \
+	[list document ${ns}:pssd.subject.initials ACCESS] \
 	[list document ${ns}:pssd.subject.initials PUBLISH] \
 	[list document ${ns}:pssd.subject.languages ACCESS] \
 	[list document ${ns}:pssd.subject.languages PUBLISH] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
-	[list document ${ns}:pssd.weight PUBLISH]] \
+	[list document ${ns}:pssd.weight PUBLISH] \
+	[list document ${ns}:pssd.years-of-education ACCESS] \
+	[list document ${ns}:pssd.years-of-education PUBLISH]] \
 
 # Service access
 	set pssd_svc_perms	[list [list service ${ns}.pssd.* ACCESS] \
@@ -229,12 +236,20 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.ap-bprs PUBLISH] \
 	[list document ${ns}:pssd.ap-cowat ACCESS] \
 	[list document ${ns}:pssd.ap-cowat PUBLISH] \
-	[list document ${ns}:pssd.ap-mood ACCESS] \
-	[list document ${ns}:pssd.ap-mood PUBLISH] \
+	[list document ${ns}:pssd.ap-executive-functioning ACCESS] \
+	[list document ${ns}:pssd.ap-executive-functioning PUBLISH] \
 	[list document ${ns}:pssd.ap-ham-d ACCESS] \
 	[list document ${ns}:pssd.ap-ham-d PUBLISH] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge ACCESS] \
+	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge PUBLISH] \
 	[list document ${ns}:pssd.ap-interview-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-interview-checklist PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-verbal PUBLISH] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual ACCESS] \
+	[list document ${ns}:pssd.ap-learning-and-memory-visual PUBLISH] \
+	[list document ${ns}:pssd.ap-mood ACCESS] \
+	[list document ${ns}:pssd.ap-mood PUBLISH] \
 	[list document ${ns}:pssd.ap-np-sc-checklist ACCESS] \
 	[list document ${ns}:pssd.ap-np-sc-checklist PUBLISH] \
 	[list document ${ns}:pssd.ap-other-checklist ACCESS] \
@@ -245,40 +260,36 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.ap-rey-complex-figure-test PUBLISH] \
 	[list document ${ns}:pssd.ap-sds ACCESS] \
 	[list document ${ns}:pssd.ap-sds PUBLISH] \
-	[list document ${ns}:pssd.ap-sofas ACCESS] \
-	[list document ${ns}:pssd.ap-sofas PUBLISH] \
-	[list document ${ns}:pssd.ap-staging-model ACCESS] \
-	[list document ${ns}:pssd.ap-staging-model PUBLISH] \
-	[list document ${ns}:pssd.ap-speed-of-information-processing ACCESS] \
-	[list document ${ns}:pssd.ap-speed-of-information-processing PUBLISH] \
-	[list document ${ns}:pssd.ap-wais-wms-subsets ACCESS] \
-	[list document ${ns}:pssd.ap-wais-wms-subsets PUBLISH] \
-	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge ACCESS] \
-	[list document ${ns}:pssd.ap-intellectual-ability-and-general-knowledge PUBLISH] \
-	[list document ${ns}:pssd.ap-ymrs ACCESS] \
-	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
-	[list document ${ns}:pssd.ap-learning-and-memory-verbal ACCESS] \
-	[list document ${ns}:pssd.ap-learning-and-memory-verbal PUBLISH] \
 	[list document ${ns}:pssd.ap-sequences ACCESS] \
 	[list document ${ns}:pssd.ap-sequences PUBLISH] \
+	[list document ${ns}:pssd.ap-sofas ACCESS] \
+	[list document ${ns}:pssd.ap-sofas PUBLISH] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing ACCESS] \
+	[list document ${ns}:pssd.ap-speed-of-information-processing PUBLISH] \
+	[list document ${ns}:pssd.ap-staging-model ACCESS] \
+	[list document ${ns}:pssd.ap-staging-model PUBLISH] \
 	[list document ${ns}:pssd.ap-sustained-attention ACCESS] \
 	[list document ${ns}:pssd.ap-sustained-attention PUBLISH] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets ACCESS] \
+	[list document ${ns}:pssd.ap-wais-wms-subsets PUBLISH] \
 	[list document ${ns}:pssd.ap-working-memory ACCESS] \
 	[list document ${ns}:pssd.ap-working-memory PUBLISH] \
-	[list document ${ns}:pssd.ap-learning-and-memory-visual ACCESS] \
-	[list document ${ns}:pssd.ap-learning-and-memory-visual PUBLISH] \
-	[list document ${ns}:pssd.ap-executive-functioning ACCESS] \
-	[list document ${ns}:pssd.ap-executive-functioning PUBLISH] \
-	[list document ${ns}:pssd.subject.disability ACCESS] \
-	[list document ${ns}:pssd.subject.disability PUBLISH] \
+	[list document ${ns}:pssd.ap-ymrs ACCESS] \
+	[list document ${ns}:pssd.ap-ymrs PUBLISH] \
 	[list document ${ns}:pssd.background-information ACCESS] \
 	[list document ${ns}:pssd.background-information PUBLISH] \
+	[list document ${ns}:pssd.baseline-followup ACCESS] \
+	[list document ${ns}:pssd.baseline-followup PUBLISH] \
 	[list document ${ns}:pssd.checked-self-report ACCESS] \
 	[list document ${ns}:pssd.checked-self-report PUBLISH] \
+	[list document ${ns}:pssd.child-adult ACCESS] \
+	[list document ${ns}:pssd.child-adult PUBLISH] \
 	[list document ${ns}:pssd.clinician ACCESS] \
 	[list document ${ns}:pssd.clinician PUBLISH] \
 	[list document ${ns}:pssd.current-treatment ACCESS] \
 	[list document ${ns}:pssd.current-treatment PUBLISH] \
+	[list document ${ns}:pssd.data-entered ACCESS] \
+	[list document ${ns}:pssd.data-entered PUBLISH] \
 	[list document ${ns}:pssd.date ACCESS] \
 	[list document ${ns}:pssd.date PUBLISH] \
 	[list document ${ns}:pssd.date-received ACCESS] \
@@ -291,6 +302,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.diagnostic-ultra-high-risk PUBLISH] \
 	[list document ${ns}:pssd.education.years ACCESS] \
 	[list document ${ns}:pssd.education.years PUBLISH] \
+	[list document ${ns}:pssd.examiner ACCESS] \
+	[list document ${ns}:pssd.examiner PUBLISH] \
 	[list document ${ns}:pssd.family-medical-history ACCESS] \
 	[list document ${ns}:pssd.family-medical-history PUBLISH] \
 	[list document ${ns}:pssd.general-practitioner ACCESS] \
@@ -301,6 +314,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.inclusion-exclusion PUBLISH] \
 	[list document ${ns}:pssd.medical-history ACCESS] \
 	[list document ${ns}:pssd.medical-history PUBLISH] \
+	[list document ${ns}:pssd.notes ACCESS] \
+	[list document ${ns}:pssd.notes PUBLISH] \
 	[list document ${ns}:pssd.patient-data-summary ACCESS] \
 	[list document ${ns}:pssd.patient-data-summary PUBLISH] \
 	[list document ${ns}:pssd.psychiatrist ACCESS] \
@@ -373,6 +388,8 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.age-at-baseline PUBLISH] \
 	[list document ${ns}:pssd.subject.date-of-birth ACCESS] \
 	[list document ${ns}:pssd.subject.date-of-birth PUBLISH] \
+	[list document ${ns}:pssd.subject.disability ACCESS] \
+	[list document ${ns}:pssd.subject.disability PUBLISH] \
 	[list document ${ns}:pssd.subject.education ACCESS] \
 	[list document ${ns}:pssd.subject.education PUBLISH] \
 	[list document ${ns}:pssd.subject.gender ACCESS] \
@@ -389,14 +406,10 @@ proc setRolePerms { ns } {
 	[list document ${ns}:pssd.subject.languages PUBLISH] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine ACCESS] \
 	[list document ${ns}:pssd.substance.nicotine-caffeine PUBLISH] \
-	[list document ${ns}:pssd.notes ACCESS] \
-	[list document ${ns}:pssd.notes PUBLISH] \
-	[list document ${ns}:pssd.baseline-followup ACCESS] \
-	[list document ${ns}:pssd.baseline-followup PUBLISH] \
-	[list document ${ns}:pssd.child-adult ACCESS] \
-	[list document ${ns}:pssd.child-adult PUBLISH] \
 	[list document ${ns}:pssd.weight ACCESS] \
-	[list document ${ns}:pssd.weight PUBLISH]] \
+	[list document ${ns}:pssd.weight PUBLISH]
+	[list document ${ns}:pssd.years-of-education ACCESS] \
+	[list document ${ns}:pssd.years-of-education PUBLISH]] \
 
 # Grant permissions to dicom role
 	grantRolePerms $domain_dicom_ingest_role $dicom_ingest_doc_perms

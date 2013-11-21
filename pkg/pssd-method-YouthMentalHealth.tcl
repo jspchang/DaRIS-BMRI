@@ -136,6 +136,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } install } {
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.data-entered \
+				> \
+				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
 				> \
 				:metadata < \
@@ -176,13 +179,22 @@ proc create_YouthMentalHealth_Method { ns { action 1 } install } {
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
 				> \
 				:metadata < \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.data-entered \
+				> \
+				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
+				> \
+				:metadata < \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.years-of-education \
 				> \
 				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.child-adult \
 				> \
 				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.research-psychologist \
+				> \
+				:metadata < \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.examiner \
 				> \
 				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.notes \
@@ -287,6 +299,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } install } {
 					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-rey-complex-figure-test \
 				> \
 				:metadata < \
+					:definition -group 13-Scoring -requirement optional ${ns}:pssd.ap-sequences \
+				> \
+				:metadata < \
 					:definition -group 13-Scoring -requirement optional ${ns}:pssd.notes \
 				> \
 			> \
@@ -298,6 +313,9 @@ proc create_YouthMentalHealth_Method { ns { action 1 } install } {
 				:type ${type3} \
 				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.date \
+				> \
+				:metadata < \
+					:definition -group 01-Administration -requirement optional ${ns}:pssd.data-entered \
 				> \
 				:metadata < \
 					:definition -group 01-Administration -requirement optional ${ns}:pssd.baseline-followup \
@@ -344,7 +362,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } install } {
 					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
-					:definition -group 06-Medical-Status -requirement optional ${ns}:pssd.clinician \
+					:definition -group 05-Medical-Status -requirement optional ${ns}:pssd.clinician \
 				> \
 				:metadata < \
 					:definition -group 06-Medical-History -requirement optional ${ns}:pssd.sr-personal-medical-history \

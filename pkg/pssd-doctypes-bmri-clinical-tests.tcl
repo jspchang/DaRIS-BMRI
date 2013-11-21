@@ -731,6 +731,7 @@ proc createDocType_pssd_ap_speed_of_information_processing { ns } {
 				:element -name "a-score-secs" -type float -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "a-errors" -type float -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "a-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+				:element -name "a-raw-child-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "choice-reaction-time" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "simple-movement-time-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
@@ -859,13 +860,13 @@ proc destroyDocType_pssd_ap_sequences { ns force } {
 }
 
 #======================================================================================
-# sequences docType
+# sustained attention docType
 
 proc createDocType_pssd_ap_sustained_attention { ns } {
 
 	asset.doc.type.update :create true :type ${ns}:pssd.ap-sustained-attention \
 		:description "Assessment protocol sustained attention scores" \
-		:label "sequences" \
+		:label "sustained-attention" \
 		:definition < \
 			:element -name "rapid-visual-processing" -type document -max-occurs 1 -min-occurs 0 < \
 				:element -name "a-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
@@ -922,7 +923,7 @@ proc createDocType_pssd_ap_learning_and_memory_visual { ns } {
 
 	asset.doc.type.update :create true :type ${ns}:pssd.ap-learning-and-memory-visual \
 		:description "Assessment protocol sequences score" \
-		:label "sequences" \
+		:label "paired-associate-learning" \
 		:definition < \
 			:element -name "paired-associate-learning" -type document -max-occurs 1 -min-occurs 0 < \
 				:element -name "total-erros-adjusted-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
@@ -955,6 +956,7 @@ proc createDocType_pssd_ap_executive_functioning { ns } {
 				:element -name "b-score-secs" -type float -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "b-errors" -type float -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "b-z-score" -type float -min-occurs 0 -max-occurs 1 -index true \
+				:element -name "b-raw-child-score" -type float -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "intra-extradimensional-shift" -type document -min-occurs 0 -max-occurs 1 < \
 				:element -name "stages-completed-raw-score" -type float -min-occurs 0 -max-occurs 1 -index true \
@@ -1015,13 +1017,13 @@ proc destroyDocType_pssd_subject_disability { ns force } {
 }
 
 #======================================================================================
-# cild-adult docType
+# child-adult docType
 
 proc createDocType_pssd_child_adult { ns } {
 
 	asset.doc.type.update :create true :type ${ns}:pssd.child-adult \
-		:description "Assessment protocol intra extra dimensional shift score" \
-		:label "disability" \
+		:description "Was subject child or adult at time of test" \
+		:label "child-adult" \
 		:definition < \
 			:element -name "child-adult" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:description "subject was a child or adult at time of completing form?" \
@@ -1040,6 +1042,7 @@ proc destroyDocType_pssd_child_adult { ns force } {
                 asset.doc.type.destroy :type ${ns}:pssd.child-adult :force $force
     }
 }
+
 #============================================================================#
 proc createPSSD-bmri-clinical-tests-DocTypes { ns } {
 
