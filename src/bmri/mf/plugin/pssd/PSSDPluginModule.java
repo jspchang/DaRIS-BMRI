@@ -6,6 +6,7 @@ import java.util.Vector;
 import bmri.mf.plugin.pssd.services.SvcObjectMetaSet;
 import bmri.mf.plugin.pssd.services.SvcSample;
 import bmri.mf.plugin.pssd.services.SvcUserCreate;
+import bmri.mf.plugin.pssd.services.SvcProjectTag;
 
 
 
@@ -30,6 +31,7 @@ public class PSSDPluginModule implements PluginModule {
 		_services.add(new SvcSample());
 		_services.add(new SvcObjectMetaSet());
 		_services.add(new SvcUserCreate());
+		_services.add(new SvcProjectTag());
 
 	}
 
