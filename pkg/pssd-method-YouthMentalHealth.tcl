@@ -27,11 +27,11 @@ proc create_YouthMentalHealth_Method { ns { action 1 } install } {
 	set desc3 "Youth Mental Health Study Self-report"
 	set type3 "ymh-self-report"
 	#
-	set name4 "ymh-t1-wighted-mri-transform"
+	set name4 "ymh-t1-weighted-mri-transform"
 	set desc4 "Youth Mental Health T1 Structural MRI Transform"
 	set type4 "ymh-t1-transform"
 	#
-	set name5 "ymh-t2-wighted-mri-transform"
+	set name5 "ymh-t2-weighted-mri-transform"
 	set desc5 "Youth Mental Health T2 functional MRI Transform"
 	set type5 "ymh-t2-transform"
 	#
@@ -484,6 +484,7 @@ proc create_YouthMentalHealth_Method { ns { action 1 } install } {
 				> \
 			> \
 	>"
+	
 # Create/update the Method
 set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
 	if { $id2 == "" } {
