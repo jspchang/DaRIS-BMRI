@@ -743,6 +743,17 @@ proc createDict_pssd_secs_mins_hours { ns } {
 
 }
 
+proc createDict_pssd_child_adult { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.child-adult]] == "false" } {
+		dictionary.create :name ${ns}.pssd.secs-mins-hours :description "subject is a child or adult" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "child" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "adult" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 
@@ -800,6 +811,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_timing $ns
 	createDict_pssd_sr_tobacco_usage $ns
 	createDict_pssd_secs_mins_hours $ns
+	createDict_pssd_child_adult $ns
 }
 
 #============================================================================#
@@ -857,7 +869,8 @@ proc destroyPSSDDicts { ns } {
 				$ns.pssd.sr-living-status \
 				$ns.pssd.timing \
 				$ns.pssd.secs-mins-hours \
-				$ns.pssd.sr-tobacco-usage]
+				$ns.pssd.sr-tobacco-usage \
+				$ns.pssd.child-adult]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict
