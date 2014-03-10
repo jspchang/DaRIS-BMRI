@@ -746,11 +746,11 @@ proc createDict_pssd_secs_mins_hours { ns } {
 proc createDict_pssd_child_adult { ns } {
 
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.child-adult]] == "false" } {
-		dictionary.create :name ${ns}.pssd.secs-mins-hours :description "subject is a child or adult" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+		dictionary.create :name ${ns}.pssd.child-adult :description "subject is a child or adult" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
 	}
-	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "child" :variant -lang numeric "1"
-	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "adult" :variant -lang numeric "2"
-	dictionary.entry.add  :dictionary ${ns}.pssd.secs-mins-hours :term "missing-not-available" :variant -lang numeric "999"
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-adult :term "child" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-adult :term "adult" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.child-adult :term "missing-not-available" :variant -lang numeric "999"
 
 }
 
