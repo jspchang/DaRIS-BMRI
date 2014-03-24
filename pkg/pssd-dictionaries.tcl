@@ -413,6 +413,9 @@ proc createDict_pssd_languages { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "farsi" :variant -lang numeric "10"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "spanish" :variant -lang numeric "11"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "other" :variant -lang numeric "12"
+	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "german" :variant -lang numeric "13"
+	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "missing-not-available" :variant -lang numeric "999"
+	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "not-applicable" :variant -lang numeric "888"
 
 }
 
