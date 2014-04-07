@@ -537,8 +537,8 @@ proc createDict_pssd_subject_included { ns } {
 		dictionary.create :name ${ns}.pssd.subject.included :description "caffeine nicotine list" :case-sensitive false :variant < :lang other :description "am pm variant" >
 	}
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "included" :variant -lang other "1"
-	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "excluded" :variant -lang other "0"
-	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "to-be-determined" :variant -lang other "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "excluded" :variant -lang other "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "to-be-determined" :variant -lang other "3"
 }
 
 #============================================================================#
