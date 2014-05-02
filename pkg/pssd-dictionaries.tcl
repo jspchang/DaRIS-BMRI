@@ -441,7 +441,7 @@ proc createDict_pssd_languages { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "russian" :variant -lang numeric "38"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "serbian" :variant -lang numeric "39"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "sinhalese" :variant -lang numeric "40"
-	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "swedish" :variant -lang numeric "41"\
+	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "swedish" :variant -lang numeric "41"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "tagalog" :variant -lang numeric "42"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "tamil" :variant -lang numeric "43"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "turkish" :variant -lang numeric "44"
