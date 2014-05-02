@@ -1685,7 +1685,7 @@ proc createDocType_pssd_sr_scale_10 { ns } {
 			> \
 			:element -name "d6.8" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-10 \
+					:dictionary $ns.pssd.sr-scale-10-b \
 				> \
 			> \
 			:element -name "getting-along-with-people-factor-score" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
@@ -1823,67 +1823,67 @@ proc createDocType_pssd_sr_scale_11_part_c { ns } {
 		:definition < \
 			:element -name "buying-items-from-the-shops" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "washing-pots-tidying-up" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "regular-washing-bathing" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "washing-oen-clothes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "looking-for-a-job-or-working" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "doing-food-shopping" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "prepare-and-cook-a-meal" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "leaving-the-house-alone" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "using-buses-trains-etc" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "using-money" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "budgeting" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "choosing-and-buying-clothes-for-self" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "take-care-of-personal-appearance" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 		> \
@@ -1906,77 +1906,77 @@ proc createDocType_pssd_sr_scale_11_part_d { ns } {
 		:definition < \
 			:element -name "playing-musical-instruments" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "sewing-knitting" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "gardening" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "reading-things" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "watching-television" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "listening-to-record-or-radio" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "cooking" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "d-i-y-activities" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "fixing-things" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "walking-rambling" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.never-rarely-sometimes-often \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "driving-riding-as-recreation" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "swimming" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "hobby" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "shopping" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "artistic-activity" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 		> \
@@ -1999,47 +1999,47 @@ proc createDocType_pssd_sr_scale_11_part_e { ns } {
 		:definition < \
 			:element -name "cinema" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "theatre-concert" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "watching-indoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "watching-outdoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "art-gallery-museum" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "exhibition" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "visiting-places-of-interest" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "meetings-talks" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "evening-class" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "visiting-relatives-in-their-homes" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -2054,57 +2054,57 @@ proc createDocType_pssd_sr_scale_11_part_e { ns } {
 			> \
 			:element -name "visiting-friends" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "parties" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "formal-occasions" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "disco-etc" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "nightclub-social-club" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "playing-indoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "playing-outdoor-sports" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "club-society" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "pub" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "eating-out" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 			:element -name "church-activity" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-scale-11-c \
+					:dictionary $ns.pssd.sr-scale-11-b \
 				> \
 			> \
 		> \
