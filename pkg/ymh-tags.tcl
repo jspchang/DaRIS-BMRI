@@ -79,9 +79,15 @@ proc tag_dicom_dataset { dataset_cid } {
     
     if { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "DTI 77 direction 2mm"] && ${image_in_acquisition} == 4235 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-dti-mri" >
+    } elseif { [string_equals ${protocol} "-YOUTH MENTAL HEALTH"] && [string_equals ${description} "DTI 77 direction 2mm"] && ${image_in_acquisition} == 4235 } {
+        om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-dti-mri" >
+    } elseif { [string_equals ${protocol} "-YOUTH MENTAL HEALTH"] && [string_equals ${description} "3D T1 0.9mm isotropic"] && ${image_in_acquisition} == 196 } {
+        om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t1-mri" >
     } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "3D T1 0.9mm isotropic"] && ${image_in_acquisition} == 196 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t1-mri" >
     } elseif { [string_equals ${protocol} "YOUTH MENTAL HEALTH 8CH"] && [string_equals ${description} "fMRI 64 Resting State"] && ${number_of_temporal_positions} == 140 && ${image_in_acquisition} == 39 } {
+        om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t2-mri" >
+    } elseif { [string_equals ${protocol} "-YOUTH MENTAL HEALTH"] && [string_equals ${description} "fMRI 64 Resting State"] && ${number_of_temporal_positions} == 140 && ${image_in_acquisition} == 39 } {
         om.pssd.object.tag.add :cid ${dataset_cid} :tag < :name "youth-mental-health-t2-mri" >
     }
 }
