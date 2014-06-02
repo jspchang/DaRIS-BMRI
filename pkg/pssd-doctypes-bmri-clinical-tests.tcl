@@ -1028,7 +1028,7 @@ proc createDocType_pssd_child_adult { ns } {
 			:element -name "child-adult" -type enumeration -max-occurs 1 -min-occurs 0 -index true < \
 				:description "subject was a child or adult at time of completing form?" \
 				:restriction -base enumeration < \
-					:dictionary $ns.pssd.standard-no-yes \
+					:dictionary $ns.pssd.child-adult \
 				> \
 			> \
 		> \
