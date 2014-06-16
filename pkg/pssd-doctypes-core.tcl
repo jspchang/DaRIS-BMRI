@@ -11,11 +11,11 @@ proc createDocType_pssd_subject_identifiers { ns } {
         :description "Document type for subject identifiers" \
         :label "Subject Identifiers" \
         :definition < \
-        	:element -name "subject-bmri-id" -type "string" -index true -min-occurs 1 -max-occurs 1 < \
+        	:element -name "subject-bmri-id" -type "string" -index true -min-occurs 0 -max-occurs 1 < \
             	:description "The BMRI ID for a subject, used to link a subject across multiple projects" \
             > \
-    		:element -name "subject-project-id" -type "string" -index true -min-occurs 1 -max-occurs 1 < \
-            	:description "The project specific ID for a subject" \
+            :element -name "subject-project-id" -type "string" -index true -min-occurs 1 -max-occurs 1 < \
+            	:description "The project ID for a subject" \
             > \
             :element -name "other-identifiers" -type "string" -index true -min-occurs 0 -max-occurs infinity < \
             	:description "other identifiers for the subject" \
