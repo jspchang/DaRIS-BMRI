@@ -528,7 +528,7 @@ proc createDict_pssd_subject_handedness { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "right" :variant -lang other "1"
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "ambidextrous" :variant -lang other "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "unknown" :variant -lang other "4"
-	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "missing-not-available" :variant -lang other "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "missing-not-available" :variant -lang other "999"
 }
 
 #=============================================================================
