@@ -27,9 +27,11 @@ import java.text.SimpleDateFormat;
  */
 public class BMRIDomainMetaData extends DomainMetaData {
 
-	private static final String AMRIF_FACILITY = "aMRIF";
-	private static final String RCH_FACILITY = "RCH";
-	private static final String DATE_FORMAT = "dd-MMM-yyyy";
+    private static final String IDENTITY_DOCTYPE = "bmri:pssd.subject.identifiers";
+    private static final String GENDER_DOCTYPE = "bmri:pssd.subject.gender";
+    private static final String DOB_DOCTYPE = "bmri:pssd.subject.date-of-birth";
+    private static final String DATE_FORMAT = "dd-MMM-yyyy";
+
 
 	// Constructor
 	public BMRIDomainMetaData () {
@@ -54,9 +56,9 @@ public class BMRIDomainMetaData extends DomainMetaData {
 			removeElementsDicom (executor, id, objectType, currentMeta);
 		} 
 
+		// Bruker not handled
 		XmlDoc.Element bruker = metaType.element("bruker");
 		if (bruker!=null) {
-			removeElementsBruker (executor, id, objectType, currentMeta);	
 		}
 	}
 
@@ -82,22 +84,7 @@ public class BMRIDomainMetaData extends DomainMetaData {
 	protected void addTranslatedProjectDocument (Executor executor, String id, XmlDoc.Element meta, 
 			String privacyType, String docType, XmlDoc.Element currentMeta) throws Throwable {
 		if (meta==null) return;
-
-		XmlDocMaker dm = null;
-		if (docType.equals("bmri:pssd.project")) {
-			if (checkDocTypeExists(executor, "bmri:pssd.project")) {
-				dm = new XmlDocMaker("args");
-				dm.add("id", id);
-				dm.push(privacyType, new String[]{"action","merge"});
-				boolean doIt = addPSSDProjectFacilityIDOuter (meta, currentMeta, dm);
-				if (!doIt) dm = null;
-			}
-		} 
-
-		// Update the Project
-		if (dm!=null) {
-			updateProject(executor, dm);
-		}
+		return;
 	}
 
 	/**
@@ -119,27 +106,36 @@ public class BMRIDomainMetaData extends DomainMetaData {
 		if (meta==null) return;
 
 		XmlDocMaker dm = null;
-		if (docType.equals("bmri:pssd.identity")) {
-			if (checkDocTypeExists(executor, "bmri:pssd.identity")) {
+		if (docType.equals(IDENTITY_DOCTYPE)) {
+			if (checkDocTypeExists(executor, IDENTITY_DOCTYPE)) {
 				dm = new XmlDocMaker("args");
 				dm.add("id", id);
 				dm.push(privacyType);
-				boolean doIt = addPSSDIdentityOuter (meta, currentMeta, dm);
+				boolean doIt = addIdentityOuter (meta, currentMeta, dm);
 				if (!doIt) dm = null;
 			}
-		} else if (docType.equals("bmri:pssd.animal.subject")) {
-			if (checkDocTypeExists(executor, "bmri:pssd.animal.subject")) {
+		} else if (docType.equals(GENDER_DOCTYPE)) {
+			if (checkDocTypeExists(executor, GENDER_DOCTYPE)) {
 				dm = new XmlDocMaker("args");
 				dm.add("id", id);
 				dm.push(privacyType);
-				boolean doIt = addPSSDAnimalSubjectOuter (meta, currentMeta, dm);
+				boolean doIt = addGenderOuter (meta, currentMeta, dm);
+				if (!doIt) dm = null;
+			}
+		} else if (docType.equals(DOB_DOCTYPE)) {
+			if (checkDocTypeExists(executor, DOB_DOCTYPE)) {
+				dm = new XmlDocMaker("args");
+				dm.add("id", id);
+				dm.push(privacyType);
+				boolean doIt = addDOBOuter (meta, currentMeta, dm);
 				if (!doIt) dm = null;
 			}
 		}
 
 		// Update the SUbject
 		if (dm!=null) {
-			updateSubject(executor, dm);
+		    dm.add("allow-incomplete-meta", true);
+                    updateSubject(executor, dm);
 		}
 
 	}
@@ -164,44 +160,42 @@ public class BMRIDomainMetaData extends DomainMetaData {
 	protected void addTranslatedStudyDocument (Executor executor, String id, XmlDoc.Element meta, 
 			String privacyType, String docType, String ns, XmlDoc.Element currentMeta) throws Throwable {
 		if (meta==null) return;
+		return;
+	}
 
-		// No DICOM mapping at this time
-		
-		// Bruker.  
-		// This does not need to use the Method namespace because it uses its own specialised 'bruker' namespace
-		XmlDocMaker dm = null;
-		if (docType.equals("hfi-bruker-study")) {
-			if (checkDocTypeExists(executor, "hfi-bruker-study")) {
-				dm = new XmlDocMaker("args");
-				dm.add("id", id);
-				dm.push(privacyType, new String[]{"action","merge"});
-				boolean doIt = addPSSDStudyOuter (meta, currentMeta, dm);
-				if (!doIt) dm = null;
+
+
+	private boolean addIdentityOuter (XmlDoc.Element meta,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
+	    // DICOM
+	    return addIdentityDICOM (meta.element("dicom"), currentMeta, dm);
+
+	    // BRuker not handled
+	}
+
+
+
+	private boolean addGenderOuter (XmlDoc.Element meta,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
+
+	    // DICOM
+		XmlDoc.Element dicom = meta.element("dicom");
+		Boolean set = false;
+		if (dicom!=null) {
+			XmlDoc.Element subject = dicom.element("subject");
+			if (subject!=null) {
+				String gender = subject.value("sex");
+				set = addGender (gender, currentMeta, dm);
 			}
-		} 
-
-		// Update the Study
-		if (dm!=null) {
-			updateStudy(executor, dm);
 		}
+
+		// Bruker not handled
+		XmlDoc.Element bruker = meta.element("bruker");
+		//
+		return set;
 	}
 
 
 
-
-	private boolean addPSSDProjectFacilityIDOuter (XmlDoc.Element meta,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
-
-		return addPSSDProjectFacilityIDDICOM (meta.element("dicom"), currentMeta, dm) ||
-		addPSSDProjectFacilityIDBruker (meta.element("bruker"), currentMeta, dm);
-	}
-
-
-	private boolean addPSSDIdentityOuter (XmlDoc.Element meta,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
-		return addPSSDIdentityDICOM (meta.element("dicom"), currentMeta, dm) ||
-		addPSSDIdentityBruker (meta.element("bruker"), currentMeta, dm);
-	}
-
-	private boolean addPSSDAnimalSubjectOuter (XmlDoc.Element meta,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
+	private boolean addDOBOuter (XmlDoc.Element meta,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
 
 		XmlDoc.Element dicom = meta.element("dicom");
 		Boolean set = false;
@@ -216,71 +210,19 @@ public class BMRIDomainMetaData extends DomainMetaData {
 					SimpleDateFormat df = new SimpleDateFormat(DATE_FORMAT);
 					dobString = df.format(dob).toString();
 				}
-				//
-				String gender = null;
-				gender = subject.value("sex");
-				//
-				set = addPSSDAnimalSubject (dobString, gender, currentMeta, dm);
+				set = addDOB  (dobString, currentMeta, dm);
 			}
 		}
 		//
 		XmlDoc.Element bruker = meta.element("bruker");
 		if (bruker!=null) {
-			String dob =null;      //  Not available
-			String gender = bruker.value("gender");
-			if (gender!=null) {
-				if (gender.equalsIgnoreCase("M")) {
-					gender = "male";
-				} else if (gender.equalsIgnoreCase("F")) {
-					gender = "female";
-				} else {
-					gender = "unknown";
-				}
-			}
-			Boolean set2 = addPSSDAnimalSubject (dob, gender, currentMeta, dm);
-			if (set2) set = true;
 		}
+		//
 		return set;
 	}
 
 
 
-	private boolean addPSSDStudyOuter (XmlDoc.Element meta,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
-
-		// No mapping for DICOM data at this time.
-		return addPSSDStudyBruker (meta.element("bruker"), currentMeta, dm);
-	}
-
-
-
-	/**
-	 * Function to add the Project Facility ID  to the Project meta-data if it does not already exist
-	 * 
-	 * @param executor
-	 * @param currentMeta
-	 * @param cid
-	 * @throws Throwable
-	 */	
-	private boolean addPSSDProjectFacilityIDDICOM (XmlDoc.Element sm,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
-		if (sm==null) return false;
-
-		// There is no really good candidate for the project ID in the
-		// Study meta-data.  Perhaps the element
-		// STUDY_DESCRIPTION = new DataElementTag(0x0008,0x1030);
-		// would be ok.  
-
-		// Extract DICOM meta data
-		String projectDescription = sm.value("description");
-
-		// We really can't know who generated this description.
-		// We can't assume it's anything to do with the facility that
-		// actually provides the data.
-		String facilityType = "Other";   
-
-		// Add/merge the facility ID
-		return addMergeFacilityID (currentMeta, projectDescription, facilityType, dm);
-
-	}
 
 	/**
 	 * Function to add the Subject ID (DICOM element (0010,0020)) to
@@ -292,265 +234,115 @@ public class BMRIDomainMetaData extends DomainMetaData {
 	 * @param cid
 	 * @throws Throwable
 	 */	
-	private boolean addPSSDIdentityDICOM (XmlDoc.Element sm,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
+	private boolean addIdentityDICOM (XmlDoc.Element sm,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
 		if (sm==null) return false;
 
-		// Extract DICOM meta data 
-		String patientID = sm.value("id");
-		if (patientID == null) return false;
+		// Extract DICOM meta data.  The BMRI stores the identifier in the patient last name
+		String fullName = sm.value("subject/name");
+		if (fullName ==null) return false;
 
-		// Set type of identity; i.e. who supplied this identity
-		String typeID = "Other";
-		String scanFac = scannerFacility(sm);
-		if (scanFac.equals(RCH_FACILITY)) {
-			typeID = "RCH";
-		} else if (scanFac.equals(AMRIF_FACILITY)) {
-			typeID = "aMRIF";
-		}	
-
+		// Fish out last name
+		String[] parts = fullName.split(" ");
+		int n = parts.length;
+		String lastName = parts[n-1];
 		// Add/merge the identity if needed.
-		return addMergeIdentity (currentMeta, patientID, typeID, dm);
+		return addMergeIdentity (currentMeta, lastName, dm);
 	}
 
 
 
-	/**
-	 * Function to add the Project Facility ID  to the Project meta-data if it does not already exist
-	 * 
-	 * @param executor
-	 * @param currentMeta
-	 * @param cid
-	 * @throws Throwable
-	 */	
-	private boolean addPSSDProjectFacilityIDBruker (XmlDoc.Element sm,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
-		if (sm==null) return false;
 
-		// Extract Bruker meta data. Now the "project description", as used at aMRIF, is really just
-		// a String (one word) describing the Project Name.  So it's legitimate to treat it
-		// as a Facility ID
-		String projectDescription = sm.value("project_descriptor");
-		String facilityType = "aMRIF";                           // Because this is a NIG class, we are allowed to 'know' this
-
-		// Add/merge the facility ID
-		return addMergeFacilityID (currentMeta, projectDescription, facilityType, dm);
-
-	}
-
-	/**
-	 * Function to add the Subject ID (DICOM element (0010,0020)) to
-	 * the SUbject meta-data if it does not already exist
-	 * not already exist
-	 * 
-	 * @param executor
-	 * @param currentMeta
-	 * @param cid
-	 * @throws Throwable
-	 */	
-	private boolean addPSSDIdentityBruker (XmlDoc.Element sm,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
-		if (sm==null) return false;
-
-		// Extract Bruker meta data 
-		String animalID = sm.value("animal_id");
-
-		// Set type of identity; i.e. who supplied this identity
-		// OK because this is a NIG class and should only be utilised at NIG (for now)
-		// TODO: find some way of getting the actual station into here.
-		String typeID = "aMRIF";        
+	private boolean addMergeIdentity (XmlDoc.Element currentMeta,  String subjectID, XmlDocMaker dm) throws Throwable {
 
 
-		// Add/merge the identity if needed.
-		return addMergeIdentity (currentMeta, animalID, typeID, dm);
-
-	}
-
-
-
-	/**
-	 * Function to add the meta-data parsed from the FNI Small ANimal Facility subject ID coded strings
-	 * 
-	 * @param executor
-	 * @param currentMeta
-	 * @param cid
-	 * @throws Throwable
-	 */	
-	private boolean addPSSDStudyBruker (XmlDoc.Element sm,  XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
-		if (sm==null) return false;
-
-		// Add/merge the identity if needed.
-		Date date = sm.element("date").hasValue() ? sm.dateValue("date") : null;
-		String dateStr = null;
-		if (date!=null) {
-			dateStr = DateUtil.formatDate(date, "dd-MMM-yyyy");
-		}
-
-		return addMergeaMRIFStudy (currentMeta, sm.value("coil"), dateStr, dm);
-	}
-
-
-	private boolean addMergeaMRIFStudy (XmlDoc.Element currentMeta, String coil, String date,
-			XmlDocMaker dm) throws Throwable {
-
-		// Set updated meta-data
-		// We add a new document with the details.  SHould never be more than one...
-		Boolean someMeta = false;
-
-		// Should get this namespace from a central class...
-		dm.push("hfi-bruker-study", new String[] { "ns", "bruker"}); 
-		if (coil != null) {
-			dm.add("coil", coil);
-			someMeta = true;
-		}
-		if (date!=null) {
-			dm.add("date", date);
-			someMeta = true;
-		}
-		dm.pop();
-		dm.pop();      // "meta" pop
-		return someMeta;
-	}
-
-
-	private boolean addMergeFacilityID (XmlDoc.Element currentMeta,  String projectID, String idType, XmlDocMaker dm) throws Throwable {
-
+		if (subjectID==null) return false;
 
 		// See if this specific identity already exists on the object
-		Collection<XmlDoc.Element> identities = null;
 		if (currentMeta!=null) {
-			identities = currentMeta.elements("bmri:pssd.project");
-			if (identities != null) {
-				for (XmlDoc.Element el : identities) {
-					String id = el.value("facility-id");
-					String type = el.value("facility-id/@type");
-
-					// If we have this specific identity already, return
-					if(id!=null&&type!=null) {
-						if (id.equals(projectID) && type.equals(idType)) return false;
-					}
-				}
+			Collection<XmlDoc.Element> identities =  currentMeta.elements(IDENTITY_DOCTYPE);
+                        if (identities!=null) {
+			    for (XmlDoc.Element identity : identities) {
+				String id  = identity.value("subject-project-id");
+				// Already have this one
+				if(id!=null && id.equals(subjectID)) return false;
+			    }
 			}
 		}
 
-		// So we did not find this identity and need to add it.
-		// If we have just one pre-existing identity, merge with it
-		// Otherwise add a new one		
-		dm.push("bmri:pssd.project");
-		if (identities!=null && identities.size()==1) {
-			XmlDoc.Element identity = currentMeta.element("bmri:pssd.project");
-			Collection<XmlDoc.Element> els = identity.elements();
-			for (XmlDoc.Element el : els) {
-				dm.add(el);
-			}					
-		}
-		//
-		dm.add("facility-id", new String[] { "type", idType }, projectID);		
+		// Add this identity
+		dm.push(IDENTITY_DOCTYPE);
+		dm.add("subject-project-id", subjectID);		
 		dm.pop();
 
-		// We want to merge  this identity with others on the same document
-		dm.pop();      // "meta" pop
-		return true;
-	}
-
-	private boolean addMergeIdentity (XmlDoc.Element currentMeta,  String subjectID, String typeID, XmlDocMaker dm) throws Throwable {
-
-		if (subjectID==null || typeID==null) return false;
-
-		// See if this specific identity already exists on the object
-		Collection<XmlDoc.Element> identities = null;
-		if (currentMeta!=null) {
-			identities = currentMeta.elements("bmri:pssd.identity");
-			if (identities != null) {
-				for (XmlDoc.Element identity : identities) {
-					Collection<XmlDoc.Element> els = identity.elements("id");
-					if (els!=null) {
-						for (XmlDoc.Element el : els) {
-							String id = el.value();
-							String type = el.value("@type");
-
-							// If we have this specific identity already, return
-							if(id!=null&&type!=null) {
-								if (id.equals(subjectID) && type.equals(typeID)) return false;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		// So we did not find this identity and need to add it.
-		// If we have just one pre-existing identity document, merge with it
-		// Otherwise add a new one		
-		dm.push("bmri:pssd.identity");
-		if (identities!=null && identities.size()==1) {
-			XmlDoc.Element identity = currentMeta.element("bmri:pssd.identity");
-			Collection<XmlDoc.Element> els = identity.elements();
-			for (XmlDoc.Element el : els) {
-				dm.add(el);
-			}					
-		}
-		//
-		dm.add("id", new String[] { "type", typeID }, subjectID);		
-		dm.pop();
-
-		// We want to merge  this identity with others on the same document
 		dm.pop();      // "public" or "private" pop
-		dm.add("action", "merge");
+		dm.add("action", "add");
 		return true;
 	}
 
 
 	
-	private boolean addPSSDAnimalSubject (String dob, String gender, XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
+	private boolean addGender  (String gender, XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
+
+                if (gender==null) return false;
 
 		// Get current meta-data for appropriate DocType
 		if (currentMeta!=null) {
-			XmlDoc.Element subjectMeta = currentMeta.element("bmri:pssd.animal.subject");
+			XmlDoc.Element subjectMeta = currentMeta.element(GENDER_DOCTYPE);
 
 			// We assume that if the element is already set on the object that it is correct
 			if (subjectMeta!=null) {
 				String currGender = subjectMeta.value("gender");
-				if (currGender!=null) gender = currGender;
-				//
-				String currDate = subjectMeta.value("birthDate");
-				if (currDate != null) dob = currDate;
+				if (currGender!=null) return false;
 			}
 		}
 
-		// Set updated meta-data
-		if (gender!=null || dob!=null) {
-			dm.push("bmri:pssd.animal.subject");
-			if (gender!=null) dm.add("gender", gender);
-			if (dob != null) dm.add("birthDate", dob);
-			dm.pop();
-		} else {
-			return false;
-		}
+		// Add gender
+		dm.push(GENDER_DOCTYPE);
+		if (gender.equals("male")) {
+		    dm.add("gender", "male");
+		} else if (gender.equals("female")) {
+		    dm.add("gender", "female");
+	        } else {
+          	    dm.add("gender", "missing-not-available");
+          	}
+		dm.pop();
 
 		// Merge these details
 		dm.pop();      // "public" or "private" pop
-		dm.add("action", "merge");	
+		dm.add("action", "add");	
 		return true;
 	}
 
 
 
-	/**
-	 * What Facility are these data from?
-	 * @param sm
-	 * @return
-	 */
-	public String scannerFacility  (XmlDoc.Element sm) throws Throwable {
-		String institution = sm.value("institution").toUpperCase();
-		String station = sm.value("station").toUpperCase();
-		//
-		if (institution.contains("HOWARD FLOREY INSTITUTE") && station.equals("EPT")) {
-			return AMRIF_FACILITY;
-		} else if (institution.contains("CHILDREN") && institution.contains("RCH") &&
-				station.equals("MRC35113")) {
-			return RCH_FACILITY;
-		} else {
-			return institution;
+
+	private boolean addDOB (String dob, XmlDoc.Element currentMeta,  XmlDocMaker dm) throws Throwable {
+                if (dob==null) return false;
+
+		// Get current meta-data for appropriate DocType
+		if (currentMeta!=null) {
+			XmlDoc.Element subjectMeta = currentMeta.element(DOB_DOCTYPE);
+
+			// We assume that if the element is already set on the object that it is correct
+			if (subjectMeta!=null) {
+			    String currDOB = subjectMeta.value("date-of-birth");
+			    if (currDOB != null) return false;
+			}
 		}
+
+		// Add DOB
+		dm.push(DOB_DOCTYPE);
+		dm.add("date-of-birth", dob);
+		dm.pop();
+
+		// Merge these details
+		dm.pop();      // "public" or "private" pop
+		dm.add("action", "add");	
+		return true;
 	}
+
+
+
 
 
 	/**
@@ -568,45 +360,13 @@ public class BMRIDomainMetaData extends DomainMetaData {
 		//
 		boolean some = false;
 		if (objectType.equals(DomainMetaData.PROJECT_TYPE)) {
-			if (prepareRemovedMetaData (dm, currentMeta, "bmri:pssd.project", new String[]{"facility-id"})) some = true;
+		    //
 		} else if (objectType.equals(DomainMetaData.SUBJECT_TYPE)) {
-			if (prepareRemovedMetaData (dm, currentMeta, "bmri:pssd.identity", new String[]{"id"})) some = true;
-			if (prepareRemovedMetaData (dm, currentMeta, "bmri:pssd.animal.subject", new String[]{"gender", "birthDate"})) some = true;
+			if (prepareRemovedMetaData (dm, currentMeta, IDENTITY_DOCTYPE, new String[]{"subject-project-id"})) some = true;
+			if (prepareRemovedMetaData (dm, currentMeta, GENDER_DOCTYPE, new String[]{"gender"})) some = true;
+			if (prepareRemovedMetaData (dm, currentMeta, DOB_DOCTYPE, new String[]{"date-of-birth"})) some = true;
 		} else if (objectType.equals(DomainMetaData.STUDY_TYPE)) {
-			// No DICOM mappings for now
-		}
-		//
-		if (some) {
-			executor.execute("asset.set", dm);
-		}
-	}
-
-
-	/**
-	 * Remove the mapped elements for when we are considering Bruker meta-data.  
-	 * 
-	 * @param executor
-	 * @param id
-	 * @param objectType
-	 * @param currentMeta
-	 * @throws Throwable
-	 */
-	private void removeElementsBruker (Executor executor, String id, String objectType, XmlDoc.Element currentMeta) throws Throwable {
-		XmlDocMaker dm = new XmlDocMaker("args");
-		dm.add("cid", id);
-		//
-		boolean some = false;
-		if (objectType.equals(DomainMetaData.PROJECT_TYPE)) {
-			if (prepareRemovedMetaData (dm, currentMeta, "bmri:pssd.project", new String[]{"facility-id"})) some = true;
-		} else if (objectType.equals(DomainMetaData.SUBJECT_TYPE)) {
-			if (prepareRemovedMetaData (dm, currentMeta, "bmri:pssd.identity", new String[]{"id"})) some = true;
-			if (prepareRemovedMetaData (dm, currentMeta, "bmri:pssd.animal.subject", 
-					new String[]{"gender", "birthDate"})) some = true;
-			if (prepareRemovedMetaData (dm, currentMeta, "bmri:pssd.amrif.subject", 
-					new String[]{"id", "gender", "group", "vivo"})) some = true;
-		} else if (objectType.equals(DomainMetaData.STUDY_TYPE)) {
-			if (prepareRemovedMetaData (dm, currentMeta, "hfi-bruker-study", 
-					new String[]{"coil", "date"})) some = true;
+		    //
 		}
 		//
 		if (some) {
