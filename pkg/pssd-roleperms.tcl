@@ -415,10 +415,10 @@ proc setRolePerms { ns } {
 	grantRolePerms $domain_dicom_ingest_role $dicom_ingest_doc_perms
 
 # Service that allows the DICOM server to set domain-specific meta-data
-#set dicom_ingest_service_perms [list [list service ${ns}.pssd.object.meta.set MODIFY]]
+set dicom_ingest_service_perms [list [list service ${ns}.pssd.object.meta.set MODIFY]]
 #
 # Grant this role to the DICOM server proxy user
-#grantRolePerms $domain_dicom_ingest_role $dicom_ingest_service_perms
+grantRolePerms $domain_dicom_ingest_role $dicom_ingest_service_perms
 
 ##########################################################################
 # These specialized services grant roles to other roles and users

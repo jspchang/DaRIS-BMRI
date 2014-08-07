@@ -421,7 +421,6 @@ proc createDict_pssd_languages { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "bosnian" :variant -lang numeric "18"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "croatian" :variant -lang numeric "19"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "creole" :variant -lang numeric "20"
-	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "croation" :variant -lang numeric "21"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "danish" :variant -lang numeric "22"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "dutch" :variant -lang numeric "23"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "fijian" :variant -lang numeric "24"
@@ -444,9 +443,11 @@ proc createDict_pssd_languages { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "swedish" :variant -lang numeric "41"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "tagalog" :variant -lang numeric "42"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "tamil" :variant -lang numeric "43"
-	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "turkish" :variant -lang numeric "44"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "ukranian" :variant -lang numeric "45"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "vietnamese" :variant -lang numeric "46"
+	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "thai" :variant -lang numeric "47"
+	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "latin" :variant -lang numeric "48"
+	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "swiss" :variant -lang numeric "49"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "missing-not-available" :variant -lang numeric "999"
 	dictionary.entry.add  :dictionary ${ns}.pssd.languages :term "not-applicable" :variant -lang numeric "888"
 
@@ -527,7 +528,7 @@ proc createDict_pssd_subject_handedness { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "right" :variant -lang other "1"
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "ambidextrous" :variant -lang other "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "unknown" :variant -lang other "4"
-	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "missing-not-available" :variant -lang other "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.handedness :term "missing-not-available" :variant -lang other "999"
 }
 
 #=============================================================================
@@ -539,6 +540,7 @@ proc createDict_pssd_subject_included { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "included" :variant -lang other "1"
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "excluded" :variant -lang other "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "to-be-determined" :variant -lang other "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "missing-not-available" :variant -lang other "999"
 }
 
 #============================================================================#
