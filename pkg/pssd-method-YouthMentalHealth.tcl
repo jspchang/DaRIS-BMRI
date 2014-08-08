@@ -485,11 +485,23 @@ proc create_YouthMentalHealth_Method { ns { action 1 } } {
 set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
 	if { $id2 == "" } {
 		# An existng Method was updated
-		return $id
+		set methId $id
 	} else {
 		# A new Method was created
-		return $id2
+		set methId $id2
 	}
+	
+# Fix up any extant ex-method
+
+set exMethods [xvalues cid [asset.query :where xpath(pssd-object/type)='ex-method' and xpath(pssd-ex-method/method/id)='$methId' :action get-cid]]
+
+foreach exMethod $exMethods {
+	om.pssd.ex-method.method.replace :id $exMethod :method $methId :recursive false
+}
+
+return $methId
+
+
 }
  
 
