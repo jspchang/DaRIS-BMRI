@@ -543,6 +543,17 @@ proc createDict_pssd_subject_included { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.subject.included :term "missing-not-available" :variant -lang other "999"
 }
 
+proc createDict_pssd_data_entered { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.data-entered]] == "false" } {
+		dictionary.create :name ${ns}.pssd.data-entered :description "standard no, yes, not applicable, missing response set" :case-sensitive true :variant < :lang numeric :description "numeric variant" >
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.data-entereds :term "yes" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.data-entered :term "to-be-advised" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.data-entered :term "not applicable" :variant -lang numeric "888"
+	dictionary.entry.add  :dictionary ${ns}.pssd.data-entered :term "missing-not-available" :variant -lang numeric "999"
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 	
@@ -579,6 +590,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_nicotine_caffeine $ns
 	createDict_pssd_subject_handedness $ns
 	createDict_pssd_subject_included $ns
+	createDict_pssd_data_entered $ns
 
 }
 
@@ -616,7 +628,8 @@ proc destroyPSSDDicts { ns } {
 			$ns.pssd.diagnosis-type \
 			$ns.pssd.nicotine-caffeine \
 			$ns.pssd.subject.handedness \
-			$ns.pssd.subject.included]
+			$ns.pssd.subject.included
+			$ns.pssd.data-entered]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

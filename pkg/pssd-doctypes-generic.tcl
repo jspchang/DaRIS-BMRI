@@ -19,7 +19,7 @@ proc createDocType_pssd_animal_genetics { ns } {
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:description "The standard name of the genetic strain" \
 		> \
-		:element -name fraction -type float -min 0.0 -max 1.0 \
+		:element -name fraction -type double -min 0.0 -max 1.0 \
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:description "The fraction that this strain contributes" \
 		> \
@@ -91,7 +91,7 @@ proc createDocType_pssd_anaesthetic { ns } {
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:description "Anaesthetic induction agent name" \
 		> \
-		:element -name concentration -type float -min 0.0 -max 100.0 \
+		:element -name concentration -type double -min 0.0 -max 100.0 \
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:attribute -type enumeration -name units -enumerated-values "%" -min-occurs 0 -default "%" \
 		:description "Concentration of agent (%)" \
@@ -106,12 +106,12 @@ proc createDocType_pssd_anaesthetic { ns } {
 		> \
 		:element -name concentration -type document -min-occurs 0 -max-occurs 1 < \
 		:description "Describes the anaesthetic maintenance concentration" \
-		:element -name min  -type float  -min 0.0 -max 100.0 \
+		:element -name min  -type double  -min 0.0 -max 100.0 \
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:attribute -type enumeration -name units -enumerated-values "%" -min-occurs 0 -default "%" \
 		:description "Anaesthetic maintenance agent minimum concentration (%)" \
 		> \
-		:element -name max  -type float  -min 0.0 -max 100.0 \
+		:element -name max  -type double  -min 0.0 -max 100.0 \
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:attribute -type enumeration -name units -enumerated-values "%" -min-occurs 0 -default "%" \
 		:description "Anaesthetic maintenance agent maximum concentration (%)" \
@@ -163,7 +163,7 @@ proc createDocType_pssd_animal_kill { ns } {
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:description "Agent name" \
 		> \
-		:element -name concentration -type float -min 0.0 -max 100.0 \
+		:element -name concentration -type double -min 0.0 -max 100.0 \
 		-index true -min-occurs 0 -max-occurs 1 < \
 		:attribute -type enumeration -name units -enumerated-values "mg/Kg" -min-occurs 0 -default "mg/Kg" \
 		:description "Concentration of agent (mg/Kg)" \

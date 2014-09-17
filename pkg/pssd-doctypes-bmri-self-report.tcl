@@ -426,14 +426,14 @@ proc createDocType_pssd_sr_current_medication { ns } {
 			:element -name "medication" -type document -min-occurs 0 -max-occurs 7 < \
 				:element -name "name-of-medication" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "length-of-treatment" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 						:restriction -base "enumeration" < \
 							:dictionary $ns.pssd.timing \
 						> \
 					> \
 				> \
-				:element -name "dose" -type float -min-occurs 0 -max-occurs 1 \
+				:element -name "dose" -type double -min-occurs 0 -max-occurs 1 \
 				:element -name "units" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.does-units" \

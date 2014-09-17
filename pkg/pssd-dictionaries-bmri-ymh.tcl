@@ -501,6 +501,7 @@ proc createDict_pssd_sr_ymrs_a { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-a :term "definite" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-a :term "elevated" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-a :term "euphoric" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-a :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-a :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -562,9 +563,11 @@ proc createDict_pssd_sr_ymrs_f { ns } {
 		dictionary.create :name ${ns}.pssd.sr-ymrs-f :description "youth mental health rating scale" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
 	}
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-f :term "none" :variant -lang numeric "0"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-f :term "feels-talkative" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-f :term "increased" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-f :term "push" :variant -lang numeric "6"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-f :term "pressured" :variant -lang numeric "8"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-f :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-f :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -754,6 +757,19 @@ proc createDict_pssd_child_adult { ns } {
 
 }
 
+proc createDict_pssd_suicide_flag { ns } {
+
+	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.suicide-flag]] == "false" } {
+		dictionary.create :name ${ns}.pssd.suicide-flag :description "subject is a child or adult" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
+	}
+	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "NIL" :variant -lang numeric "0"
+	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flagt :term "not-worth-living" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flagt :term "suicide-ideation" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "not-applicable" :variant -lang numeric "888"
+	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "missing-not-available" :variant -lang numeric "999"
+
+}
+
 #============================================================================#
 proc createUpdatePSSDDicts { ns } {
 
@@ -812,6 +828,7 @@ proc createUpdatePSSDDicts { ns } {
 	createDict_pssd_sr_tobacco_usage $ns
 	createDict_pssd_secs_mins_hours $ns
 	createDict_pssd_child_adult $ns
+	createDict_pssd_suicide_flag $ns
 }
 
 #============================================================================#
@@ -870,7 +887,8 @@ proc destroyPSSDDicts { ns } {
 				$ns.pssd.timing \
 				$ns.pssd.secs-mins-hours \
 				$ns.pssd.sr-tobacco-usage \
-				$ns.pssd.child-adult]
+				$ns.pssd.child-adult \
+				$ns.pssd.suicide-flag]
 	foreach dict $dicts {
 		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
 			dictionary.destroy :name $dict

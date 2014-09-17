@@ -68,7 +68,7 @@ proc createDocType_pssd_psychiatrist_screening { ns } {
 			:element -name "dsm-iv-diagnostic-axis-3" -min-occurs 0 -max-occurs 1 -type string -index true -case-sensitive false \
 			:element -name "dsm-iv-diagnostic-axis-4" -min-occurs 0 -max-occurs 1 -type string -index true -case-sensitive false \
 			:element -name "dsm-iv-diagnostic-axis-5" -min-occurs 0 -max-occurs 1 -type string -index true -case-sensitive false \
-			:element -name "age-of-psychiatric-onset" -type float -min-occurs 0 -max-occurs 1 < \
+			:element -name "age-of-psychiatric-onset" -type double -min-occurs 0 -max-occurs 1 < \
 				:description "Age of onset of psychiatry disorder(s)" \
 			> \
 			:element -name "depressive-episodes" -type enumeration -min-occurs 0 -max-occurs 1 < \
@@ -350,7 +350,7 @@ proc createDocType_pssd_sofas { ns } {
 		:description "Social and Occupational Functioning Assessment Scale information from the green form" \
 		:label "sofas" \
 		:definition < \
-			:element -name "code" -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false < \
+			:element -name "code" -min-occurs 0 -max-occurs 1 -type double -index true -case-sensitive false < \
 				:description "Social and Occupational Functioning Assessment Scale code" \
 			> \
 		> \
@@ -381,7 +381,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -389,7 +389,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -407,7 +407,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -415,7 +415,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -433,7 +433,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -441,7 +441,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -459,7 +459,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -467,7 +467,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -485,7 +485,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -493,7 +493,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -511,7 +511,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -519,7 +519,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -537,7 +537,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -545,7 +545,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -563,7 +563,7 @@ proc createDocType_pssd_current_treatment { ns } {
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -case-sensitive false \
 				:element -name "dose" -type document -min-occurs 0 -max-occurs 1 < \
 					:description "anti-depressant medication type, dose and frequency" \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-units" \
@@ -571,7 +571,7 @@ proc createDocType_pssd_current_treatment { ns } {
 					> \
 				> \
 				:element -name "timing" -type document -min-occurs 0 -max-occurs 1 < \
-					:element -name "value" -type float -min-occurs 0 -max-occurs 1 \
+					:element -name "value" -type double -min-occurs 0 -max-occurs 1 \
 					:element -name "timing" -type enumeration -min-occurs 0 -max-occurs 1 < \
 						:restriction -base enumeration < \
 							:dictionary "$ns.pssd.dose-timing" \
@@ -633,8 +633,8 @@ proc createDocType_pssd_substance_nicotine_caffeine { ns } {
 						:dictionary "$ns.pssd.nicotine-caffeine" \
 					> \
 				> \
-				:element -name quantity -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false \
-				:element -name average-intake -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false \
+				:element -name quantity -min-occurs 0 -max-occurs 1 -type double -index true -case-sensitive false \
+				:element -name average-intake -min-occurs 0 -max-occurs 1 -type double -index true -case-sensitive false \
 			> \
 		> \
 	}
@@ -697,7 +697,7 @@ proc createDocType_pssd_education_years { ns } {
 		:description "Years subject has been educated" \
 		:label "Years of education" \
 		:definition < \
-			:element -name years -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false < \
+			:element -name years -min-occurs 0 -max-occurs 1 -type double -index true -case-sensitive false < \
 				:description "Number of years subject has been educated" \
 			> \
 		> \
@@ -716,7 +716,7 @@ proc createDocType_pssd_background_information { ns } {
 			:element -name "diagnosis-and-history-notes" -min-occurs 0 -max-occurs 1 -type string -index true -case-sensitive true < \
 				:description "diagnosis and history notes" \
 			> \
-			:element -name "age-of-onset" -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false < \
+			:element -name "age-of-onset" -min-occurs 0 -max-occurs 1 -type double -index true -case-sensitive false < \
 				:description "age of illness onset" \
 			> \
 			:element -name "other-relevant-information" -min-occurs 0 -max-occurs 1 -type string -index true -case-sensitive true < \

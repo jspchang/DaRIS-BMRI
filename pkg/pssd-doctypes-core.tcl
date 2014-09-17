@@ -99,7 +99,7 @@ proc createDocType_pssd_subject_height { ns } {
 		:description "Document type for subject height" \
 		:label "Subject height" \
 		:definition < \
-			:element -name "value" -min-occurs 0 -max-occurs 1 -type float -index true  \
+			:element -name "value" -min-occurs 0 -max-occurs 1 -type double -index true  \
 			:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true  <\
 				:restriction -base "enumeration" < \
 					:value "centimeters" \
@@ -267,7 +267,7 @@ proc createDocType_pssd_animal_genetics { ns } {
 				:description "The genetic strain of the animal" \
 				:element -name name -type enumeration  -dictionary nig.pssd.animal.strains -index true -min-occurs 0 -max-occurs 1 < \
 					:description "The standard name of the genetic strain" > \
-				:element -name fraction -type float -min 0.0 -max 1.0 -index true -min-occurs 0 -max-occurs 1 < \
+				:element -name fraction -type double -min 0.0 -max 1.0 -index true -min-occurs 0 -max-occurs 1 < \
 					:description "The fraction that this strain contributes" > \
 			> \
 		>
@@ -332,7 +332,7 @@ proc createDocType_pssd_weight { ns } {
 		:label "weight" \
 		:definition < \
 			:element -name "weight" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type float -min-occurs 0 -max-occurs 1 -index 1 \
+				:element -name "value" -type double -min-occurs 0 -max-occurs 1 -index 1 \
 				:element -name "unit" -min-occurs 0 -max-occurs 1 -type enumeration -index true -case-sensitive false < \
 					:restriction -base "enumeration" < \
 						:value "kilograms" \
@@ -387,7 +387,8 @@ proc createDocType_pssd_data_entered { ns } {
 		:description "Indicates if metadata has been entered for the object" \
 		:label "data-entered" \
 		:definition < \
-			:element -name "entered" -min-occurs 0 -max-occurs 1 -type boolean -index true -case-sensitive false \
+			:element -name "entered" -min-occurs 0 -max-occurs 1 -type enumeration < \
+				:dictionary "$ns.pssd.timing" \
 		> \
 	}
 
@@ -409,7 +410,7 @@ proc createDocType_pssd_years_of_education { ns } {
 		:description "years-of-education" \
 		:label "years" \
 		:definition < \
-			:element -name "years" -min-occurs 0 -max-occurs 1 -type float -index true -case-sensitive false \
+			:element -name "years" -min-occurs 0 -max-occurs 1 -type double -index true -case-sensitive false \
 		> \
 	}
 
