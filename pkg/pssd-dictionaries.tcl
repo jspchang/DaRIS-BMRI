@@ -548,7 +548,7 @@ proc createDict_pssd_data_entered { ns } {
 	if { [xvalue exists [dictionary.exists :name ${ns}.pssd.data-entered]] == "false" } {
 		dictionary.create :name ${ns}.pssd.data-entered :description "standard no, yes, not applicable, missing response set" :case-sensitive true :variant < :lang numeric :description "numeric variant" >
 	}
-	dictionary.entry.add  :dictionary ${ns}.pssd.data-entereds :term "yes" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.data-entered :term "yes" :variant -lang numeric "1"
 	dictionary.entry.add  :dictionary ${ns}.pssd.data-entered :term "to-be-advised" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.data-entered :term "not applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.data-entered :term "missing-not-available" :variant -lang numeric "999"

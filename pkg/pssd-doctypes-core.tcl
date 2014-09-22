@@ -388,7 +388,8 @@ proc createDocType_pssd_data_entered { ns } {
 		:label "data-entered" \
 		:definition < \
 			:element -name "entered" -min-occurs 0 -max-occurs 1 -type enumeration < \
-				:dictionary "$ns.pssd.timing" \
+				:dictionary "$ns.pssd.data-entered" \
+			> \
 		> \
 	}
 

@@ -763,8 +763,8 @@ proc createDict_pssd_suicide_flag { ns } {
 		dictionary.create :name ${ns}.pssd.suicide-flag :description "subject is a child or adult" :case-sensitive false :variant < :lang numeric :description "numeric variant" > \
 	}
 	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "NIL" :variant -lang numeric "0"
-	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flagt :term "not-worth-living" :variant -lang numeric "1"
-	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flagt :term "suicide-ideation" :variant -lang numeric "2"
+	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "not-worth-living" :variant -lang numeric "1"
+	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "suicide-ideation" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.suicide-flag :term "missing-not-available" :variant -lang numeric "999"
 
