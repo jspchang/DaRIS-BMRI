@@ -646,6 +646,7 @@ proc createDict_pssd_sr_ymrs_k { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-k :term "admits-possible-change" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-k :term "denies-change" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-k :term "missing-not-available" :variant -lang numeric "999"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-k :term "not-applicable" :variant -lang numeric "888"
 }
 
 proc createDict_pssd_sr_student_status { ns } {
