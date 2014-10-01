@@ -687,6 +687,7 @@ proc createDict_pssd_sr_occupational_status { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "employed" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "volunteer-work-not-working" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "unemployed" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-occupational-status :term "missing-not-available" :variant -lang numeric "999"
 
 }
