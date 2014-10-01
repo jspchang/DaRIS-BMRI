@@ -846,15 +846,15 @@ proc createDocType_pssd_sr_who_qol { ns } {
 					:dictionary $ns.pssd.sr-who-qol-3 \
 				> \
 			> \
-			:element -name "physical-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "psychological-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "physical-raw" -type double -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "psychological-raw" -type double  -length 3 -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "social-relationships-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "environment-raw" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "physical-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "psychological-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "social-relationships-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "environment-transformed" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "physical-overall" -type integer -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "environment-raw" -type double  -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "physical-transformed" -type double  -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "psychological-transformed" -type double  -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "social-relationships-transformed" -type double  -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "environment-transformed" -type double  -length 3 -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "physical-overall" -type double  -length 3 -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
