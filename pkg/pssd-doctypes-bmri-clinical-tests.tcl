@@ -699,16 +699,16 @@ proc createDocType_pssd_ap_rey_complex_figure-test { ns } {
 		:description "Assessment protocol rey complex figures scores" \
 		:label "rey-complex-figure-scores" \
 		:definition < \
-			:element -name "time-score" -type double -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "time-percentile" -type integer -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "copy-score" -type double -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "copy-percentile" -type integer -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "three-minute-recall-score" -type integer -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "three-minute-recall-percentile" -type integer -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "thirty-minute-recall-score" -type integer -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "thirty-minute-recall-percentile" -type integer -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "recognition-score" -type double -min-occurs 0 -max-occurs 1 -index true \
-			:element -name "recognition-percentile" -type integer -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "time-score" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "time-percentile" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "copy-score" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "copy-percentile" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "three-minute-recall-score" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "three-minute-recall-percentile" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "thirty-minute-recall-score" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "thirty-minute-recall-percentile" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "recognition-score" -type string -min-occurs 0 -max-occurs 1 -index true \
+			:element -name "recognition-percentile" -type string -min-occurs 0 -max-occurs 1 -index true \
 		> \
 }
 
