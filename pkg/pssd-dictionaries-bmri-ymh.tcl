@@ -272,7 +272,8 @@ proc createDict_pssd_sr_substance_use_scale_5_c { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "never" :variant -lang numeric "0"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "less-than-monthly" :variant -lang numeric "1"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "monthly" :variant -lang numeric "2"
-	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "daily-or-almost-daily" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "weekly" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "daily-or-almost-daily" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "missing-not-available" :variant -lang numeric "999"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-substance-use-scale-5-c :term "not-applicable" :variant -lang numeric "888"
 }

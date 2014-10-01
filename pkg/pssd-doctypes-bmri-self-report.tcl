@@ -1057,12 +1057,12 @@ proc createDocType_pssd_sr_substance_use_baseline_audit { ns } {
 			> \
 			:element -name "question-2" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-substance-use-scale-5-a \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-b \
 				> \
 			> \
 			:element -name "question-3" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-substance-use-scale-5-b \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
 				> \
 			> \
 			:element -name "question-4" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
@@ -1092,7 +1092,7 @@ proc createDocType_pssd_sr_substance_use_baseline_audit { ns } {
 			> \
 			:element -name "question-9" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 				:restriction -base "enumeration" < \
-					:dictionary $ns.pssd.sr-substance-use-scale-5-c \
+					:dictionary $ns.pssd.sr-substance-use-scale-5-d \
 				> \
 			> \
 			:element -name "question-10" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
