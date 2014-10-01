@@ -956,7 +956,7 @@ proc createDocType_pssd_sr_substance_use_scale_4_ever { ns } {
 				:element -name "age-of-first-use" -type integer -min-occurs 0 -max-occurs 1 \
 				:element -name "specify" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			> \
-			:element -name "alcohol-use-in-last-week" -type double-min-occurs 0 -max-occurs 1 -index true \
+			:element -name "alcohol-use-in-last-week" -type double -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "cannabis-use-in-last-week" -type double -min-occurs 0 -max-occurs 1 -index true \
 			:element -name "amphetamine-use-in-last-week" -type double -min-occurs 0 -max-occurs 1 -index true \
 		> \
