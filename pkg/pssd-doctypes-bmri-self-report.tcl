@@ -139,7 +139,7 @@ proc createDocType_pssd_sr_vocation { ns } {
 			> \
 			:element -name "current-last-occupation" -type string -min-occurs 0 -max-occurs 1 -index true -case-sensitive true \
 			:element -name "time-in-current-last-occupation" -type document -min-occurs 0 -max-occurs 1 < \
-				:element -name "value" -type integer -min-occurs 0 -max-occurs 1 -index true \
+				:element -name "value" -type string -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "unit" -type enumeration -min-occurs 0 -max-occurs 1 -index true < \
 					:restriction -base "enumeration" < \
 						:dictionary "$ns.pssd.timing" \

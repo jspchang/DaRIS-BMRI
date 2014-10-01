@@ -196,6 +196,7 @@ proc createDict_pssd_sr_who_qol_1 { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-1 :term "neither-satisfied-nor-dissatisfied" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-1 :term "satisfied" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-1 :term "very-satisfied" :variant -lang numeric "5"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-1 :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-1 :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -210,6 +211,7 @@ proc createDict_pssd_sr_who_qol_2 { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-2 :term "very" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-2 :term "extremely" :variant -lang numeric "5"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-2 :term "missing-not-available" :variant -lang numeric "999"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-2 :term "not-applicable" :variant -lang numeric "888"
 }
 
 proc createDict_pssd_sr_who_qol_3 { ns } {
@@ -223,6 +225,7 @@ proc createDict_pssd_sr_who_qol_3 { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-3 :term "frequently" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-3 :term "always" :variant -lang numeric "5"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-3 :term "missing-not-available" :variant -lang numeric "999"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-who-qol-3 :term "not-applicable" :variant -lang numeric "888"
 }
 
 proc createDict_pssd_sr_substance_use_scale_4_last_3_months { ns } {
