@@ -304,8 +304,8 @@ proc createDict_pssd_sr_wsls { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-wsls :term "severely" :variant -lang numeric "5"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-wsls :term "extremely" :variant -lang numeric "6"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-wsls :term "cannot" :variant -lang numeric "7"
-	dictionary.entry.add  :dictionary ${ns}.pssd.sr-wsls :term "missing-not-available" :variant -lang numeric "8"
-	dictionary.entry.add  :dictionary ${ns}.pssd.sr-wsls :term "not-applicable" :variant -lang numeric "9"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-wsls :term "missing-not-available" :variant -lang numeric "888"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-wsls :term "not-applicable" :variant -lang numeric "999"
 }
 
 proc createDict_pssd_sr_apsd { ns } {
