@@ -515,6 +515,7 @@ proc createDict_pssd_sr_ymrs_b { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-b :term "animated" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-b :term "excessive" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-b :term "motor-excitement" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-b :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-b :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -528,6 +529,7 @@ proc createDict_pssd_sr_ymrs_c { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-c :term "definite" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-c :term "spontaneous" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-c :term "overt" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-c :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-c :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -541,6 +543,7 @@ proc createDict_pssd_sr_ymrs_d { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-d :term "less-more-than-1-hour" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-d :term "decreased" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-d :term "denies" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-d :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-d :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -554,6 +557,7 @@ proc createDict_pssd_sr_ymrs_e { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-e :term "irritable" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-e :term "frequently" :variant -lang numeric "6"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-e :term "hostile" :variant -lang numeric "8"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-e :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-e :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -581,6 +585,7 @@ proc createDict_pssd_sr_ymrs_g { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-g :term "distractible" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-g :term "flight-of-ideas" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-g :term "incoherant" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-g :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-g :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -594,6 +599,7 @@ proc createDict_pssd_sr_ymrs_h { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-h :term "special-project" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-h :term "grandiose" :variant -lang numeric "6"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-h :term "delusions" :variant -lang numeric "8"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-h :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-h :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -607,6 +613,7 @@ proc createDict_pssd_sr_ymrs_i { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-i :term "demanding" :variant -lang numeric "4"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-i :term "threatening" :variant -lang numeric "6"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-i :term "assaultive" :variant -lang numeric "8"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-i :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-i :term "missing-not-available" :variant -lang numeric "999"
 }
 
@@ -620,6 +627,7 @@ proc createDict_pssd_sr_ymrs_j { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-j :term "poorly" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-j :term "disheveled" :variant -lang numeric "3"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-j :term "completely" :variant -lang numeric "4"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-j :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-ymrs-j :term "missing-not-available" :variant -lang numeric "999"
 }
 proc createDict_pssd_sr_ymrs_k { ns } {
