@@ -182,6 +182,7 @@ proc createDict_pssd_sr_dass { ns } {
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-dass :term "1" :variant -lang numeric "1"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-dass :term "2" :variant -lang numeric "2"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-dass :term "3" :variant -lang numeric "3"
+	dictionary.entry.add  :dictionary ${ns}.pssd.sr-dass :term "not-applicable" :variant -lang numeric "888"
 	dictionary.entry.add  :dictionary ${ns}.pssd.sr-dass :term "missing-not-available" :variant -lang numeric "999"
 }
 
