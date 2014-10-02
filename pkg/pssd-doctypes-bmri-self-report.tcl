@@ -399,7 +399,7 @@ proc createDocType_pssd_sr_personal_medical_history { ns } {
 				> \
 				:element -name "time-since-quitting" -type string -min-occurs 0 -max-occurs 1 -index true \
 				:element -name "number-of-years-smoking" -type string -min-occurs 0 -max-occurs 1 -index true \
-				:element -name "number-of-cigarettes-on-heaviest-day" -type sting -min-occurs 0 -max-occurs 1 -index true \
+				:element -name "number-of-cigarettes-on-heaviest-day" -type string -min-occurs 0 -max-occurs 1 -index true \
 			> \
 			:element -name "notes" -type string -min-occurs 0 -max-occurs 1 -index true \
 		> \
