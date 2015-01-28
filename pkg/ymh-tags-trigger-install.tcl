@@ -1,7 +1,7 @@
 set scriptNamespace     system/triggers
 set script              ymh-tags-trigger.tcl
 set scriptPath          ${scriptNamespace}/${script}
-set namespace           pssd
+set namespace           YMH
 set label               [string toupper PACKAGE_$package]
 
 ## create or update the script asset
