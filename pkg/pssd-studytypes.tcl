@@ -2,41 +2,29 @@
 #
 proc create_PSSD_StudyTypes { } {
 
-	if { [xvalue exists [dictionary.exists :name pssd.study.types]] == "false" } {
-		dictionary.create :name pssd.study.types :description "PSSD Study Types" :case-sensitive true
-	}
-	
-	addDictionaryEntry  pssd.study.types "Bone Densitometry (ultrasound)"
-	addDictionaryEntry  pssd.study.types "Computed Radiography"
-	addDictionaryEntry  pssd.study.types "Computed Tomography"
-	addDictionaryEntry  pssd.study.types "Electrocardiography"
-	addDictionaryEntry  pssd.study.types "Cardiac Electrophysiology"
-	addDictionaryEntry  pssd.study.types "General Microscopy"
-	addDictionaryEntry  pssd.study.types "Intravascular Optical Coherence Tomography"
-	addDictionaryEntry  pssd.study.types "Magnetic Resonance Imaging"
-	addDictionaryEntry  pssd.study.types "Optical Microscopy"
-	addDictionaryEntry  pssd.study.types "Electron Microscopy"
-	addDictionaryEntry  pssd.study.types "Mammography"
-	addDictionaryEntry  pssd.study.types "Nuclear Medicine"	
-	addDictionaryEntry  pssd.study.types "Positron Emission Tomography"
-	addDictionaryEntry  pssd.study.types "Radio Fluoroscopy"
-	addDictionaryEntry  pssd.study.types "Slide Microscopy"	
-	addDictionaryEntry  pssd.study.types "Ultra Sound"
-	addDictionaryEntry  pssd.study.types "X-Ray Angiography"
-	addDictionaryEntry  pssd.study.types "Combined Results" "Combined Results from other Studies"
-	addDictionaryEntry  pssd.study.types "ymh-self-report"
-	addDictionaryEntry  pssd.study.types "ymh-assessment-protocol"
-	addDictionaryEntry	pssd.study.types "ymh-psychiatrist-protocol"
-}
-
-
-#============================================================================#
-proc destroy_PSSD_StudyTypes { } {
-
-	set dicts { pssd.study.types }
-	foreach dict $dicts {
-		if { [xvalue exists [dictionary.exists :name $dict]] == "true" } {
-			dictionary.destroy :name $dict
-		}
-	}
+    om.pssd.study.type.create :type "Bone Densitometry (ultrasound)"
+    om.pssd.study.type.create :type "Computed Radiography"
+    om.pssd.study.type.create :type "Computed Tomography"
+    om.pssd.study.type.create :type "Electrocardiography"
+    om.pssd.study.type.create :type "Dose Report"
+    om.pssd.study.type.create :type "Cardiac Electrophysiology"
+    om.pssd.study.type.create :type "General Microscopy"
+    om.pssd.study.type.create :type "Intravascular Optical Coherence Tomography"
+    om.pssd.study.type.create :type "Magnetic Resonance Imaging"
+    om.pssd.study.type.create :type "Optical Microscopy"
+    om.pssd.study.type.create :type "Electron Microscopy"
+    om.pssd.study.type.create :type "Mammography"
+    om.pssd.study.type.create :type "Nuclear Medicine"
+    om.pssd.study.type.create :type "Positron Emission Tomography"
+    om.pssd.study.type.create :type "Radio Fluoroscopy"
+    om.pssd.study.type.create :type "Slide Microscopy"
+    om.pssd.study.type.create :type "Ultra Sound"
+    om.pssd.study.type.create :type "X-Ray Angiography"
+    om.pssd.study.type.create :type "Combined Results" :description "Combined Results from other Studies"
+    om.pssd.study.type.create :type "Positron Emission Tomography/Computed Tomography"
+    om.pssd.study.type.create :type "Quality Assurance"
+    om.pssd.study.type.create :type "Unspecified"
+    om.pssd.study.type.create :type "ymh-self-report"
+    om.pssd.study.type.create :type "ymh-assessment-protocol"
+    om.pssd.study.type.create :type "ymh-psychiatrist-protocol"
 }

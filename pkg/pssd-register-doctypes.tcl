@@ -4,22 +4,22 @@
 #============================================================================#
 proc registerObjectMeta { ns } {
 	# Generic Project governance information 
-	set mtypeArgs ":mtype -requirement optional pssd-project-governance"
+	set mtypeArgs ":mtype -requirement optional daris:pssd-project-governance"
 	
 	# Generic Project governance information 
-	set mtypeArgs "${mtypeArgs} :mtype -requirement optional pssd-project-research-category"
+	set mtypeArgs "${mtypeArgs} :mtype -requirement optional daris:pssd-project-research-category"
 	
 	# Generic Project owner 
-	set mtypeArgs "${mtypeArgs} :mtype -requirement optional pssd-project-owner"
+	set mtypeArgs "${mtypeArgs} :mtype -requirement optional daris:pssd-project-owner"
 
 	# Services associated with the Project 
-	set mtypeArgs "${mtypeArgs} :mtype -requirement optional pssd-related-services"
+	set mtypeArgs "${mtypeArgs} :mtype -requirement optional daris:pssd-related-services"
 
 	# Publications associated with the Project 
-	set mtypeArgs "${mtypeArgs} :mtype -requirement optional pssd-publications"
+	set mtypeArgs "${mtypeArgs} :mtype -requirement optional daris:pssd-publications"
 
 	# Allows user to set if project can be harvested by ANDS
-	set mtypeArgs "${mtypeArgs} :mtype -requirement optional pssd-project-harvest"
+	set mtypeArgs "${mtypeArgs} :mtype -requirement optional daris:pssd-project-harvest"
 	
 	# Append to any pre-existing associations (e.g. set by pssd package)
 	set args ":append true :type project ${mtypeArgs}"
