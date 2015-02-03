@@ -39,6 +39,7 @@ public class SvcObjectMetaSet extends PluginService {
 		me.add(new Interface.Element("uid",StringType.DEFAULT,"Global unique identifier of Study. DICOM element (0020,000D)",0,1));
 		me.add(new Interface.Element("id",StringType.DEFAULT,"Operator supplied identifier. DICOM element (0020,0010)",0,1));
 		me.add(new Interface.Element("description",StringType.DEFAULT,"Description. Derived from DICOM element (0008,1030).",0,1));
+		me.add(new Interface.Element("protocol",StringType.DEFAULT,"Protocol name. Derived from DICOM element (0018,1030).",0,1));
 		me.add(new Interface.Element("date",DateType.DEFAULT,"Date and time on which acquisition of the study was started. Derived from DICOM elements (0008,0020) and (0008,0030).",0,1));
 		me.add(new Interface.Element("modality",StringType.DEFAULT,"Type of series (e.g. MR - Magnetic Resonance). Derived from DICOM element (0008,0060)",0,1));
 		me.add(new Interface.Element("rpn",StringType.DEFAULT,"Referring Physician's Name. Derived from DICOM element (0008,0090)",0,1));
