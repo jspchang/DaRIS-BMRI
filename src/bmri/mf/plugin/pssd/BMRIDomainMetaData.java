@@ -245,6 +245,11 @@ public class BMRIDomainMetaData extends DomainMetaData {
 		String[] parts = fullName.split(" ");
 		int n = parts.length;
 		String lastName = parts[n-1];
+
+		// Pull off the last section of the last name (as the ID is just the first 11 chars) delimitered by "_"
+		int idx = lastName.lastIndexOf("_");
+		lastName = lastName.substring(0,idx);
+
 		// Add/merge the identity if needed.
 		return addMergeIdentity (currentMeta, lastName, dm);
 	}
