@@ -491,8 +491,8 @@ set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
 		set methId $id2
 	}
 	
-# Fix up any extant ex-method with the new transform definitions.                                                                                                                                 
-set exMethods [xvalues cid [asset.query :where xpath(daris:pssd-object/type)='ex-method' and xpath(daris:pssd-ex-method/method/id)='$methId' :action get-cid]]
+# Fix up any extant ex-methods, pushing the new Transform definitions UID down
+set exMethods [xvalues id [om.pssd.method.use.find :id $methId :top-level true]]
 foreach exMethod $exMethods {
         om.pssd.ex-method.method.replace :id $exMethod :method $methId :recursive false
 }
