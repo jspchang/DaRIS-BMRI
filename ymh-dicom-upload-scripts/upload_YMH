@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#Specifiy destination DaRIS Project citeable ID
+pid="1075.4.1"
+
+# Specify where to write temporary files (all DICOM files are copied and edited)
+# This can be done in-situ by the DICOM client if needed
+temp="$HOME/DICOM_Temp"
+
+# DICOM Destination details
+host="localhost"
+port="5555"
+callingAET="BMRI-DICOM-TEST"
+calledAET="BMRI-DaRIS-YMH"
+
+
+# DaRIS Project ID will be located  in referring physician phone (0008,0094) DICOM element
+dicom_el="0008,0094"
+
+# Iterate over Subject directories. There can *only* be children subject directories
+# in the working directory
+echo "Begin uploads"
+
+
+subjects=`ls`
+for subject in ${subjects}; do
+   echo "**********************************************"
+   echo "Subject directory " $subject
+   date
+
+# Parse name for ID
+# Subjects directories must be named starting with YMH_NNNN_CC
+# Trailing letters can be anything. The first 11 will be parsed
+# into the Subject ID
+#
+   subjectID=`echo $subject | cut -c 1-11`
+   echo "   Subject ID " $subjectID
+
+# Replace spaces in directory names to avoid name parsing problems
+   cd "${subject}"
+   echo "Replace all spaces in child directory names"
+   replaceSpacesInDirectoryNames
+   cd ..
+
+# Upload
+   echo "   Upload to DaRIS project " $pid
+   dicom-scu.sh -de ${dicom_el} -nocaret -id ${pid} -host ${host} -port ${port} -callingAET ${callingAET} -calledAET ${calledAET} -pid ${subjectID} -dir ${subject} -tmp ${temp}
+
+done
+

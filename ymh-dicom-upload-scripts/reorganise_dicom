@@ -1,0 +1,23 @@
+#!/bin/bash
+# We assume we are positioned in the tree so that the next level is subject folders
+# and ONLY the subject folders
+subjects=`ls`
+TT=`pwd`
+for subject in $subjects; do
+   echo "**********************************************"
+   echo "Subject = " $subject
+
+# Reroganize the data by Patient and Study into a directory one level up
+   t="../Reorganised/"${subject}"-Reorg"
+   echo "   Reorganize into " $t
+   mkdir -p ${t}
+   ReorganiseDICOM $subject ${t} > /dev/null
+
+# CHange to Reorg directory and fix up spaces in names
+
+   cd ${t}
+   replaceSpacesInDirectoryNames
+
+# Back to Subject directory
+   cd ${TT}
+done
