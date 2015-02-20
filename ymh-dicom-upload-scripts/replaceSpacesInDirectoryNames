@@ -1,0 +1,15 @@
+#!/bin/bash
+# Replace spaces in directory names recursively from current working directory
+# Original sourced from http://bbs.archlinux.org/viewtopic.php?id=36305
+
+find . -depth -type d -name '*' | while read file ; do
+        directory=$(dirname "$file")
+        oldfilename=$(basename "$file")
+        newfilename=$(echo "$oldfilename" | sed 's/ /_/g')
+        if [ "$oldfilename" != "$newfilename" ]; then
+                mv -i "$directory/$oldfilename" "$directory/$newfilename"
+#                echo ""$directory/$oldfilename" ---> "$directory/$newfilename""
+        fi
+        done
+exit 0
+

@@ -491,6 +491,11 @@ set id2 [xvalue id [om.pssd.method.for.subject.update $args] ]
 		set methId $id2
 	}
 	
+# Fix up any extant ex-methods, pushing the new Transform definitions UID down
+set exMethods [xvalues id [om.pssd.method.use.find :id $methId :top-level true]]
+foreach exMethod $exMethods {
+        om.pssd.ex-method.method.replace :id $exMethod :method $methId :recursive false
+}
 
 return $methId
 
