@@ -208,6 +208,26 @@ proc setRolePerms { ns } {
 # Grant end users the right to access the  document namespace
 	actor.grant :name  $domain_model_user_role :type role :perm < :resource -type document:namespace $ns :access ACCESS >
 
+
+# ============================================================================
+# Role: <ns>.pssd.administrator 
+#
+# Holders of this role should be able to undertake DaRIS admin activities
+# for the domain package and the DaRIS framework.
+# without the full power of system:administrator.  Admin services
+# require permission ADMINISTER to operate. Also grants the
+# daris:pssd.administrator (which holds and daris:essentials.administrator) roles
+# ============================================================================
+
+    createRole ${ns}.pssd.administrator
+    actor.grant :name ${ns}.pssd.administrator :type role  \
+          :role -type role $domain_model_user_role \
+	  :role -type role daris:pssd.administrator
+      
+# These services need ADMINISTER to be able to execute
+    actor.grant :name  ${ns}.pssd.administrator  :type role :perm < :access ADMINISTER :resource -type service ${ns}.pssd.user.create >
+
+#=============================================================================
 # DICOM server permissions 
 # This is the role to grant your DICOM proxy users
 	set domain_dicom_ingest_role      $ns.pssd.dicom-ingest
