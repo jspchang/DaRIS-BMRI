@@ -35,7 +35,7 @@ public class SvcUserCreate extends PluginService {
 	}
 
 	public Access access() {
-		return ACCESS_MODIFY;
+		return ACCESS_ADMINISTER;
 	}
 
 	public Interface definition() {
