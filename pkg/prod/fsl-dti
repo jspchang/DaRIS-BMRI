@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# FSL reorient and brain extract
+
+unset DISPLAY
+# fsl enviroment if needed
+#/etc/profile.d/fsl.sh
+
+export FSLOUTPUTTYPE=NIFTI
+
+# Skip the first time slices
+skipCnt=7
+
+re="<subject>(.*)</subject>"
+if [[ $2 =~ $re ]]; then subject=${BASH_REMATCH[1]}_DTI; fi
+echo Subject is $subject
+
+file=$1
+ingestFile=${file%.zip}
+inFile=${subject}_DTI_1
+roiFile=${inFile}_nodif
+eccFile=${inFile}_ecc
+betFile=${roiFile}_brain
+tensFile=${eccFile}_tens
+maskFile=${betFile}_mask
+
+
+echo unzip -qo $file
+unzip -qo $file
+
+echo "Convert dcm->nii"
+/export/software/bin/mcverter -o dti.nii -s $skipCnt -f fsl -n *.dcm
+rm -rf *.dcm
+mv dti.nii/*.nii .
+cut -d \  -f 8- dti.nii/*bvals > ${subject}_bvals
+cut -d \  -f 8- dti.nii/*bvecs > ${subject}_bvecs
+rm -rf dti.nii
+
+# This ensures that the file list is sorted
+for file in $(ls *.nii)
+do
+    infileList=${infileList}" $file"
+done
+
+#bvalsFile=YMH_0010_MK_DTI.nii_bvals
+#bvecsFile=YMH_0010_MK_DTI.nii_bvecs
+#cp /export/software/bin/${bvecsFile} /export/software/bin/${bvalsFile} .
+
+echo fslmerge -t ${inFile} ${infileList}
+fslmerge -t ${inFile} ${infileList}
+
+echo fslroi ${inFile} ${roiFile} 0 1
+fslroi ${inFile} ${roiFile} 0 1
+
+echo bet2 ${roiFile} ${betFile} -f 0.3 -n -m
+bet2 ${roiFile} ${betFile} -f 0.3 -n -m
+
+echo eddy_correct ${inFile} ${eccFile} 0
+eddy_correct ${inFile} ${eccFile} 0
+
+echo dtifit -k ${eccFile} -m ${maskFile} -r *bvecs -b *bvals -o ${tensFile}
+dtifit -k ${eccFile} -m ${maskFile} -r *bvecs -b *bvals -o ${tensFile}
+
+rm -rf ${infileList}
+
+echo zip -qm ${ingestFile}_dti.zip ${inFile}_ecc* *bvals *bvecs *.nii *.ecclog
+zip -qm ${ingestFile}_dti.zip  ${inFile}_ecc*  *bvals *bvecs *.nii *.ecclog

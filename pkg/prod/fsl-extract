@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# FSL reorient and brain extract
+
+unset DISPLAY
+# fsl enviroment if needed
+#/etc/profile.d/fsl.sh
+
+export FSLOUTPUTTYPE=NIFTI
+
+re="<subject>(.*)</subject>"
+if [[ $2 =~ $re ]]; then subject=${BASH_REMATCH[1]}; fi
+
+unzip -q $1
+/export/software/bin/mcverter -o t1.nii -f fsl -n *.dcm
+rm -rf *.dcm
+mv t1.nii/*.nii .
+rm -rf t1.nii
+ls -la *.nii > /tmp/output
+for file in $(ls *.nii)
+do
+    infile=${file%.*}
+    reorientFile=${subject}_T1_1_r
+    outfile=${reorientFile}_brain
+
+    echo fslreorient2std $infile $reorientFile
+    fslreorient2std $infile $reorientFile
+
+    echo bet2 $reorientFile $outfile 0.27 -B >> /tmp/output
+    bet2 $reorientFile $outfile  0.27 -B
+
+#    rm -f ${infile}.nii ${infile}_r.nii
+done
+
+file=$1
+ingestFile=${file%.zip}
+zip -m extract.zip *.nii

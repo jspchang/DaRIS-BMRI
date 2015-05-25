@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# FSL reorient and brain extract
+
+unset DISPLAY
+# fsl enviroment if needed
+#/etc/profile.d/fsl.sh
+
+export FSLOUTPUTTYPE=NIFTI
+
+# Already running under PBS, don't want additional jobs submitted
+unset FSL_PBSROOT
+
+inputFile=$1
+
+re="<subject>(.*)</subject>"
+if [[ $2 =~ $re ]]; then subject=${BASH_REMATCH[1]}_FMRI; fi
+
+# Unpack the zip file
+unzip -qo ${inputFile}
+
+echo Convert dcm->nii
+/export/software/bin/mcverter -o fmri.nii -f fsl -n -d *.dcm
+rm -rf *.dcm
+mv fmri.nii/*.nii ${subject}.nii
+rm -rf fmri.nii
+echo done
+
+# Repack the nii slices as a single nii file
+#for file in $(ls *.nii)
+#do
+#    infileList=${infileList}" $file"
+#done
+#
+#fslmerge -t ${subject}.nii ${infileList}
+
+#rm ${infileList}
+
+#designTemplate=/export/software/bin/melodic-design-template.fsf
+designTemplate=/export/home/jspchang/melodic-design-template.fsf
+
+outputDirectory=${PWD}/${subject}
+inputFile=${PWD}/${subject}
+sed -e s@\$outputDirectory@${outputDirectory}@g -e s@\$inputFile@${inputFile}@g < $designTemplate > design.fsf
+
+feat design.fsf
+
+zip -qmr melodic_out.zip ${subject}.ica *.nii
